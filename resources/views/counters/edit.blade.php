@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Agregar Contador
+            Editar Contador
         </h2>
     </x-slot>
     <div class="py-12">
@@ -13,9 +13,8 @@
                         @method('put')
                         <div class="space-y-12">
                             <div class="border-b border-gray-900/10 pb-12">
-                                <h2 class="text-base font-semibold leading-7 text-gray-900">Informacion personal</h2>
-                                <p class="mt-1 text-sm leading-6 text-gray-600">Ingresa los datos de un nuevo contador</p>
-
+                                <h2 class="text-base font-semibold leading-7 text-gray-900">Actualiza Información personal</h2>
+                                <p class="mt-1 text-sm leading-6 text-gray-600">Ingresa los datos del contador que deseas actualizar</p>
                                 <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                                     <div class="sm:col-span-3">
                                         <label for="name"

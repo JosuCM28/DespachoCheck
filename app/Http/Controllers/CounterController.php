@@ -67,10 +67,11 @@ class CounterController extends Controller
         return redirect()->route('counter.index')->with('success', 'Contador actualizado exitosamente.');
     }
 
-    public function destroy(Post $post)
+    public function destroy(Counter $counter)
     {
-        $post->delete();
-        return redirect()->route('posts.index')->with('success', 'Post eliminado exitosamente.');
+        $counter = Counter::findOrFail($counter->id);
+        $counter->delete();
+        return redirect()->route('counter.index')->with('success','Contador Borrado Exitosamente');
     }
 
 }

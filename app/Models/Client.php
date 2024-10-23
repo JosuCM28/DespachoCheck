@@ -11,6 +11,7 @@ class Client extends Model
         'counter_id',
         'name',
         'last_name',
+        'email',
         'phone',
         'address',
         'city',

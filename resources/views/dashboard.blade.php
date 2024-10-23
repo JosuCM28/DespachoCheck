@@ -24,10 +24,10 @@
                         </div>
                         <div class="text-white p-4">
                         <div class="max-w-sm h-[200px] p-6 bg-white border border-gray-200 rounded-lg shadow shadow-xl flex items-center justify-center hover:scale-105 duration-500">
-                                <a href="">
-                                    <div class="flex gap-2 items-center">
-                                        <i class="fa-solid fa-user" style="color: #000000;"></i>
-                                        <a href="#">
+                                <a href="{{route('client.create')}}">
+                                    <div class="flex gap-2 flex-col justify-center items-center">
+                                        <i class="fa-solid fa-user-plus text-3xl" style="color: #000000;"></i>
+                                        <a href="{{route('client.create')}}">
                                             <h5 class="text-2xl font-semibold tracking-tight text-gray-900">Agregar Cliente</h5>
                                         </a>
                                     </div>
@@ -37,8 +37,8 @@
                         <div class="text-white p-4">
                         <div class="max-w-sm h-[200px] p-6 bg-white border border-gray-200 rounded-lg shadow shadow-xl flex items-center justify-center hover:scale-105 duration-500">
                                 <a href="">
-                                    <div class="flex gap-2 items-center">
-                                        <i class="fa-solid fa-user" style="color: #000000;"></i>
+                                    <div class="flex gap-2 flex-col justify-center items-center">
+                                        <i class="fa-solid fa-scroll text-3xl" style="color: #000000;"></i>
                                         <a href="#">
                                             <h5 class="text-2xl font-semibold tracking-tight text-gray-900">Crear Recibo</h5>
                                         </a>
@@ -50,7 +50,7 @@
                         <div class="max-w-sm h-[200px] p-6 bg-white border border-gray-200 rounded-lg shadow shadow-xl flex items-center justify-center hover:scale-105 duration-500">
                                 <a href="{{route('counter.index')}}">
                                     <div class="flex gap-2 flex-col justify-center items-center">
-                                        <i class="fa-solid fa-user text-3xl" style="color: #000000;"></i>
+                                        <i class="fa-solid fa-eye text-3xl" style="color: #000000;"></i>
                                         <a href="{{route('counter.index')}}">
                                             <h5 class="text-2xl font-semibold tracking-tight text-gray-900">Ver Contadores</h5>
                                         </a>
@@ -61,8 +61,8 @@
                         <div class="text-white p-4">
                         <div class="max-w-sm h-[200px] p-6 bg-white border border-gray-200 rounded-lg shadow shadow-xl flex items-center justify-center hover:scale-105 duration-500">
                                 <a href="">
-                                    <div class="flex gap-2 items-center">
-                                        <i class="fa-solid fa-user" style="color: #000000;"></i>
+                                    <div class="flex gap-2 flex-col justify-center items-center">
+                                        <i class="fa-solid fa-eye text-3xl" style="color: #000000;"></i>
                                         <a href="#">
                                             <h5 class="text-2xl font-semibold tracking-tight text-gray-900">Ver Clientes</h5>
                                         </a>
@@ -73,8 +73,8 @@
                         <div class="text-white p-4">
                         <div class="max-w-sm h-[200px] p-6 bg-white border border-gray-200 rounded-lg shadow shadow-xl flex items-center justify-center hover:scale-105 duration-500">
                                 <a href="">
-                                    <div class="flex gap-2 items-center">
-                                        <i class="fa-solid fa-user" style="color: #000000;"></i>
+                                    <div class="flex gap-2 flex-col justify-center items-center">
+                                        <i class="fa-solid fa-eye text-3xl" style="color: #000000;"></i>
                                         <a href="#">
                                             <h5 class="text-2xl font-semibold tracking-tight text-gray-900">Ver Recibos</h5>
                                         </a>
