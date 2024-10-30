@@ -13,9 +13,17 @@ return new class extends Migration
     {
         Schema::create('counters', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('last_name');
-            $table->string('email');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');  // Relación con `users`
+            $table->string('phone')->unique()->nullable();
+            $table->string('address')->nullable();
+            $table->string('rfc')->nullable()->unique();
+            $table->string('curp')->nullable()->unique();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('cp')->nullable();
+            $table->string('regimen')->nullable();
+            $table->date('birthdate')->nullable();
+            $table->string('nss')->nullable();
             $table->timestamps();
         });
     }

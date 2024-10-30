@@ -5,10 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use App\Models\User;
 use App\Models\Counter;
 
-class Client extends Model
+class Inventorie extends Model
 {
     use HasFactory;
 
@@ -18,29 +17,12 @@ class Client extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'user_id',
         'counter_id',
-        'name',
-        'last_name',
-        'email',
-        'phone',
-        'address',
-        'city',
-        'state',
-        'cp',
-        'birthdate',
-        'status',
+        'item_name',
+        'quantity',
+        'concept',
+        'price',
     ];
-
-    /**
-     * Relación con el modelo `User`.
-     *
-     * @return BelongsTo
-     */
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
 
     /**
      * Relación con el modelo `Counter`.
