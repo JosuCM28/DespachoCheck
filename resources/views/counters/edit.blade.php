@@ -1,10 +1,7 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Editar Contador
-        </h2>
-    </x-slot>
+@extends('layouts.app')
+@section('content')
     <div class="py-12">
+        @include('layouts.list.sidebar')
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="container mx-auto p-14" >
@@ -122,5 +119,3 @@
                 </div>
             </div>
         </div>
-
-</x-app-layout>

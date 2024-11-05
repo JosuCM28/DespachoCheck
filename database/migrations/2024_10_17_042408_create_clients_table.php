@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade');  // Relación con `users`
-            $table->foreignId('counter_id')->nullable()->constrained('counters')->onDelete('cascade');  // Contador asignado
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('set null');  // Relación con `users`
+            $table->foreignId('counter_id')->nullable()->constrained('counters')->onDelete('set null');  // Contador asignado
             $table->enum('status',['active','inactive'])->default('active');
             $table->string('phone')->unique()->nullable();
+            $table->string('name');
+            $table->string('last_name');
             $table->string('address')->nullable();
             $table->string('rfc')->nullable()->unique();
             $table->string('rfc_user')->nullable();
@@ -27,6 +29,7 @@ return new class extends Migration
             $table->string('nss')->nullable();
             $table->string('regimen')->nullable();
             $table->string('note')->nullable();
+            $table->string('token', '8')->unique();
             $table->date('birthdate')->nullable();
             $table->timestamps();
 

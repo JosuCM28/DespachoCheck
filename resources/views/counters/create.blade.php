@@ -1,10 +1,7 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Agregar Contador
-        </h2>
-    </x-slot>
+@extends('layouts.app')
+@section('content')
     <div class="py-12">
+        @include('layouts.list.sidebar')
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="container mx-auto p-14" >
@@ -73,7 +70,7 @@
                                         <label for="rfc"
                                             class="block text-sm font-medium leading-6 text-gray-900">RFC</label>
                                         <div class="mt-2">
-                                            <input type="text" name="rfc" id="rfc" autocomplete="address-level2"
+                                            <input type="text" name="rfc" id="rfc" autocomplete="address-level2" maxlength="13"
                                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
 
                                             @error('rfc')
@@ -86,7 +83,7 @@
                                         <label for="curp"
                                             class="block text-sm font-medium leading-6 text-gray-900">CURP</label>
                                         <div class="mt-2">
-                                            <input type="text" name="curp" id="curp" autocomplete="curp"
+                                            <input type="text" name="curp" id="curp" autocomplete="curp" maxlength="18"
                                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                             
                                             @error('curp')
@@ -134,5 +131,4 @@
                 </div>
             </div>
         </div>
-
-</x-app-layout>
+@endsection

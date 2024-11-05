@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('credentials', function (Blueprint $table) {
+        Schema::create('documents', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('client_id')->constrained('clients')->onDelete('cascade');  
-            $table->foreignId('counter_id')->constrained('counters')->onDelete('cascade');  
-            $table->string('title');
-            $table->string('content');
+            $table->foreignId('client_id')->constrained()->onDelete('cascade'); // Relación con clientes
+            $table->string('title'); // Título o descripción del documento
+            $table->string('file_path'); // Ruta de almacenamiento del archivo
             $table->timestamps();
         });
+        
     }
 
     /**
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('credentials');
+        Schema::dropIfExists('documents');
     }
 };

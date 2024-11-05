@@ -11,12 +11,16 @@ class Counter extends Model
         'user_id',
         'name',
         'last_name',
-        'email',
         'phone',
+        'address',
         'rfc',
         'curp',
+        'city',
+        'state',
+        'cp',
+        'regimen',
         'birthdate',
-        'city'
+        'nss'
     ];
 
     public function user(): BelongsTo
@@ -38,5 +42,5 @@ class Counter extends Model
     {
         return $this->hasMany(Inventorie::class);
     }
-    
+
 }

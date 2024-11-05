@@ -24,19 +24,24 @@ class CounterController extends Controller
     public function store(Request $request)
     {
     
-        Counter::create($request->all());
-
+        
         $request->validate([
-            'name' => 'required|string|max:255', // Obligatorio, debe ser una cadena, máximo 255 caracteres
-            'last_name' => 'required|string|max:255', // Obligatorio, debe ser una cadena, máximo 255 caracteres
-            'email' => 'required|email|max:255', // Obligatorio, formato de correo electrónico, único en la tabla 'users'
-            'phone' => 'required|string|size:10', // Obligatorio, formato de correo electrónico, único en la tabla 'users'
-            'rfc' => 'required|string|size:13', // Obligatorio, debe tener exactamente 13 caracteres (para México), único
-            'curp' => 'required|string|size:18', // Obligatorio, debe tener exactamente 18 caracteres, único
-            'birthdate' => 'required|date', // Obligatorio, debe ser una fecha válida, antes de la fecha actual
-            'city' => 'required|string|max:255', // Obligatorio, debe ser una cadena, máximo 255 caracteres
+            'user_id' => 'nullable',
+            'name' => 'nullable',
+            'last_name' => 'nullable',
+            'phone' => 'nullable|string|unique:counters|max:15', // Cambia `your_table_name` al nombre de tu tabla
+            'address' => 'nullable|string|max:255',
+            'rfc' => 'nullable|string|unique:counters|max:13', // RFC formato estándar
+            'curp' => 'nullable|string|unique:counters|max:18', // CURP formato estándar
+            'city' => 'nullable|string|max:100',
+            'state' => 'nullable|string|max:100',
+            'cp' => 'nullable|string|max:5|regex:/^\d{5}$/', // Código Postal (5 dígitos)
+            'regimen' => 'nullable|string|max:50',
+            'birthdate' => 'nullable|date|before:today', // Fecha de nacimiento antes de hoy
+            'nss' => 'nullable|string|max:11', // NSS formato (11 dígitos)
         ]);
         
+        Counter::create($request->all());
         return redirect()->route('counter.index')->with('success', 'Contador creado exitosamente.');
     }
 

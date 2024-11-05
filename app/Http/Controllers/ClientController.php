@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Counter;
 use Illuminate\Http\Request;
 use App\Models\Client;
+use Illuminate\Support\Str;
 
 class ClientController extends Controller
 {
@@ -22,9 +23,10 @@ class ClientController extends Controller
     public function create()
     {
         $counters = Counter::all();
+        $token = Str::random(8);
 
 
-        return view('clients.create', compact('counters'));
+        return view('clients.create', compact('counters', 'token'));
 
 
     }
