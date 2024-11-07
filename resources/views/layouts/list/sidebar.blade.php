@@ -30,16 +30,9 @@
                     Admin</span>
                 </a>
             </li>
-            <li>
-                <a href=""
-                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group gap-2">
-                    <i class="fa-solid fa-warehouse text-sm" style="color: #ebedef;"></i>
-                    <span>Inventario</span>
-                </a>
-            </li>
             <button type="button"
                         class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                        aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+                            aria-controls="dropdown-counters" data-collapse-toggle="dropdown-counters">
                         <i class="fa-solid fa-user text-sm" style="color: #dfe2e7;"></i>
                         <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Contadores</span>
                         <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
@@ -49,7 +42,7 @@
                                 clip-rule="evenodd"></path>
                         </svg>
                     </button>
-                    <ul id="dropdown-example" class="hidden py-2 space-y-2">
+                    <ul id="dropdown-counters" class="hidden py-2 space-y-2">
                         <li>
                             <a href="{{route('counter.create')}}"
                                 class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Nuevo Contador</a>
@@ -63,7 +56,7 @@
             <!-- Agrega más elementos del menú aquí -->
             <button type="button"
                         class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                        aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+                        aria-controls="dropdown-clients" data-collapse-toggle="dropdown-clients">
                         <i class="fa-solid fa-users text-sm" style="color: #dfe2e7;"></i>
                         <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Clientes</span>
                         <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
@@ -73,20 +66,20 @@
                                 clip-rule="evenodd"></path>
                         </svg>
                     </button>
-                    <ul id="dropdown-example" class="hidden py-2 space-y-2">
+                    <ul id="dropdown-clients" class="hidden py-2 space-y-2">
                         <li>
                             <a href="{{route('client.create')}}"
                                 class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Nuevo Cliente</a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a href="{{route('client.index')}}"
                                 class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Ver Clientes</a>
                         </li>
                     </ul>
                 </li>
                 <button type="button"
                         class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                        aria-controls="dropdown-2" data-collapse-toggle="dropdown-2">
+                        aria-controls="dropdown-receipts" data-collapse-toggle="dropdown-receipts">
                         <i class="fa-solid fa-receipt" style="color: #e8ecf2;"></i>
                             <path fill-rule="evenodd"
                                 d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
@@ -100,7 +93,7 @@
                                 clip-rule="evenodd"></path>
                         </svg>
                     </button>
-                    <ul id="dropdown-2" class="hidden py-2 space-y-2">
+                    <ul id="dropdown-receipts" class="hidden py-2 space-y-2">
                         <li>
                             <a href="#"
                                 class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Nuevo Recibo</a>

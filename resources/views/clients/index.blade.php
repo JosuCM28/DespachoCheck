@@ -14,10 +14,10 @@
                                         {{ session('success') }}
                                     </div>
                                 @endif
-                                <h2 class="text-lg font-bold mb-3">Contadores</h2>
+                                <h2 class="text-lg font-bold mb-3">Clientes</h2>
                                 <div class="flex justify-between mb-8 items-center"> 
-                                    <p class="text-gray-500">Lista de todos los contadores existentes</p>
-                                    <a href="{{route('counter.create')}}" class="rounded-md bg-indigo-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Agregar</a>
+                                    <p class="text-gray-500">Lista de todos los Clientes existentes</p>
+                                    <a href="{{route('client.create')}}" class="rounded-md bg-indigo-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Agregar</a>
                                 </div>
                             </div>
                             <div class="overflow-hidden">
@@ -31,20 +31,20 @@
                                   </tr>
                                 </thead>
                                 <tbody class="divide-y divide-gray-200">
-                                  @foreach ($counters as $counter)
+                                  @foreach ($clients as $client)
                                   <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800"> {{$counter->name . " " . $counter->last_name}} </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800"> {{$counter->email}} </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800"> {{$counter->city}} </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800"> {{$client->name . " " . $client->last_name}} </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800"> {{$client->email}} </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800"> {{$client->city}} </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
                                       <div class="flex gap-3 justify-end items-center">
-                                      <a href="{{route('counter.show', $counter->id)}}"><i class="fa-regular fa-eye"></i></a>
-                                      <form onsubmit="return confirm('¿Estás seguro de borrar esto?')" action="{{ route('counter.destroy', $counter->id) }}" method="POST">
+                                      <a href="#"><i class="fa-regular fa-eye"></i></a>
+                                      <form onsubmit="return confirm('¿Estás seguro de borrar esto?')" action="{{ route('counter.destroy', $client->id) }}" method="POST">
                                           @csrf
                                           @method('DELETE')
                                           <button><i class="fa-solid fa-trash-can text-red-500" title="Borrar"></i></button>
                                       </form>
-                                      <a href="{{route('counter.edit', $counter->id)}}"><i class="fa-regular fa-pen-to-square" style="color: #FFD43B;"></i></a>
+                                      <a href="#"><i class="fa-regular fa-pen-to-square" style="color: #FFD43B;"></i></a>
                                       </div>
                                     </td>
                                   </tr>
@@ -58,6 +58,6 @@
                 </div>
             </div>
         </div>
-
+@endsection
 
 

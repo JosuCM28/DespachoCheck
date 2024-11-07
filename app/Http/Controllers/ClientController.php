@@ -14,7 +14,8 @@ class ClientController extends Controller
     public function index()
     {
         $clients = Client::all();
-        return view('clients.index', compact('clients'));
+        $counters = Counter::all();
+        return view('clients.index', compact('clients','counters'));
     }
 
     /**
@@ -24,6 +25,9 @@ class ClientController extends Controller
     {
         $counters = Counter::all();
         $token = Str::random(8);
+
+        
+        
 
 
         return view('clients.create', compact('counters', 'token'));
@@ -37,22 +41,50 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'counter_id' => 'required|exists:counters,id', // Requiere que el contador exista en la tabla 'counters'
-            'name' => 'required|string|max:255', // Obligatorio, cadena de texto, máximo 255 caracteres
-            'last_name' => 'required|string|max:255', // Obligatorio, cadena de texto, máximo 255 caracteres
-            'email' => 'required|email|max:255|unique:clients,email', // Obligatorio, formato de email, máximo 255 caracteres, único en la tabla 'clients'
-            'phone' => 'required|string|max:15|unique:clients,phone', // Obligatorio, debe ser único, máximo 15 caracteres
-            'address' => 'required|string|max:255', // Obligatorio, cadena de texto, máximo 255 caracteres
-            'city' => 'nullable|string|max:255', // Opcional, cadena de texto, máximo 255 caracteres
-            'state' => 'nullable|string|max:255', // Opcional, cadena de texto, máximo 255 caracteres
-            'cp' => 'nullable|string|size:5', // Opcional, longitud exacta de 5 caracteres (asumiendo que es código postal)
-            'birthdate' => 'nullable|date|before:today', // Opcional, debe ser una fecha válida y anterior a hoy
-            'status' => 'required|in:active,inactive', // Obligatorio, debe ser 'active' o 'inactive'
+            'user_id' => 'nullable',
+            'counter_id' => 'nullable',
+            'status' => 'required',
+            'phone' => 'nullable|string|unique|max:10',
+            'name' => 'required|string|max:255',
+            'email' => 'nullable|email|unique:clients|max:255',
+            'last_name' => 'required|string|max:255',
+            'address' => 'nullable|string|max:255',
+            'rfc' => 'nullable|string|unique:clients|max:13',
+            'rfc_user' => 'nullable|string|max:13',
+            'curp' => 'nullable|string|unique:clients|max:18',
+            'city' => 'nullable|string|max:255',
+            'state' => 'nullable|string|max:255',
+            'cp' => 'nullable|string|max:5',
+            'nss' => 'nullable|string|max:11',
+            'regimen' => 'nullable|string|max:255',
+            'note' => 'nullable|string|max:500',
+            'token' => 'required|string|size:8|unique:clients',
+            'birthdate' => 'nullable|date|before:today',
         ]);
 
-        Client::create($request->all());
+        Client::create([
+            'user_id' => $request->user_id,
+            'counter_id'=> $request->counter_id,
+            'status'=> $request->status,
+            'phone'=> $request->phone,
+            'name'=> $request->name,
+            'email'=> $request->email,
+            'last_name'=> $request->last_name,
+            'address'=> $request->address,
+            'rfc'=> $request->rfc,
+            'rfc_user'=> $request->rfc_user,
+            'curp'=> $request->curp,
+            'city'=> $request->city,
+            'state'=> $request->state,
+            'cp'=> $request->cp,
+            'nss'=> $request->nss,
+            'regimen'=> $request->regimen,
+            'note'=> $request->note,
+            'token'=> $request->token,
+            'birthdate'=> $request->birthdate,
+        ]);
 
-        return redirect()->route('client.create')->with('success', 'Contador creado exitosamente.');
+        return redirect()->route('client.index')->with('success', 'Contador creado exitosamente.');
     }
 
     /**

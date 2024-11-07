@@ -46,7 +46,7 @@
                                                     {{ $counter->name . ' ' . $counter->last_name }}
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
-                                                    {{ $counter->email }}
+                                                    {{ $counter->user->email }}
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
                                                     {{ $counter->city }}

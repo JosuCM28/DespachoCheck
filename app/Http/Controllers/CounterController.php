@@ -7,6 +7,8 @@ use App\Models\Counter;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+
 
 class CounterController extends Controller
 {
@@ -18,37 +20,61 @@ class CounterController extends Controller
 
     public function create()
     {
-    return view('counters.create');
+        $password = Str::random(10);
+
+        return view('counters.create',compact('password'));
+
     }
 
     public function store(Request $request)
     {
-    
-        
+
+
         $request->validate([
-            'user_id' => 'nullable',
-            'name' => 'nullable',
-            'last_name' => 'nullable',
-            'phone' => 'nullable|string|unique:counters|max:15', // Cambia `your_table_name` al nombre de tu tabla
-            'address' => 'nullable|string|max:255',
-            'rfc' => 'nullable|string|unique:counters|max:13', // RFC formato estándar
-            'curp' => 'nullable|string|unique:counters|max:18', // CURP formato estándar
-            'city' => 'nullable|string|max:100',
-            'state' => 'nullable|string|max:100',
-            'cp' => 'nullable|string|max:5|regex:/^\d{5}$/', // Código Postal (5 dígitos)
-            'regimen' => 'nullable|string|max:50',
-            'birthdate' => 'nullable|date|before:today', // Fecha de nacimiento antes de hoy
-            'nss' => 'nullable|string|max:11', // NSS formato (11 dígitos)
+            'phone' => 'nullable|string|unique:counters|max:15', // Teléfono único, puede estar vacío, máximo 15 caracteres
+            'name' => 'required|string|max:255', // Nombre requerido y en formato de texto
+            'last_name' => 'required|string|max:255', // Apellido requerido y en formato de texto
+            'address' => 'nullable|string|max:255', // Dirección puede estar vacía, máximo 255 caracteres
+            'rfc' => 'nullable|string|unique:counters|max:13', // RFC único con formato
+            'curp' => 'nullable|string|unique:counters|max:18', // CURP único con formato
+            'city' => 'nullable|string|max:100', // Ciudad puede estar vacía, máximo 100 caracteres
+            'state' => 'nullable|string|max:100', // Estado puede estar vacío, máximo 100 caracteres
+            'cp' => 'nullable|string|max:5|regex:/^\d{5}$/', // Código Postal, máximo 5 dígitos
+            'regimen' => 'nullable|string|max:50', // Régimen puede estar vacío, máximo 50 caracteres
+            'birthdate' => 'nullable|date|before:today', // Fecha de nacimiento válida y antes de hoy
+            'email' => 'nullable|email|unique:users|max:255', // Email requerido, válido, único y máximo 255 caracteres
+            'password' => 'nullable|string|min:8', // Contraseña requerida, mínimo 8 caracteres, confirmada
+        ]);
+        $user = User::create([
+            'password' => $request->password,
+            'email' => $request->email, 
+            'name' => $request->name,  
+            'rol' => 'contador',
         ]);
         
-        Counter::create($request->all());
+
+        Counter::create([
+            'user_id'=> $user->id,
+            'phone' => $request->phone ,
+            'name' => $request->name,
+            'last_name' => $request->last_name ,
+            'address' => $request->address,
+            'rfc' => $request->rfc,
+            'curp' => $request->curp,
+            'city' => $request->city,
+            'cp' => $request->cp,
+            'regimen' => $request->regimen,
+            'birthdate' => $request->birthdate,
+        ]);
+        
         return redirect()->route('counter.index')->with('success', 'Contador creado exitosamente.');
     }
 
-    public function show(Counter $counter)
+    public function show(Counter $counter )
     {
         return view('counters.show', [
-            'counter' => $counter
+            'counter' => $counter,
+            'user' => $counter->user,
         ]);
     }
 
@@ -80,7 +106,7 @@ class CounterController extends Controller
     {
         $counter = Counter::findOrFail($counter->id);
         $counter->delete();
-        return redirect()->route('counter.index')->with('success','Contador Borrado Exitosamente');
+        return redirect()->route('counter.index')->with('success', 'Contador Borrado Exitosamente');
     }
 
 }

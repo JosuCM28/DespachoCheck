@@ -17,7 +17,7 @@ Route::middleware([
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
     
 });
-
+Route::middleware(['auth'])->group(function () {
 Route::get('/counter/index', [CounterController::class, 'index'])->name('counter.index');
 Route::get('/counter/create', [CounterController::class, 'create'])->name('counter.create');
 Route::post('/counter/store', [CounterController::class, 'store'])->name('counter.store');
@@ -26,10 +26,10 @@ Route::get('/counter/edit/{counter}', [CounterController::class, 'edit'])->name(
 Route::put('/counter/update/{counter}/', [CounterController::class, 'update'])->name('counter.update');
 Route::delete('/counter/destroy/{counter}', [CounterController::class, 'destroy'])->name('counter.destroy');
 
-
 Route::get('/client/index', [ClientController::class, 'index'])->name('client.index');
 Route::get('/client/create', [ClientController::class, 'create'])->name('client.create');
 Route::post('/client/store', [ClientController::class, 'store'])->name('client.store');
+});
 
 #Route::resource('counter', CounterController::class)->names('counter.home');
 

@@ -20,16 +20,23 @@ class Client extends Model
     protected $fillable = [
         'user_id',
         'counter_id',
-        'name',
-        'last_name',
-        'email',
+        'status',
         'phone',
+        'name',
+        'email',
+        'last_name',
         'address',
+        'rfc',
+        'rfc_user',
+        'curp',
         'city',
         'state',
         'cp',
+        'nss',
+        'regimen',
+        'note',
+        'token',
         'birthdate',
-        'status',
     ];
 
     /**
