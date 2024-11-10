@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('credentials', function (Blueprint $table) {
             $table->id();
             $table->foreignId('client_id')->constrained('clients')->onDelete('cascade');  
-            $table->foreignId('counter_id')->constrained('counters')->onDelete('cascade');  
-            $table->string('title');
-            $table->string('content');
+            $table->string('idse');
+            $table->string('sipare');
+            $table->string('usuariouno');
+            $table->string('usuariodos');
             $table->timestamps();
         });
     }

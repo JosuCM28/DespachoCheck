@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('address')->nullable();
             $table->string('rfc')->nullable()->unique();
-            $table->string('rfc_user')->nullable();
             $table->string('curp')->nullable()->unique();
             $table->string('city')->nullable();
             $table->string('state')->nullable();

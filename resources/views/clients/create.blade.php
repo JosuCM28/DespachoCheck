@@ -164,7 +164,7 @@
                                     <div class="mt-2 mb-6">
                                         <select name="counter_id" id="counter_id" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                             @foreach ($counters as $counter)
-                                            <option value="{{ $counter->id }}">{{ $counter->name }}</option>
+                                            <option value="{{ $counter->id }}">{{ $counter->name . " " . $counter->last_name }}</option>
                                             @endforeach
                                         </select>
                                         @error('counter_id') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror

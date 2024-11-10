@@ -17,7 +17,7 @@
                                     <label for="email"
                                         class="block text-sm font-medium leading-6 text-gray-900">Correo</label>
                                     <div class="mt-2">
-                                        <p> {{ $counter->user->email }} </p>
+                                        <p class="{{ $counter->user->email ? '' : 'text-gray-400 italic' }}"> {{ $counter->user->email ?? 'Sin datos existentes'}} </p>
                                     </div>
                                 </div>
 
@@ -26,7 +26,7 @@
                                         class="block text-sm font-medium leading-6 text-gray-900">Fecha de
                                         nacimiento</label>
                                     <div class="mt-2">
-                                        <p> {{ $counter->birthdate }} </p>
+                                        <p class="{{ $counter->birthdate ? '' : 'text-gray-400 italic' }}"> {{ $counter->birthdate ?? 'Sin datos existentes'}} </p>
                                     </div>
                                 </div>
                                 
@@ -35,7 +35,7 @@
                                     <label for="city"
                                         class="block text-sm font-medium leading-6 text-gray-900">RFC</label>
                                     <div class="mt-2">
-                                        <p> {{ $counter->rfc }} </p>
+                                        <p class="{{ $counter->rfc ? '' : 'text-gray-400 italic' }}"> {{ $counter->rfc ?? 'Sin datos existentes'}} </p>
                                     </div>
                                 </div>
 
@@ -43,7 +43,7 @@
                                     <label for="curp"
                                         class="block text-sm font-medium leading-6 text-gray-900">CURP</label>
                                     <div class="mt-2">
-                                        <p> {{ $counter->curp }} </p>
+                                        <p class="{{ $counter->curp ? '' : 'text-gray-400 italic' }}"> {{ $counter->curp ?? 'Sin datos existentes'}} </p>
                                     </div>
                                 </div>
 
@@ -51,7 +51,7 @@
                                     <label for="curp"
                                         class="block text-sm font-medium leading-6 text-gray-900">Telefono</label>
                                     <div class="mt-2">
-                                        <p> {{ $counter->phone }} </p>
+                                        <p class="{{ $counter->phone ? '' : 'text-gray-400 italic' }}"> {{ $counter->phone ?? 'Sin datos existentes'}} </p>
                                     </div>
                                 </div>
 
@@ -59,7 +59,7 @@
                                     <label for="curp"
                                         class="block text-sm font-medium leading-6 text-gray-900">Drección</label>
                                     <div class="mt-2">
-                                        <p> {{ $counter->address }} </p>
+                                        <p class="{{ $counter->address ? '' : 'text-gray-400 italic' }}"> {{ $counter->address ?? 'Sin datos existentes'}} </p>
                                     </div>
                                 </div>
 
@@ -67,7 +67,7 @@
                                     <label for="curp"
                                         class="block text-sm font-medium leading-6 text-gray-900">Ciudad</label>
                                     <div class="mt-2">
-                                        <p> {{ $counter->city }} </p>
+                                        <p class="{{ $counter->city ? '' : 'text-gray-400 italic' }}"> {{ $counter->city ?? 'Sin datos existentes'}} </p>
                                     </div>
                                 </div>
 
@@ -75,7 +75,7 @@
                                     <label for="curp"
                                         class="block text-sm font-medium leading-6 text-gray-900">CP</label>
                                     <div class="mt-2">
-                                        <p> {{ $counter->cp }} </p>
+                                        <p class="{{ $counter->cp ? '' : 'text-gray-400 italic' }}"> {{ $counter->cp ?? 'Sin datos existentes'}} </p>
                                     </div>
                                 </div>
 
@@ -83,7 +83,7 @@
                                     <label for="curp"
                                         class="block text-sm font-medium leading-6 text-gray-900">Estado</label>
                                     <div class="mt-2">
-                                        <p> {{ $counter->state }} </p>
+                                        <p class="{{ $counter->state ? '' : 'text-gray-400 italic' }}"> {{ $counter->state ?? 'Sin datos existentes'}} </p>
                                     </div>
                                 </div>
 
@@ -91,7 +91,7 @@
                                     <label for="curp"
                                         class="block text-sm font-medium leading-6 text-gray-900">Regimen</label>
                                     <div class="mt-2">
-                                        <p> {{ $counter->regimen }} </p>
+                                        <p class="{{ $counter->regimen ? '' : 'text-gray-400 italic' }}"> {{ $counter->regimen ?? 'Sin datos existentes'}} </p>
                                     </div>
                                 </div>
 
@@ -101,7 +101,7 @@
                                     <label for="curp" class="block text-sm font-medium leading-6 text-gray-900">No.
                                         de clientes</label>
                                     <div class="mt-2">
-                                        <p> {{ $counter->clients->count() }} </p>
+                                        <p > {{ $counter->clients->count() }} </p>
                                     </div>
                                 </div>
 

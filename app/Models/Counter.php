@@ -17,6 +17,10 @@ class Counter extends Model
         'curp',
         'city',
         'state',
+        'idse',
+        'sipare',
+        'usuariouno',
+        'usuariodos',
         'cp',
         'regimen',
         'birthdate',
@@ -41,6 +45,10 @@ class Counter extends Model
     public function inventories(): HasMany
     {
         return $this->hasMany(Inventorie::class);
+    }
+    public function credentials()
+    {
+        return $this->hasMany(Credential::class);
     }
 
 }

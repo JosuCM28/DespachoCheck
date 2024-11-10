@@ -38,13 +38,13 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800"> {{$client->city}} </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
                                       <div class="flex gap-3 justify-end items-center">
-                                      <a href="#"><i class="fa-regular fa-eye"></i></a>
-                                      <form onsubmit="return confirm('¿Estás seguro de borrar esto?')" action="{{ route('counter.destroy', $client->id) }}" method="POST">
+                                      <a href="{{route('client.show', $client->id)}}"><i class="fa-regular fa-eye"></i></a>
+                                      <form onsubmit="return confirm('¿Estás seguro de borrar esto?')" action="{{ route('client.destroy', $client->id) }}" method="POST">
                                           @csrf
                                           @method('DELETE')
                                           <button><i class="fa-solid fa-trash-can text-red-500" title="Borrar"></i></button>
                                       </form>
-                                      <a href="#"><i class="fa-regular fa-pen-to-square" style="color: #FFD43B;"></i></a>
+                                      <a href="{{route('client.edit', $client->id)}}"><i class="fa-regular fa-pen-to-square" style="color: #FFD43B;"></i></a>
                                       </div>
                                     </td>
                                   </tr>

@@ -27,7 +27,6 @@ class Client extends Model
         'last_name',
         'address',
         'rfc',
-        'rfc_user',
         'curp',
         'city',
         'state',
@@ -57,5 +56,9 @@ class Client extends Model
     public function counter(): BelongsTo
     {
         return $this->belongsTo(Counter::class);
+    }
+    public function credentials()
+    {
+        return $this->hasMany(Credential::class);
     }
 }

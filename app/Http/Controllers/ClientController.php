@@ -44,13 +44,12 @@ class ClientController extends Controller
             'user_id' => 'nullable',
             'counter_id' => 'nullable',
             'status' => 'required',
-            'phone' => 'nullable|string|unique|max:10',
+            'phone' => 'nullable|string|unique:clients|max:10',
             'name' => 'required|string|max:255',
             'email' => 'nullable|email|unique:clients|max:255',
             'last_name' => 'required|string|max:255',
             'address' => 'nullable|string|max:255',
             'rfc' => 'nullable|string|unique:clients|max:13',
-            'rfc_user' => 'nullable|string|max:13',
             'curp' => 'nullable|string|unique:clients|max:18',
             'city' => 'nullable|string|max:255',
             'state' => 'nullable|string|max:255',
@@ -72,7 +71,6 @@ class ClientController extends Controller
             'last_name'=> $request->last_name,
             'address'=> $request->address,
             'rfc'=> $request->rfc,
-            'rfc_user'=> $request->rfc_user,
             'curp'=> $request->curp,
             'city'=> $request->city,
             'state'=> $request->state,
@@ -90,32 +88,63 @@ class ClientController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Client $client)
     {
-        //
+        return view('clients.show', [
+            'client' => $client,
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Client $client)
     {
-        //
+        return view('clients.edit',[
+            'client' => $client
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Client $client)
     {
-        //
+        // Validar y actualizar el post
+        $request->validate([
+            'user_id' => 'nullable',
+            'counter_id' => 'nullable',
+            'status' => 'required',
+            'phone' => 'nullable|string|unique|max:10',
+            'name' => 'required|string|max:255',
+            'email' => 'nullable|email|unique:clients|max:255',
+            'last_name' => 'required|string|max:255',
+            'address' => 'nullable|string|max:255',
+            'rfc' => 'nullable|string|unique:clients|max:13',
+            'rfc_user' => 'nullable|string|max:13',
+            'curp' => 'nullable|string|unique:clients|max:18',
+            'city' => 'nullable|string|max:255',
+            'state' => 'nullable|string|max:255',
+            'cp' => 'nullable|string|max:5',
+            'nss' => 'nullable|string|max:11',
+            'regimen' => 'nullable|string|max:255',
+            'note' => 'nullable|string|max:500',
+            'token' => 'required|string|size:8|unique:clients',
+            'birthdate' => 'nullable|date|before:today',
+        ]);
+
+        $client->update($request->all());
+        return redirect()->route('client.index')->with('success', 'Contador actualizado exitosamente.');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Client $client)
     {
-        //
+        $client = Client::findOrFail($client->id);
+        $client->delete();
+        return redirect()->route('client.index')->with('success', 'Contador Borrado Exitosamente');
     }
 }
