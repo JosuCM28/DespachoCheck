@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-
     <title>{{ config('app.name', 'Laravel') }}</title>
     <script src="https://kit.fontawesome.com/8cf788678c.js" crossorigin="anonymous"></script>
     <!-- Fonts -->
@@ -25,7 +24,7 @@
     <x-banner />
 
     <div class="min-h-screen bg-gray-100">
-       @livewire('navigation-menu') 
+    @livewire('navigation-menu') 
 
         <!-- Page Heading -->
         @if (isset($header))

@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Counter;
+use App\Models\Regime;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\Button;
@@ -31,52 +32,49 @@ final class CounterTable extends PowerGridComponent
 
     public function datasource(): Builder
     {
-        return Counter::query();
+        return Counter::query()
+            ->with('regime') // Cargar la relación 'regime'
+            ->addSelect([
+                '*', // seleccionar todos los campos de Counter
+                \DB::raw("CONCAT(name, ' ', last_name) AS full_name"), // Crear columna 'full_name' concatenando `name` y `last_name`
+                'regime_title' => Regime::select('title') // Traer solo el 'title' de la relación 'regime'
+                    ->whereColumn('regimes.id', 'counters.regime_id')
+                    ->limit(1) // Limit 1 por seguridad
+            ]);
     }
+    
 
     public function relationSearch(): array
     {
-        return [];
+        return [
+            'regime' => ['title'],
+        ];
     }
 
     public function fields(): PowerGridFields
     {
         return PowerGrid::fields()
-            ->add('id')
-            ->add('user_id')
             ->add('name')
             ->add('last_name')
             ->add('phone')
-            ->add('address')
             ->add('rfc')
             ->add('curp')
             ->add('city')
             ->add('state')
             ->add('cp')
-            ->add('regimen')
-            ->add('birthdate_formatted', fn (Counter $model) => Carbon::parse($model->birthdate)->format('d/m/Y'))
-            ->add('nss')
-            ->add('created_at');
+            ->add('regime_id')
+            ->add('nss');
     }
 
     public function columns(): array
     {
         return [
-            Column::make('Id', 'id'),
-            Column::make('User id', 'user_id'),
-            Column::make('Name', 'name')
-                ->sortable()
-                ->searchable(),
 
-            Column::make('Last name', 'last_name')
-                ->sortable()
-                ->searchable(),
+            Column::make('Nombre Completo', 'full_name')
+            ->sortable()
+            ->searchable(),
 
             Column::make('Phone', 'phone')
-                ->sortable()
-                ->searchable(),
-
-            Column::make('Address', 'address')
                 ->sortable()
                 ->searchable(),
 
@@ -100,32 +98,23 @@ final class CounterTable extends PowerGridComponent
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Regimen', 'regimen')
+            Column::make('Régimen', 'regime_title')
                 ->sortable()
                 ->searchable(),
-
-            Column::make('Birthdate', 'birthdate_formatted', 'birthdate')
-                ->sortable(),
 
             Column::make('Nss', 'nss')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Created at', 'created_at_formatted', 'created_at')
-                ->sortable(),
-
-            Column::make('Created at', 'created_at')
-                ->sortable()
-                ->searchable(),
-
-            Column::action('Action')
+            Column::action('ACTION')
         ];
     }
 
     public function filters(): array
     {
         return [
-            Filter::datepicker('birthdate'),
+            Filter::inputText('curp')->placeholder('Curp'),
+            
         ];
     }
 
@@ -138,18 +127,18 @@ final class CounterTable extends PowerGridComponent
     public function actions(Counter $row): array
     {
         return [
-            Button::add('edit')
-                ->slot('Edit: '.$row->id)
+            Button::add('read')
+                ->slot('Ver: '.$row->id)
                 ->id()
                 ->class('pg-btn-white dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
-                ->dispatch('edit', ['rowId' => $row->id])
+                ->dispatch('read', ['rowId' => $row->id])
         ];
     }
 
     /*
     public function actionRules($row): array
     {
-       return [
+    return [
             // Hide button edit for ID 1
             Rule::button('edit')
                 ->when(fn($row) => $row->id === 1)

@@ -20,6 +20,7 @@ class Client extends Model
     protected $fillable = [
         'user_id',
         'counter_id',
+        'regime_id',
         'status',
         'phone',
         'name',
@@ -32,10 +33,13 @@ class Client extends Model
         'state',
         'cp',
         'nss',
-        'regimen',
         'note',
         'token',
         'birthdate',
+        'idse',
+        'sipare',
+        'usuariouno',
+        'usuariodos',
     ];
 
     /**
@@ -61,4 +65,10 @@ class Client extends Model
     {
         return $this->hasMany(Credential::class);
     }
+
+    public function regime()
+    {
+        return $this->belongsTo(Regime::class);
+    }
+
 }

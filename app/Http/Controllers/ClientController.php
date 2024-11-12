@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Counter;
+use App\Models\Regime;
 use Illuminate\Http\Request;
 use App\Models\Client;
 use Illuminate\Support\Str;
@@ -24,13 +25,14 @@ class ClientController extends Controller
     public function create()
     {
         $counters = Counter::all();
+        $regimes = Regime::all();
         $token = Str::random(8);
 
         
         
 
 
-        return view('clients.create', compact('counters', 'token'));
+        return view('clients.create', compact('counters', 'token', 'regimes'));
 
 
     }
@@ -43,6 +45,7 @@ class ClientController extends Controller
         $request->validate([
             'user_id' => 'nullable',
             'counter_id' => 'nullable',
+            'regime_id' => 'nullable',
             'status' => 'required',
             'phone' => 'nullable|string|unique:clients|max:10',
             'name' => 'required|string|max:255',
@@ -55,7 +58,6 @@ class ClientController extends Controller
             'state' => 'nullable|string|max:255',
             'cp' => 'nullable|string|max:5',
             'nss' => 'nullable|string|max:11',
-            'regimen' => 'nullable|string|max:255',
             'note' => 'nullable|string|max:500',
             'token' => 'required|string|size:8|unique:clients',
             'birthdate' => 'nullable|date|before:today',
@@ -76,7 +78,7 @@ class ClientController extends Controller
             'state'=> $request->state,
             'cp'=> $request->cp,
             'nss'=> $request->nss,
-            'regimen'=> $request->regimen,
+            'regime_id'=> $request->regime_id,
             'note'=> $request->note,
             'token'=> $request->token,
             'birthdate'=> $request->birthdate,
@@ -100,8 +102,11 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
+        $regimes = Regime::all();
+
         return view('clients.edit',[
-            'client' => $client
+            'client' => $client,
+            'regimes' => $regimes
         ]);
     }
 
@@ -127,7 +132,7 @@ class ClientController extends Controller
             'state' => 'nullable|string|max:255',
             'cp' => 'nullable|string|max:5',
             'nss' => 'nullable|string|max:11',
-            'regimen' => 'nullable|string|max:255',
+            'regime_id' => 'nullable|string|max:255',
             'note' => 'nullable|string|max:500',
             'token' => 'required|string|size:8|unique:clients',
             'birthdate' => 'nullable|date|before:today',

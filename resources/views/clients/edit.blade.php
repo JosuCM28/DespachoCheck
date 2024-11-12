@@ -42,7 +42,7 @@
                                     <label for="email"
                                         class="block text-sm font-medium leading-6 text-gray-900">Correo</label>
                                     <div class="mt-2">
-                                        <input id="email" name="email" type="email" autocomplete="email" value="{{$client->user->email ?? ''}}" placeholder="{{ $client->user->email ? '' : 'No hay datos existentes' }}"
+                                        <input id="email" name="email" type="email" autocomplete="email" value="{{$client->email ?? ''}}" placeholder="{{ $client->email ? '' : 'No hay datos existentes' }}"
                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
 
                                         @error('email')
@@ -154,14 +154,14 @@
                                 </div>
 
                                 <div class="sm:col-span-2">
-                                    <label for="regimen"
+                                    <label for="regime_id"
                                         class="block text-sm font-medium leading-6 text-gray-900">Regimen</label>
                                     <div class="mt-2">
-                                        <input type="text" name="regimen" id="regimen" autocomplete="regimen" value="{{$client->regimen ?? ''}}" placeholder="{{ $client->regimen ? '' : 'No hay datos existentes' }}"
+                                        <input type="text" name="regime_id" id="regime_id" autocomplete="regime_id" value="{{$client->regime_id ?? ''}}" placeholder="{{ $client->regime_id ? '' : 'No hay datos existentes' }}"
                                             maxlength="18"
                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
 
-                                        @error('regimen')
+                                        @error('regime_id')
                                             <span class="text-red-500 text-sm">{{ $message }}</span>
                                         @enderror
                                     </div>

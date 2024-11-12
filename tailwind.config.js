@@ -10,6 +10,9 @@ export default {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
         './src/**/*.{html,js}',
+        './app/Livewire/**/*Table.php',
+        './vendor/power-components/livewire-powergrid/resources/views/**/*.php',
+        './vendor/power-components/livewire-powergrid/src/Themes/Tailwind.php'
     ],
 
     theme: {

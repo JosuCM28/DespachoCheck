@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App;
 use App\Models\Counter;
 use App\Models\User;
+use App\Models\Regime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -21,8 +22,8 @@ class CounterController extends Controller
     public function create()
     {
         $password = Str::random(10);
-
-        return view('counters.create',compact('password'));
+        $regimes = Regime::all();
+        return view('counters.create',compact('password','regimes'));
 
     }
 
@@ -40,7 +41,7 @@ class CounterController extends Controller
             'city' => 'nullable|string|max:100', // Ciudad puede estar vacía, máximo 100 caracteres
             'state' => 'nullable|string|max:100', // Estado puede estar vacío, máximo 100 caracteres
             'cp' => 'nullable|string|max:5|regex:/^\d{5}$/', // Código Postal, máximo 5 dígitos
-            'regimen' => 'nullable|string|max:50', // Régimen puede estar vacío, máximo 50 caracteres
+            'regime_id' => 'nullable|string|max:50', // Régimen puede estar vacío, máximo 50 caracteres
             'birthdate' => 'nullable|date|before:today', // Fecha de nacimiento válida y antes de hoy
             'email' => 'nullable|email|unique:users|max:255', // Email requerido, válido, único y máximo 255 caracteres
             'password' => 'nullable|string|min:8', // Contraseña requerida, mínimo 8 caracteres, confirmada
@@ -63,18 +64,19 @@ class CounterController extends Controller
             'curp' => $request->curp,
             'city' => $request->city,
             'cp' => $request->cp,
-            'regimen' => $request->regimen,
+            'regime_id' => $request->regime_id,
             'birthdate' => $request->birthdate,
         ]);
         
         return redirect()->route('counter.index')->with('success', 'Contador creado exitosamente.');
     }
 
-    public function show(Counter $counter )
+    public function show(Counter $counter, Regime $regime )
     {
         return view('counters.show', [
             'counter' => $counter,
             'user' => $counter->user,
+            'regime' => $regime,
         ]);
     }
 

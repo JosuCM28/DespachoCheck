@@ -31,9 +31,9 @@ Route::middleware([
         Route::get('/client/create', [ClientController::class, 'create'])->name('client.create');
         Route::post('/client/store', [ClientController::class, 'store'])->name('client.store');
         Route::get('/client/{client}', [ClientController::class, 'show'])->name('client.show');
-        Route::get('/client/edit/{client}', [CounterController::class, 'edit'])->name('client.edit');
-        Route::put('/client/update/{client}/', [CounterController::class, 'update'])->name('client.update');
-        Route::delete('/client/destroy/{client}', [CounterController::class, 'destroy'])->name('client.destroy');
+        Route::get('/client/edit/{client}', [ClientController::class, 'edit'])->name('client.edit');
+        Route::put('/client/update/{client}/', [ClientController::class, 'update'])->name('client.update');
+        Route::delete('/client/destroy/{client}', [ClientController::class, 'destroy'])->name('client.destroy');
         
     });
     #Route::resource('counter', CounterController::class)->names('counter.home');

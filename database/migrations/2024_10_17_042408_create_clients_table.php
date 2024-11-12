@@ -14,12 +14,14 @@ return new class extends Migration
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('set null');  // Relación con `users`
-            $table->foreignId('counter_id')->nullable()->constrained('counters')->onDelete('set null');  // Contador asignado
+            $table->foreignId('counter_id')->nullable()->constrained('counters')->onDelete('set null'); 
+            $table->foreignId('regime_id')->nullable()->constrained('regimes')->onDelete('set null');
             $table->enum('status',['active','inactive'])->default('active');
             $table->string('phone')->unique()->nullable();
             $table->string('name');
-            $table->string('email');
             $table->string('last_name');
+            $table->string('full_name');
+            $table->string('email');
             $table->string('address')->nullable();
             $table->string('rfc')->nullable()->unique();
             $table->string('curp')->nullable()->unique();
@@ -27,7 +29,6 @@ return new class extends Migration
             $table->string('state')->nullable();
             $table->string('cp')->nullable();
             $table->string('nss')->nullable();
-            $table->string('regimen')->nullable();
             $table->string('note')->nullable();
             $table->string('token', '8')->unique();
             $table->date('birthdate')->nullable();

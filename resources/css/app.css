@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "flatpickr/dist/flatpickr.min.css";
+
 
 [x-cloak] {
     display: none;
@@ -14,3 +16,4 @@
     margin-right: 0.8rem;
     cursor: pointer;
 }
+

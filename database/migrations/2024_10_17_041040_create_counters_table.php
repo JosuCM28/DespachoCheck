@@ -13,17 +13,18 @@ return new class extends Migration
     {
         Schema::create('counters', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('set null');  // Relación con `users`
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('set null'); 
+            $table->foreignId('regime_id')->nullable()->constrained('regimes')->onDelete('set null');
             $table->string('phone')->unique()->nullable();
             $table->string('name');
             $table->string('last_name');
+            $table->string('full_name');
             $table->string('address')->nullable();
             $table->string('rfc')->nullable()->unique();
             $table->string('curp')->nullable()->unique();
             $table->string('city')->nullable();
             $table->string('state')->nullable();
             $table->string('cp')->nullable();
-            $table->string('regimen')->nullable();
             $table->date('birthdate')->nullable();
             $table->string('nss')->nullable();
             $table->timestamps();

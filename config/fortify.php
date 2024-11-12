@@ -1,7 +1,8 @@
 <?php
 
 use Laravel\Fortify\Features;
-
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Cache\RateLimiting\Limit;
 return [
 
     /*
@@ -144,16 +145,19 @@ return [
     */
 
     'features' => [
+        // Aquí tienes que tener las características que quieres habilitar
         Features::registration(),
         Features::resetPasswords(),
-        // Features::emailVerification(),
         Features::updateProfileInformation(),
         Features::updatePasswords(),
-        Features::twoFactorAuthentication([
-            'confirm' => true,
-            'confirmPassword' => true,
-            // 'window' => 0,
-        ]),
+         // Asegúrate de que el login esté habilitado
     ],
 
+    'rate_limiting' => [
+        'login' => function () {
+            return RateLimiter::for('login', function () {
+                return Limit::perMinute(1000);  // Limita los intentos de inicio de sesión a 5 por minuto
+            });
+        }
+    ],
 ];

@@ -6,7 +6,7 @@
 
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-            <div class="container mx-auto p-14">
+            <div class=" mx-auto p-14 ">
                 <div class="flex flex-col">
                     <div class="-m-1.5 overflow-x-auto">
                         <div class="p-1.5 min-w-full inline-block align-middle">
@@ -29,7 +29,7 @@
                             </div>
 
                             <!-- Tabla de Contadores -->
-                         
+                            <livewire:counter-table/>
 
                         </div>
                     </div>

@@ -9,6 +9,7 @@ class Counter extends Model
 {
     protected $fillable = [
         'user_id',
+        'regime_id',
         'name',
         'last_name',
         'phone',
@@ -22,7 +23,6 @@ class Counter extends Model
         'usuariouno',
         'usuariodos',
         'cp',
-        'regimen',
         'birthdate',
         'nss'
     ];
@@ -49,6 +49,11 @@ class Counter extends Model
     public function credentials()
     {
         return $this->hasMany(Credential::class);
+    }
+
+    public function regime()
+    {
+        return $this->belongsTo(Regime::class);
     }
 
 }

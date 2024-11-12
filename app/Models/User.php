@@ -9,11 +9,10 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, HasProfilePhoto, Notifiable, TwoFactorAuthenticatable, HasRoles;
+    use HasApiTokens, HasFactory, HasProfilePhoto, Notifiable, TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.
@@ -26,7 +25,6 @@ class User extends Authenticatable
         'email',
         'password',
         'rol',
-        'has_credentials',
     ];
 
     /**
@@ -80,23 +78,5 @@ class User extends Authenticatable
         return $this->hasOne(Client::class);
     }
 
-    /**
-     * Método para determinar si el usuario es un contador.
-     *
-     * @return bool
-     */
-    public function isCounter(): bool
-    {
-        return $this->role === 'counter';
-    }
-
-    /**
-     * Método para determinar si el usuario es un cliente.
-     *
-     * @return bool
-     */
-    public function isClient(): bool
-    {
-        return $this->role === 'client';
-    }
+   
 }

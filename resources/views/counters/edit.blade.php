@@ -154,14 +154,14 @@
                                 </div>
 
                                 <div class="sm:col-span-2">
-                                    <label for="regimen"
+                                    <label for="regime_id"
                                         class="block text-sm font-medium leading-6 text-gray-900">Regimen</label>
                                     <div class="mt-2">
-                                        <input type="text" name="regimen" id="regimen" autocomplete="regimen" value="{{$counter->regimen ?? ''}}" placeholder="{{ $counter->regimen ? '' : 'No hay datos existentes' }}"
+                                        <input type="text" name="regime_id" id="regime_id" autocomplete="regime_id" value="{{$counter->regime_id ?? ''}}" placeholder="{{ $counter->regime_id ? '' : 'No hay datos existentes' }}"
                                             maxlength="18"
                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
 
-                                        @error('regimen')
+                                        @error('regime_id')
                                             <span class="text-red-500 text-sm">{{ $message }}</span>
                                         @enderror
                                     </div>
