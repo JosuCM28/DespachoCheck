@@ -12,6 +12,7 @@ class Counter extends Model
         'regime_id',
         'name',
         'last_name',
+        'full_name',
         'phone',
         'address',
         'rfc',

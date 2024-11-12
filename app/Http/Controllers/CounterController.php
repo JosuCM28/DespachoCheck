@@ -53,7 +53,7 @@ class CounterController extends Controller
             'rol' => 'contador',
         ]);
         
-
+        $fullname = $request->name . ' ' . $request->last_name;
         Counter::create([
             'user_id'=> $user->id,
             'phone' => $request->phone ,
@@ -65,7 +65,8 @@ class CounterController extends Controller
             'city' => $request->city,
             'cp' => $request->cp,
             'regime_id' => $request->regime_id,
-            'birthdate' => $request->birthdate,
+            'birthdate' => $request->birthdate, 
+            'full_name' => $fullname,
         ]);
         
         return redirect()->route('counter.index')->with('success', 'Contador creado exitosamente.');

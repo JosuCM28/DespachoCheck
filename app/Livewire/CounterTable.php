@@ -34,9 +34,7 @@ final class CounterTable extends PowerGridComponent
     {
         return Counter::query()
             ->with('regime') // Cargar la relación 'regime'
-            ->addSelect([
-                '*', // seleccionar todos los campos de Counter
-                \DB::raw("CONCAT(name, ' ', last_name) AS full_name"), // Crear columna 'full_name' concatenando `name` y `last_name`
+            ->addSelect([      
                 'regime_title' => Regime::select('title') // Traer solo el 'title' de la relación 'regime'
                     ->whereColumn('regimes.id', 'counters.regime_id')
                     ->limit(1) // Limit 1 por seguridad
@@ -55,6 +53,7 @@ final class CounterTable extends PowerGridComponent
     {
         return PowerGrid::fields()
             ->add('name')
+            ->add('full_name')
             ->add('last_name')
             ->add('phone')
             ->add('rfc')
