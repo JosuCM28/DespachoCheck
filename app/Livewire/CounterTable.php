@@ -12,17 +12,29 @@ use PowerComponents\LivewirePowerGrid\Facades\Filter;
 use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridFields;
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
+use PowerComponents\LivewirePowerGrid\Traits\WithExport; 
+use PowerComponents\LivewirePowerGrid\Components\SetUp\Exportable; 
 
 final class CounterTable extends PowerGridComponent
 {
     public string $tableName = 'counter-table-di8mtw-table';
-
+    
+    use WithExport; 
+    
     public function setUp(): array
     {
+        
         $this->showCheckBox();
-
+        
         return [
+            PowerGrid::exportable('export')
+                ->striped()
+                ->columnWidth([
+                    2 => 30,
+                ])
+                ->type(Exportable::TYPE_XLS),
             PowerGrid::header()
+                ->showToggleColumns()
                 ->showSearchInput(),
             PowerGrid::footer()
                 ->showPerPage()
@@ -33,6 +45,7 @@ final class CounterTable extends PowerGridComponent
     public function datasource(): Builder
     {
         return Counter::query()
+        
             ->with('regime') // Cargar la relación 'regime'
             ->addSelect([      
                 'regime_title' => Regime::select('title') // Traer solo el 'title' de la relación 'regime'
@@ -41,7 +54,6 @@ final class CounterTable extends PowerGridComponent
             ]);
     }
     
-
     public function relationSearch(): array
     {
         return [
@@ -73,23 +85,23 @@ final class CounterTable extends PowerGridComponent
             ->sortable()
             ->searchable(),
 
-            Column::make('Phone', 'phone')
+            Column::make('Telefono', 'phone')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Rfc', 'rfc')
+            Column::make('RFC', 'rfc')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Curp', 'curp')
+            Column::make('CURP', 'curp')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('City', 'city')
+            Column::make('Ciudad', 'city')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('State', 'state')
+            Column::make('Estado', 'state')
                 ->sortable()
                 ->searchable(),
 
@@ -105,7 +117,7 @@ final class CounterTable extends PowerGridComponent
                 ->sortable()
                 ->searchable(),
 
-            Column::action('ACTION')
+            Column::action('Accion')
         ];
     }
 
@@ -113,7 +125,10 @@ final class CounterTable extends PowerGridComponent
     {
         return [
             Filter::inputText('curp')->placeholder('Curp'),
-            
+            Filter::select('regime_title', 'regime_id')
+            ->dataSource(Regime::all())
+            ->optionLabel('title')
+            ->optionValue('id'),
         ];
     }
 
@@ -127,10 +142,11 @@ final class CounterTable extends PowerGridComponent
     {
         return [
             Button::add('read')
-                ->slot('Ver: '.$row->id)
+                ->slot('Ver')
                 ->id()
-                ->class('pg-btn-white dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
-                ->dispatch('read', ['rowId' => $row->id])
+                ->class('bg-blue-500 text-white font-bold py-2 px-2 rounded')
+                ->route('counter.show', ['counter' => $row->id]),
+                #->dispatch('counter.show', ['counter' => $row->id]),
         ];
     }
 

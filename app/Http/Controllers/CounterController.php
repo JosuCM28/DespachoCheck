@@ -23,14 +23,12 @@ class CounterController extends Controller
     {
         $password = Str::random(10);
         $regimes = Regime::all();
-        return view('counters.create',compact('password','regimes'));
+        return view('counters.create', compact('password', 'regimes'));
 
     }
 
     public function store(Request $request)
     {
-
-
         $request->validate([
             'phone' => 'nullable|string|unique:counters|max:15', // Teléfono único, puede estar vacío, máximo 15 caracteres
             'name' => 'required|string|max:255', // Nombre requerido y en formato de texto
@@ -48,31 +46,31 @@ class CounterController extends Controller
         ]);
         $user = User::create([
             'password' => $request->password,
-            'email' => $request->email, 
-            'name' => $request->name,  
+            'email' => $request->email,
+            'name' => $request->name,
             'rol' => 'contador',
         ]);
-        
+
         $fullname = $request->name . ' ' . $request->last_name;
         Counter::create([
-            'user_id'=> $user->id,
-            'phone' => $request->phone ,
+            'user_id' => $user->id,
+            'phone' => $request->phone,
             'name' => $request->name,
-            'last_name' => $request->last_name ,
+            'last_name' => $request->last_name,
             'address' => $request->address,
             'rfc' => $request->rfc,
             'curp' => $request->curp,
             'city' => $request->city,
             'cp' => $request->cp,
             'regime_id' => $request->regime_id,
-            'birthdate' => $request->birthdate, 
+            'birthdate' => $request->birthdate,
             'full_name' => $fullname,
         ]);
-        
+
         return redirect()->route('counter.index')->with('success', 'Contador creado exitosamente.');
     }
 
-    public function show(Counter $counter, Regime $regime )
+    public function show(Counter $counter, Regime $regime)
     {
         return view('counters.show', [
             'counter' => $counter,
@@ -91,17 +89,20 @@ class CounterController extends Controller
     public function update(Request $request, Counter $counter)
     {
         // Validar y actualizar el post
+        $fullname = $request->name . ' ' . $request->last_name;
         $request->validate([
-            'name' => 'required|string|max:255', // Obligatorio, debe ser una cadena, máximo 255 caracteres
-            'last_name' => 'required|string|max:255', // Obligatorio, debe ser una cadena, máximo 255 caracteres
-            'email' => 'required|email|max:255', // Obligatorio, formato de correo electrónico, único en la tabla 'users'
-            'rfc' => 'required|string|size:13', // Obligatorio, debe tener exactamente 13 caracteres (para México), único
-            'curp' => 'required|string|size:18', // Obligatorio, debe tener exactamente 18 caracteres, único
-            'birthdate' => 'required|date', // Obligatorio, debe ser una fecha válida, antes de la fecha actual
-            'city' => 'required|string|max:255', // Obligatorio, debe ser una cadena, máximo 255 caracteres
+            'name' => 'nullable|string|max:255', // Obligatorio, debe ser una cadena, máximo 255 caracteres
+            'last_name' => 'nullable|string|max:255', // Obligatorio, debe ser una cadena, máximo 255 caracteres
+            'email' => 'nullable|email|max:255', // Obligatorio, formato de correo electrónico, único en la tabla 'users'
+            'rfc' => 'nullable|string|size:13', // Obligatorio, debe tener exactamente 13 caracteres (para México), único
+            'curp' => 'nullable|string|size:18', // Obligatorio, debe tener exactamente 18 caracteres, único
+            'birthdate' => 'nullable|date', // Obligatorio, debe ser una fecha válida, antes de la fecha actual
+            'city' => 'nullable|string|max:255', // Obligatorio, debe ser una cadena, máximo 255 caracteres
         ]);
 
+        $request->merge(['full_name' => $fullname]);
         $counter->update($request->all());
+
         return redirect()->route('counter.index')->with('success', 'Contador actualizado exitosamente.');
     }
 

@@ -264,29 +264,31 @@
                                         </div>
                                     </div>
 
-                            <div class="sm:col-span-3">
-                                    <div class="sm:col-span-2">
-                                        <label for="note" class="block text-sm font-medium text-gray-900">Nota</label>
+                                    <div class="sm:col-span-3">
+                                        <div class="sm:col-span-2">
+                                            <label for="note"
+                                                class="block text-sm font-medium text-gray-900">Nota</label>
+                                            <div class="mt-2">
+                                                <textarea type="text" name="note" style="resize: none;" id="note" rows="5" cols="30"
+                                                    maxlength="255"
+                                                    class="form-control block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+                                                @error('note')
+                                                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="sm:col-span-3  ">
+                                        <label for="token"
+                                            class="block text-sm font-medium text-gray-900">Token</label>
                                         <div class="mt-2">
-                                            <textarea type="text" name="note" style="resize: none;" id="note" rows="5" cols="30"
-                                                maxlength="255"
-                                                class="form-control block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
-                                            @error('note')
-                                                <span class="text-red-500 text-sm">{{ $message }}</span>
-                                            @enderror
+                                            <input type="text" name="token" id="token"
+                                                value="{{ $token }}" readonly
+                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="sm:col-span-3  ">
-                                    <label for="token" class="block text-sm font-medium text-gray-900">Token</label>
-                                    <div class="mt-2">
-                                        <input type="text" name="token" id="token" value="{{ $token }}"
-                                            readonly
-                                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                    </div>
-                                </div>
-                            </div>
                             </div>
                         </div>
 

@@ -154,13 +154,13 @@
                                 </div>
 
                                 <div class="sm:col-span-2">
-                                    <label for="regimen"
+                                    <label for="regime_id"
                                         class="block text-sm font-medium leading-6 text-gray-900">Regimen</label>
                                     <div class="mt-2">
-                                       <select name="counter_id" id="counter_id" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                       <select name="regime_id" id="regime_id" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                             <option value="">Seleccione un régimen</option>
                                             @foreach ($regimes as $regime)
-                                            <option value="{{ $regime->title }}">{{ $regime->title}}</option>
+                                            <option value="{{ $regime->id }}">{{ $regime->title }}</option>
                                             @endforeach
                                         </select>
 

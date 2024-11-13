@@ -140,6 +140,7 @@
                                             <span class="text-red-500 text-sm">{{ $message }}</span>
                                         @enderror
                                     </div>
+                                    
                                 </div>
                                 <div class="sm:col-span-2">
                                     <label for="state"
