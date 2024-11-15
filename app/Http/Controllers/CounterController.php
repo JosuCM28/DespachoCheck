@@ -61,6 +61,7 @@ class CounterController extends Controller
             'rfc' => $request->rfc,
             'curp' => $request->curp,
             'city' => $request->city,
+            'state' => $request->state,
             'cp' => $request->cp,
             'regime_id' => $request->regime_id,
             'birthdate' => $request->birthdate,
