@@ -50,6 +50,18 @@
                                         </div>
                                     </div>
 
+                                    <div class="sm:col-span-2">
+                                        <label for="phone" class="block text-sm font-medium text-gray-900">Numero de
+                                            Telefono</label>
+                                        <div class="mt-2">
+                                            <input type="text" name="phone" id="phone" autocomplete="phone-level1"
+                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                            @error('phone')
+                                                <span class="text-red-500 text-sm">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
                                     <!-- Correo -->
                                     <div class="sm:col-span-2">
                                         <label for="rfc" class="block text-sm font-medium text-gray-900">RFC</label>
@@ -75,21 +87,9 @@
                                         </div>
                                     </div>
 
-                                    <!-- Código Postal (CP) -->
-                                    <div class="sm:col-span-2">
-                                        <label for="phone" class="block text-sm font-medium text-gray-900">Numero de
-                                            Telefono</label>
-                                        <div class="mt-2">
-                                            <input type="text" name="phone" id="phone" autocomplete="phone-level1"
-                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                            @error('phone')
-                                                <span class="text-red-500 text-sm">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                    </div>
+                                    
 
 
-                                    <!-- Dirección -->
                                     <div class="sm:col-span-2">
                                         <label for="address"
                                             class="block text-sm font-medium text-gray-900">Dirección</label>
@@ -142,22 +142,19 @@
                                         </div>
                                     </div>
 
-                                    <div class="sm:col-span-2">
-                                        <label for="regimen"
-                                            class="block text-sm font-medium text-gray-900">Régimen</label>
+                                     <div class="sm:col-span-2">
+                                        <label for="siec" class="block text-sm font-medium text-gray-900">Contraseña
+                                            SIEC</label>
                                         <div class="mt-2">
-                                            <select name="counter_id" id="counter_id"
-                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                                <option value="">Seleccione un régimen</option>
-                                                @foreach ($regimes as $regime)
-                                                    <option value="{{ $regime->title }}">{{ $regime->title }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('regimen')
+                                            <input type="text" name="#" id="siec"
+                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                            @error('siec')
                                                 <span class="text-red-500 text-sm">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
+
+                                    
 
                                     <div class="sm:col-span-2">
                                         <label for="nss" class="block text-sm font-medium text-gray-900">NSS</label>
@@ -230,6 +227,23 @@
                                         </div>
                                     </div>
 
+                                    <div class="sm:col-span-2">
+                                        <label for="regimen"
+                                            class="block text-sm font-medium text-gray-900">Régimen</label>
+                                        <div class="mt-2">
+                                            <select name="counter_id" id="counter_id"
+                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                                <option value="">Seleccione un régimen</option>
+                                                @foreach ($regimes as $regime)
+                                                    <option value="{{ $regime->title }}">{{ $regime->title }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('regimen')
+                                                <span class="text-red-500 text-sm">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
                                     <!-- Estatus -->
                                     <div class="sm:col-span-2">
                                         <label for="status"
@@ -247,22 +261,7 @@
                                     </div>
 
 
-                                    <div class="sm:col-span-2 ">
-                                        <label for="counter_id"
-                                            class="block text-sm font-medium text-gray-900">Contador</label>
-                                        <div class="mt-2 mb-6">
-                                            <select name="counter_id" id="counter_id"
-                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                                @foreach ($counters as $counter)
-                                                    <option value="{{ $counter->id }}">
-                                                        {{ $counter->name . ' ' . $counter->last_name }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('counter_id')
-                                                <span class="text-red-500 text-sm">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                    </div>
+                                   
 
                                     <div class="sm:col-span-3">
                                         <div class="sm:col-span-2">
@@ -280,6 +279,25 @@
                                     </div>
 
                                     <div class="sm:col-span-3  ">
+
+
+
+
+                                        <label for="counter_id"
+                                            class="block text-sm font-medium text-gray-900">Contador</label>
+                                        <div class="mt-2 mb-6">
+                                            <select name="counter_id" id="counter_id"
+                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                                @foreach ($counters as $counter)
+                                                    <option value="{{ $counter->id }}">
+                                                        {{ $counter->name . ' ' . $counter->last_name }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('counter_id')
+                                                <span class="text-red-500 text-sm">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
                                         <label for="token"
                                             class="block text-sm font-medium text-gray-900">Token</label>
                                         <div class="mt-2">
@@ -287,7 +305,14 @@
                                                 value="{{ $token }}" readonly
                                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                         </div>
+
+
+
+
+
                                     </div>
+
+
                                 </div>
                             </div>
                         </div>

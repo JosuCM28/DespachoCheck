@@ -169,7 +169,7 @@ final class ClientTable extends PowerGridComponent
                 ->slot('<i class="fa-regular fa-eye" style="color: #306958;"></i>')
                 ->id()
                 ->class('')
-                ->dispatch('client.show', ['client' => $row->id])
+                ->route('client.show', ['client' => $row->id])
 
         ];
     }

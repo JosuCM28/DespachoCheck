@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 relative">
+<nav x-data="{ open: false }" class=" sticky top-0 bg-white border-b border-gray-100 relative">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
         <button id="barra-show" class="absolute left-7 top-5 " >
