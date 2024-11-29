@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('client_id')->constrained('clients')->onDelete('cascade');  
             $table->string('idse');
+            $table->string('siec');
             $table->string('sipare');
-            $table->string('usuariouno');
-            $table->string('usuariodos');
+            $table->string('useridse');
+            $table->string('usersipare');
             $table->timestamps();
         });
     }

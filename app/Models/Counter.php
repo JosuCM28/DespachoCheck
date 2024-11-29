@@ -12,6 +12,7 @@ class Counter extends Model
     protected $fillable = [
         'user_id',
         'regime_id',
+        'document_id',
         'name',
         'last_name',
         'full_name',
@@ -58,5 +59,10 @@ class Counter extends Model
     {
         return $this->belongsTo(Regime::class);
     }
+    public function document()
+    {
+        return $this->belongsTo(Document::class);
+    }
+    
 
 }

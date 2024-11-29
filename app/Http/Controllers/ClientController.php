@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Counter;
+use App\Models\Document;
 use App\Models\Regime;
 use Illuminate\Http\Request;
 use App\Models\Client;
@@ -62,7 +63,7 @@ class ClientController extends Controller
             'token' => 'required|string|size:8|unique:clients',
             'birthdate' => 'nullable|date|before:today',
         ]);
-
+        $fullname = $request->name . ' ' . $request->last_name;
         Client::create([
             'user_id' => $request->user_id,
             'counter_id'=> $request->counter_id,
@@ -82,6 +83,7 @@ class ClientController extends Controller
             'note'=> $request->note,
             'token'=> $request->token,
             'birthdate'=> $request->birthdate,
+            'full_name' => $fullname,
         ]);
 
         return redirect()->route('client.index')->with('success', 'Contador creado exitosamente.');
@@ -90,7 +92,7 @@ class ClientController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Client $client)
+    public function show(Client $client,)
     {
         return view('clients.show', [
             'client' => $client,
@@ -116,6 +118,7 @@ class ClientController extends Controller
     public function update(Request $request, Client $client)
     {
         // Validar y actualizar el post
+        $fullname = $request->name . ' ' . $request->last_name;
         $request->validate([
             'user_id' => 'nullable',
             'counter_id' => 'nullable',
@@ -138,6 +141,7 @@ class ClientController extends Controller
             'birthdate' => 'nullable|date|before:today',
         ]);
 
+        $request->merge(['full_name' => $fullname]);
         $client->update($request->all());
         return redirect()->route('client.index')->with('success', 'Contador actualizado exitosamente.');
     }

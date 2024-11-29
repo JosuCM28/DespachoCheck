@@ -17,3 +17,16 @@
     cursor: pointer;
 }
 
+.status {
+    padding: 2px;
+    border-radius: 5px; 
+    transition: box-shadow 0.3s ease; 
+  }
+  
+  .status.active {
+    box-shadow: 0 0 20px 0.1rem rgb(178, 226, 178); 
+  }
+  
+  .status.inactive {
+    box-shadow: 0 0 20px 0.1rem rgb(224, 159, 159); 
+  }

@@ -49,7 +49,7 @@
                         </li>
                         <li>
                             <a href="{{route('counter.index')}}"
-                                class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Ver Contador</a>
+                                class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Ver Contadores</a>
                         </li>
                     </ul>
                 </li>

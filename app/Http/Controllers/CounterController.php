@@ -6,6 +6,7 @@ use App;
 use App\Models\Counter;
 use App\Models\User;
 use App\Models\Regime;
+use App\Models\Document;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -71,12 +72,14 @@ class CounterController extends Controller
         return redirect()->route('counter.index')->with('success', 'Contador creado exitosamente.');
     }
 
-    public function show(Counter $counter, Regime $regime)
+    public function show(Counter $counter, Regime $regime, Document $document)
     {
         return view('counters.show', [
             'counter' => $counter,
             'user' => $counter->user,
             'regime' => $regime,
+            'document' => $document,
+           
         ]);
     }
 

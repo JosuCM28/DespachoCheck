@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\User;
 use App\Models\Counter;
+use App\Models\Document;
 
 class Client extends Model
 {
@@ -71,5 +72,9 @@ class Client extends Model
     {
         return $this->belongsTo(Regime::class);
     }
+    public function document()
+{
+    return $this->hasMany(Document::class);
+}
 
 }

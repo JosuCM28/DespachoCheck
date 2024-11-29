@@ -3,7 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-    class Document extends Model
+use App\Models\Client; 
+use App\Models\Counter; 
+
+class Document extends Model
 {
     protected $fillable = ['title', 'file_path', 'client_id'];
 
@@ -12,12 +15,3 @@ use Illuminate\Database\Eloquent\Model;
         return $this->belongsTo(Client::class);
     }
 }
-class Client extends Model
-{
-    public function documents()
-    {
-        return $this->hasMany(Document::class);
-    }
-}
-
-

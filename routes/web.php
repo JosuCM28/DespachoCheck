@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CounterController;
@@ -34,8 +35,8 @@ Route::middleware([
         Route::get('/client/edit/{client}', [ClientController::class, 'edit'])->name('client.edit');
         Route::put('/client/update/{client}/', [ClientController::class, 'update'])->name('client.update');
         Route::delete('/client/destroy/{client}', [ClientController::class, 'destroy'])->name('client.destroy');
-        
-    });
+        Route::post('/file/{client}', [FileController::class, 'store'])->name('file.store');
+        });
     #Route::resource('counter', CounterController::class)->names('counter.home');
     Route::post('/register-token', [CustomRegisterController::class, 'store'])->name('register.token');
     

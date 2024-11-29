@@ -4,7 +4,6 @@ namespace App\Livewire;
 
 use App\Models\Client;
 use App\Models\Regime;
-use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\Button;
 use PowerComponents\LivewirePowerGrid\Column;
@@ -17,7 +16,11 @@ use PowerComponents\LivewirePowerGrid\Components\SetUp\Exportable;
 final class ClientTable extends PowerGridComponent
 {
     public string $tableName = 'client-table-h66d7c-table';
-
+    public int $counter = 0;
+    public function __mount(int $counter): void
+    {
+        $this->counter = $counter;
+    }
     public function setUp(): array
     {
         $this->showCheckBox();
@@ -40,13 +43,24 @@ final class ClientTable extends PowerGridComponent
 
     public function datasource(): Builder
     {
-        return Client::query()
-            ->with('regime') // Cargar la relación 'regime'
-            ->addSelect([
-                'regime_title' => Regime::select('title') // Traer solo el 'title' de la relación 'regime'
-                    ->whereColumn('regimes.id', 'clients.regime_id')
-                    ->limit(1) // Limit 1 por seguridad
-            ]);
+        if ($this->counter === 0) {
+            return Client::query()
+                ->with('regime') // Cargar la relación 'regime'
+                ->addSelect([
+                    'regime_title' => Regime::select('title') // Traer solo el 'title' de la relación 'regime'
+                        ->whereColumn('regimes.id', 'clients.regime_id')
+                        ->limit(1) // Limit 1 por seguridad
+                ]);
+        } else {
+            return Client::query()
+                ->where('counter_id', $this->counter)
+                ->with('regime') // Cargar la relación 'regime'
+                ->addSelect([
+                    'regime_title' => Regime::select('title') // Traer solo el 'title' de la relación 'regime'
+                        ->whereColumn('regimes.id', 'clients.regime_id')
+                        ->limit(1) // Limit 1 por seguridad
+                ]);
+        }
     }
 
     public function relationSearch(): array
@@ -85,18 +99,11 @@ final class ClientTable extends PowerGridComponent
 
 
             Column::make('Nombre Completo', 'full_name')
-                ->sortable()
-                ->searchable(),
+            ->sortable()
+            ->searchable(),
+            
 
-            Column::make('Telefono', 'phone')
-                ->sortable()
-                ->searchable(),
-
-            Column::make('Correo', 'email')
-                ->sortable()
-                ->searchable(),
-
-            Column::make('Direccion', 'address')
+            Column::make('CURP', 'curp')
                 ->sortable()
                 ->searchable(),
 
@@ -104,34 +111,76 @@ final class ClientTable extends PowerGridComponent
                 ->sortable()
                 ->searchable(),
 
-            Column::make('CURP', 'curp')
+            Column::make('siec', '#')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Régimen', 'regime_title')
+            Column::make('UsuarioIdse', '#')
                 ->sortable()
+                ->hidden(isHidden:true, isForceHidden:false)
                 ->searchable(),
 
-            Column::make('Ciudad', 'city')
+            Column::make('ContraseñaIdse', '#')
                 ->sortable()
+                ->hidden(isHidden:true, isForceHidden:false)
                 ->searchable(),
 
-            Column::make('Estado', 'state')
+            Column::make('UsuarioSipare', '#')
                 ->sortable()
+                ->hidden(isHidden:true, isForceHidden:false)
+                ->searchable(),
+
+            Column::make('ContraseñaSipare', '#')
+                ->sortable()
+                ->hidden(isHidden:true, isForceHidden:false)
                 ->searchable(),
 
             Column::make('CP', 'cp')
                 ->sortable()
+                ->hidden(isHidden:true, isForceHidden:false)
+                ->searchable(),
+
+            Column::make('Ciudad', 'city')
+                ->sortable()
+                ->hidden(isHidden:true, isForceHidden:false)
+                ->searchable(),
+
+            Column::make('Estado', 'state')
+                ->sortable()
+                ->hidden(isHidden:true, isForceHidden:false)
                 ->searchable(),
 
             Column::make('NSS', 'nss')
                 ->sortable()
+                ->hidden(isHidden:true, isForceHidden:false)
                 ->searchable(),
 
             Column::make('Estatus', 'status')
                 ->sortable()
+                ->hidden(isHidden:true, isForceHidden:false)
                 ->searchable(),
 
+            Column::make('Régimen', 'regime_title')
+                ->sortable()
+                ->hidden(isHidden:true, isForceHidden:false)
+                ->searchable(),
+
+            Column::make('Direccion', 'address')
+                ->sortable()
+                ->hidden(isHidden:true, isForceHidden:false)
+                ->searchable(),
+
+            Column::make('Correo', 'email')
+                ->sortable()
+                ->hidden(isHidden:true, isForceHidden:false)
+                ->searchable(),
+
+            Column::make('Telefono', 'phone')
+                ->sortable()
+                ->hidden(isHidden:true, isForceHidden:false)
+                ->searchable(),
+                
+                
             Column::action('Action')
         ];
     }
@@ -149,9 +198,9 @@ final class ClientTable extends PowerGridComponent
                     ['value' => 'active', 'label' => 'Active'],
                     ['value' => 'inactive', 'label' => 'Inactive']
                 ]))
-                ->optionLabel('label')  
+                ->optionLabel('label')
                 ->optionValue('value'),
-                
+
 
         ];
     }

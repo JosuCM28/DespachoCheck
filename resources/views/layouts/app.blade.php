@@ -12,6 +12,8 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
+    
+    
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -41,8 +43,8 @@
         </main>
     </div>
 
+    <script src="../node_modules/flyonui/flyonui.js"></script> 
     @stack('modals')
     @livewireScripts
-    
 </body>
 </html>

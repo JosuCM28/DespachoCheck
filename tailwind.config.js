@@ -1,6 +1,7 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
+const { addDynamicIconSelectors } = require("@iconify/tailwind")
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -12,9 +13,16 @@ export default {
         './src/**/*.{html,js}',
         './app/Livewire/**/*Table.php',
         './vendor/power-components/livewire-powergrid/resources/views/**/*.php',
-        './vendor/power-components/livewire-powergrid/src/Themes/Tailwind.php'
+        './vendor/power-components/livewire-powergrid/src/Themes/Tailwind.php',
+        "./node_modules/flyonui/dist/js/*.js",
+        "./node_modules/flyonui/dist/js/accordion.js",
+        "./src/*.html"
+
     ],
 
+    flyonui: {
+        themes: ["light"],
+    },
     theme: {
         extend: {
             fontFamily: {
@@ -23,10 +31,12 @@ export default {
         },
     },
 
-    plugins: [forms, typography],
+    plugins: [forms, typography, require("flyonui"), require("flyonui/plugin"), addDynamicIconSelectors()],
 
 
 
 
-    
+
+
+
 };
