@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FileController;
+use Filament\Pages\Dashboard;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CounterController;
@@ -9,7 +10,9 @@ use App\Http\Controllers\CustomRegisterController;
 
 Route::get('/', function () {
     return view('welcome');
+    
 });
+Route::view('/despacho', 'despacho')->name('despacho');
 
 Route::middleware([
     'auth:sanctum',
@@ -35,10 +38,16 @@ Route::middleware([
         Route::get('/client/edit/{client}', [ClientController::class, 'edit'])->name('client.edit');
         Route::put('/client/update/{client}/', [ClientController::class, 'update'])->name('client.update');
         Route::delete('/client/destroy/{client}', [ClientController::class, 'destroy'])->name('client.destroy');
+
+
+        Route::delete('/file/destroy/{document}', [FileController::class, 'destroy'])->name('file.destroy');
         Route::post('/file/{client}', [FileController::class, 'store'])->name('file.store');
+        Route::get('/file/download/{document}', [FileController::class, 'download'])->name('file.download');
         });
     #Route::resource('counter', CounterController::class)->names('counter.home');
     Route::post('/register-token', [CustomRegisterController::class, 'store'])->name('register.token');
+
+ 
     
 
 Route::get('/bot', [HomeController::class, 'index'])->name('sidebar');

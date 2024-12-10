@@ -22,10 +22,6 @@ class Counter extends Model
         'curp',
         'city',
         'state',
-        'idse',
-        'sipare',
-        'usuariouno',
-        'usuariodos',
         'cp',
         'birthdate',
         'nss'

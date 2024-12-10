@@ -16,7 +16,7 @@
                                 <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                                     <!-- Nombre -->
                                     <div class="sm:col-span-2">
-                                        <label for="name" class="block text-sm font-medium text-gray-900">Nombre</label>
+                                        <label for="name" class="block text-sm font-medium text-gray-900">Nombre<span class="text-red-500">*</span></label>
                                         <div class="mt-2">
                                             <input type="text" name="name" id="name" autocomplete="given-name"
                                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
@@ -30,7 +30,7 @@
                                     <!-- Apellido -->
                                     <div class="sm:col-span-2">
                                         <label for="last_name"
-                                            class="block text-sm font-medium text-gray-900">Apellido</label>
+                                            class="block text-sm font-medium text-gray-900">Apellido<span class="text-red-500">*</span></label>
                                         <div class="mt-2">
                                             <input type="text" name="last_name" id="last_name" autocomplete="family-name"
                                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
@@ -271,7 +271,7 @@
                                     <!-- Estatus -->
                                     <div class="sm:col-span-2">
                                         <label for="status"
-                                            class="block text-sm font-medium text-gray-900">Estatus</label>
+                                            class="block text-sm font-medium text-gray-900">Estatus<span class="text-red-500">*</span></label>
                                         <div class="mt-2">
                                             <select name="status" id="status"
                                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
@@ -312,7 +312,7 @@
 
 
                                         <label for="counter_id"
-                                            class="block text-sm font-medium text-gray-900">Contador</label>
+                                            class="block text-sm font-medium text-gray-900">Contador<span class="text-red-500">*</span></label>
                                         <div class="mt-2 mb-2">
                                             <select name="counter_id" id="counter_id"
                                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
@@ -329,7 +329,7 @@
                                         
 
                                         <label for="token"
-                                            class="block text-sm font-medium text-gray-900">Token</label>
+                                            class="block text-sm font-medium text-gray-900">Token<span class="text-red-500">*</span></label>
                                         <div class="mt-2">
                                             <input type="text" name="token" id="token"
                                                 value="{{ $token }}" readonly

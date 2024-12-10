@@ -10,16 +10,16 @@
                     <div class="space-y-12">
                         <div class="border-b border-gray-900/10 pb-12">
                             <h2 class="text-base font-semibold leading-7 text-gray-900">Informacion personal</h2>
-                            <p class="mt-1 text-sm leading-6 text-gray-600">Ingresa los datos de un nuevo contador</p>
+                            <p class="mt-1 text-sm leading-6 text-gray-600">Ingresa los datos de un nuevo Contador</p>
 
                             <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                                 <div class="sm:col-span-3">
                                     <label for="name"
-                                        class="block text-sm font-medium leading-6 text-gray-900">Nombre</label>
+                                        class="block text-sm font-medium leading-6 text-gray-900">Nombre<span class="text-red-500">*</span></label>
                                     <div class="mt-2">
                                         <input type="text" name="name" id="name" autocomplete="given-name"
                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-
+                                        <span class="label-text-alt">Porfavor escribe los nombres</span>
                                         @error('name')
                                             <span class="text-red-500 text-sm">{{ $message }}</span>
                                         @enderror
@@ -28,10 +28,11 @@
 
                                 <div class="sm:col-span-3">
                                     <label for="last_name"
-                                        class="block text-sm font-medium leading-6 text-gray-900">Apellido</label>
+                                        class="block text-sm font-medium leading-6 text-gray-900">Apellido<span class="text-red-500">*</span></label>
                                     <div class="mt-2">
                                         <input type="text" name="last_name" id="last_name" autocomplete="family-name"
                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                            <span class="label-text-alt">Porfavor escribe los apellidos</span>
                                         @error('last_name')
                                             <span class="text-red-500 text-sm">{{ $message }}</span>
                                         @enderror
@@ -44,7 +45,7 @@
                                     <div class="mt-2">
                                         <input id="email" name="email" type="email" autocomplete="email"
                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-
+                                            <span class="label-text-alt">Porfavor escribe el correo</span>
                                         @error('email')
                                             <span class="text-red-500 text-sm">{{ $message }}</span>
                                         @enderror
@@ -53,13 +54,13 @@
 
                                 <div class="sm:col-span-3">
                                     <label for="password"
-                                        class="block text-sm font-medium leading-6 text-gray-900">Contraseña</label>
+                                        class="block text-sm font-medium leading-6 text-gray-900">Contraseña<span class="text-red-500">*</span></label>
                                     <div class="mt-2">
                                         <input id="password" name="password" type="password" value="{{$password}}"
                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"><i
                                             class="fa-regular fa-eye-slash" style="color: #181716;"
                                             id="togglePassword"></i>
-
+                                            <span class="label-text-alt">Verifica o edita la contraseña</span>
                                         @error('password')
                                             <span class="text-red-500 text-sm">{{ $message }}</span>
                                         @enderror
@@ -73,7 +74,7 @@
                                         <input type="text" name="rfc" id="rfc" autocomplete="address-level2"
                                             maxlength="13"
                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-
+                                            <span class="label-text-alt">Porfavor escribe el RFC</span>
                                         @error('rfc')
                                             <span class="text-red-500 text-sm">{{ $message }}</span>
                                         @enderror
@@ -86,7 +87,7 @@
                                     <div class="mt-2">
                                         <input type="text" name="curp" id="curp" autocomplete="curp" maxlength="18"
                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-
+                                            <span class="label-text-alt">Porfavor escribe el CURP</span>
                                         @error('curp')
                                             <span class="text-red-500 text-sm">{{ $message }}</span>
                                         @enderror
@@ -99,6 +100,7 @@
                                     <div class="mt-2">
                                         <input id="phone" name="phone" type="text"
                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                                    <span class="label-text-alt">Porfavor escribe el numero de telefono</span>
                                         @error('phone')
                                             <span class="text-red-500 text-sm">{{ $message }}</span>
                                         @enderror
@@ -111,7 +113,7 @@
                                         <input type="text" name="address" id="address" autocomplete="address-level2"
                                             maxlength="13"
                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-
+                                            <span class="label-text-alt">Porfavor escribe la direccion</span>
                                         @error('address')
                                             <span class="text-red-500 text-sm">{{ $message }}</span>
                                         @enderror
@@ -124,7 +126,7 @@
                                     <div class="mt-2">
                                         <input type="text" name="city" id="city" autocomplete="city" maxlength="18"
                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-
+                                            <span class="label-text-alt">Porfavor escribe la ciudad</span>
                                         @error('city')
                                             <span class="text-red-500 text-sm">{{ $message }}</span>
                                         @enderror
@@ -136,6 +138,7 @@
                                     <div class="mt-2">
                                         <input id="cp" name="cp" type="text"
                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                                    <span class="label-text-alt">Porfavor escribe el CP</span>      
                                         @error('cp')
                                             <span class="text-red-500 text-sm">{{ $message }}</span>
                                         @enderror
@@ -147,6 +150,7 @@
                                     <div class="mt-2">
                                         <input id="state" name="state" type="text"
                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                                    <span class="label-text-alt">Porfavor escribe el estado</span>
                                         @error('state')
                                             <span class="text-red-500 text-sm">{{ $message }}</span>
                                         @enderror
@@ -178,7 +182,7 @@
                                         <input type="date" name="birthdate" id="birthdate" min="1900-1-1"
                                             autocomplete="postal-code"
                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-
+                                            <span class="label-text-alt">Porfavor digite la fecha de nacimiento</span>
                                         @error('birthdate')
                                             <span class="text-red-500 text-sm">{{ $message }}</span>
                                         @enderror
