@@ -51,8 +51,6 @@
                                     </ul>
                                 </div>
                                 <div>
-                                    <!-- Boton para ver documentos Utilizando el modal -->
-                                   
                                     <!-- Modal 1 para ver documentos -->
                                     <div id="scroll-inside-modal" class="overlay modal overlay-open:opacity-100 hidden"
                                         role="dialog" tabindex="-1">
@@ -363,7 +361,7 @@
 
                         <div class="mt-4 flex items-center justify-end gap-x-6 pb-4 pr-3">
                             <a href="{{ url()->previous() }}" class="btn btn-soft btn-secondary">Cancelar</a>
-                            <a href="#" class="btn btn-soft btn-accent">Editar</a>
+                            <a href="{{ route('client.edit', $client->id) }}" class="btn btn-soft btn-accent">Editar</a>
                         </div>
                     </div>
                 </div>
