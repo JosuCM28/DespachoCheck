@@ -2,30 +2,33 @@
 
 @section('content')
     <div class="h-30 min-sm:h-[20rem]">
-        <header style="background-color: #2E4053;">
+        <header style="background-color: #123966;" class="scrolling">
             <div class="flex justify-end flex-col lg:flex-row">
                 @if (Route::has('login'))
                     <nav class="flex flex-col lg:flex-row justify-end">
                         <p
-                            class="rounded-md px-3 py-2 text-sm text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] lg:text-base">
+                            class="rounded-md px-2 lg:px-4 pt-2 lg:py-4 text-sm text-white ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] lg:text-base">
                             Llámanos sin costo: 226-316-1354
-                            <span class="lg:hidden"> <br /> </span>
-                            <span class="hidden lg:inline"> </span>
+                        </p>
+                        <p
+                            class="rounded-md px-2 lg:px-4 pt-2 lg:py-4 text-sm text-white ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] lg:text-base">
+                            correo: baltazarmontes77@prodigy.net.mx
+
                         </p>
                         @auth
                             <a href="{{ url('/dashboard') }}"
-                                class="rounded-md px-3 py-2 text-sm text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] lg:text-base">
+                                class="rounded-md px-2 lg:px-4 pt-2 lg:py-4 text-sm text-white ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] lg:text-base">
                                 Dashboard
                             </a>
                         @else
                             <a href="{{ route('login') }}"
-                                class="rounded-md px-2 lg:px-4 pt-2 lg:py-4 text-sm text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] lg:text-base">
+                                class="rounded-md px-2 lg:px-4 pt-2 lg:py-4 text-sm text-white ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] lg:text-base">
                                 Iniciar Sesión
                             </a>
 
                             @if (Route::has('register'))
                                 <a href="{{ route('register') }}"
-                                    class="rounded-md px-2 lg:px-4 pb-2 lg:py-4 text-sm text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] lg:text-base">
+                                    class="rounded-md px-2 lg:px-4 pb-2 lg:py-4 text-sm text-white ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] lg:text-base">
                                     Registrarse
                                 </a>
                             @endif
@@ -34,15 +37,16 @@
                 @endif
             </div>
         </header>
-        <nav class="navbar shadow  top-0 left-0   bg-white py-4 shadow-md navar-trans scrolling" id="navbar"
-            style="z-index: 1;">
+        <nav class="navbar shadow  top-0 left-0 py-4 shadow-md navar-trans scrolling" id="navbar"
+            style="z-index: 3; background-color: #123966; opacity: 0.9;" position="fixed">
+
             <div class="navbar-start lg:mt-0 mt-0 py-0 ">
-                <a class="link text-base-content/90 link-neutral pt-2 text-xl no-underline montecarlo-regular  lg:text-3xl"
+                <a class="link text-withe-content/90  pt-2 text-xl no-underline montecarlo-regular  lg:text-3xl text-white"
                     href="#">
                     Despacho Contable BM
                 </a>
             </div>
-            <div class="navbar-center max-sm:hidden">
+            <div class="navbar-center max-sm:hidden " style="z-index: 3;">
                 <ul class="menu menu-horizontal gap-2 p-0 text-base rtl:ml-20">
                     <li><a href="#" class="btn btn-text link-animated">Inicio</a></li>
                     <li><a href="#" class="btn btn-text link-animated">Acerca de</a></li>
@@ -94,32 +98,23 @@
     </div>
 
     <!-- Hero Section -->
-    <header id="inicio" class="text-white"
-        style="background-size: cover; background-position: center; background-image: url({{ asset('img/fondoo.jpg') }}); background-color: #333333;">
+    <header id="inicio" class="text-white herone "
+        style="background-size: cover; background-position: center; background-image: url({{ asset('img/fondofirst.jpg') }});">
 
         <div class="container mx-auto grid md:grid-cols-2 items-center py-16 px-4 sm:px-6 lg:px-8">
             <div>
-                <div class="card glass text-white sm:max-w-sm">
-                    <figure><img src="https://cdn.flyonui.com/fy-assets/components/card/image-1.png" alt="iphones" />
-                    </figure>
-                    <div class="card-body">
-                        <h2 class="card-title mb-2.5 text-white">Smartphone</h2>
-                        <p class="mb-4">A high-quality smartphone with the latest features for a premium user experience.
-                        </p>
-                        <div class="card-actions">
-                            <button class="btn btn-warning">Conoce nuestros servicios</button>
-                        </div>
-                    </div>
-                </div>
+                <p class="merriweather-light text-white card-herone" style="font-size: 2.9rem;"> Más de 30 años
+                    asegurando tu tranquilidad financiera </p>
+                <p class="arbutus-regular text-white card-herone" style="font-size: 1.9rem;"> Brindamos soluciones contables
+                    y fiscaless <br />en Altotonga Veracruz.</p>
             </div>
             <div class="mt-10">
-<div class="card image-full sm:max-w-sm">
-  <figure><img src="https://cdn.flyonui.com/fy-assets/components/card/image-5.png" alt="overlay image" /></figure>
-  <div class="card-body">
-    <h2 class="card-title mb-2.5 text-white"> Más de 30 años asegurando tu tranquilidad financiera</h2>
-    <p class="text-white"> Brindamos soluciones contables y fiscaless <br />en Altotonga Veracruz.</p>
-  </div>
-</div>
+                <div class="card group hover:shadow sm:max-w-sm  sm:hidden card-herone">
+                    <figure>
+                        <a href="#" title='Servicios'><img src="{{ asset('img/DESPACHO.png') }}" alt="Shoes"
+                                class="transition-transform duration-500 group-hover:scale-110" /></a>
+                    </figure>
+                </div>
             </div>
 
         </div>
@@ -175,112 +170,494 @@
     </section>
 
     <!-- Servicios Section -->
-    <section id="servicios" class="py-16 bg-white"
-        style="z-index: 0; background-image: url({{ asset('img/backservices.jpg') }}); background-size: cover; background-position: center;">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="servicios" class="py-16 bg-white herotwo"
+        style="z-index: 0; background-image: url({{ asset('img/fondoo.jpg') }}); background-size: cover; background-position: center;">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 ">
+            <h1 class="text-center text-white text-3xl font-bold card-herone">Nuestros Servicios</h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start mt-10">
 
-            <div class="grid grid-cols-1 lg:grid-cols-1 gap-8 items-start">
-
-                <!-- Servicio con Carousel -->
-                <div id="carousel-2" data-carousel='{ "loadingClasses": "opacity-0" }'
-                    class="relative w-full lg:mt-13 mt-0">
-                    <h2 class="text-3xl font-bold text-center mb-8 text-white">Nuestros Servicios</h2>
-                    <div class="carousel">
-                        <div class="carousel-body opacity-0">
-                            <!-- Slide 1 -->
-                            <div class="carousel-slide">
-                                <div class="bg-base-300/60 flex h-full justify-center p-6">
-                                    <span class="self-center text-2xl sm:text-4xl">First slide</span>
-                                </div>
-                            </div>
-                            <!-- Slide 2 -->
-                            <div class="carousel-slide">
-                                <div class="bg-base-300/80 flex h-full justify-center p-6">
-                                    <span class="self-center text-2xl sm:text-4xl">2 slide</span>
-                                </div>
-                            </div>
-                            <!-- Slide 3 -->
-                            <div class="carousel-slide">
-                                <div class="bg-base-300 flex h-full justify-center p-6">
-                                    <span class="self-center text-2xl sm:text-4xl">3 slide</span>
-                                </div>
-                            </div>
-
-                            <div class="carousel-slide">
-                                <div class="bg-base-300 flex h-full justify-center p-6">
-                                    <span class="self-center text-2xl sm:text-4xl">4 slide</span>
-                                </div>
-                            </div>
-
-                            <div class="carousel-slide">
-                                <div class="bg-base-300 flex h-full justify-center p-6">
-                                    <span class="self-center text-2xl sm:text-4xl">5 slide</span>
-                                </div>
-                            </div>
-
-                            <div class="carousel-slide">
-                                <div class="bg-base-300 flex h-full justify-center p-6">
-                                    <span class="self-center text-2xl sm:text-4xl">6 slide</span>
-                                </div>
-                            </div>
-
-                            <div class="carousel-slide">
-                                <div class="bg-base-300 flex h-full justify-center p-6">
-                                    <span class="self-center text-2xl sm:text-4xl">7 slide</span>
-                                </div>
-                            </div>
-
-                            <div class="carousel-slide">
-                                <div class="bg-base-300 flex h-full justify-center p-6">
-                                    <span class="self-center text-2xl sm:text-4xl">8 slide</span>
-                                </div>
-                            </div>
-
-                            <div class="carousel-slide">
-                                <div class="bg-base-300 flex h-full justify-center p-6">
-                                    <span class="self-center text-2xl sm:text-4xl">9 slide</span>
-                                </div>
-                            </div>
-
-                            <div class="carousel-slide">
-                                <div class="bg-base-300 flex h-full justify-center p-6">
-                                    <span class="self-center text-2xl sm:text-4xl">10 slide</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Paginación del Carousel -->
-                        <div class="carousel-pagination mt-4">
-                            <span class="carousel-dot carousel-active:bg-primary carousel-active:border-primary"></span>
-                            <span class="carousel-dot carousel-active:bg-primary carousel-active:border-primary"></span>
-                            <span class="carousel-dot carousel-active:bg-primary carousel-active:border-primary"></span>
-                            <span class="carousel-dot carousel-active:bg-primary carousel-active:border-primary"></span>
-                            <span class="carousel-dot carousel-active:bg-primary carousel-active:border-primary"></span>
-                            <span class="carousel-dot carousel-active:bg-primary carousel-active:border-primary"></span>
-                            <span class="carousel-dot carousel-active:bg-primary carousel-active:border-primary"></span>
-                            <span class="carousel-dot carousel-active:bg-primary carousel-active:border-primary"></span>
-                            <span class="carousel-dot carousel-active:bg-primary carousel-active:border-primary"></span>
-                            <span class="carousel-dot carousel-active:bg-primary carousel-active:border-primary"></span>
+                <!-- TARJETA 1 -->
+                <button type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="transparent-modal1"
+                    data-overlay="#transparent-modal1">
+                    <div class="card bg-primary/50 border-primary border text-primary-content min-h-48 card-herone">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary-content text-center mb-2.5 truncate">Contabilidad General
+                            </h5>
+                            <ol class="list-decimal pl-4 mt-2 text-left">
+                                <li><span class="block truncate">Registro de ingresos, egresos y activos.</span></li>
+                                <li><span class="block truncate">Elaboración de balanzas de comprobación.</span></li>
+                                <li><span class="block truncate">Conciliaciones bancarias.</span></li>
+                                <li><span class="block truncate">Preparación de reportes financieros mensuales y
+                                        anuales.</span></li>
+                            </ol>
                         </div>
                     </div>
+                </button>
 
-                    <!-- Botones de navegación del Carousel -->
-                    <button type="button" class="carousel-prev absolute left-2 top-1/2 transform -translate-y-1/2">
-                        <span class="size-9.5 bg-base-100 flex items-center justify-center rounded-full shadow">
-                            <span class="icon-[tabler--chevron-left] size-5 cursor-pointer rtl:rotate-180"></span>
-                        </span>
-                        <span class="sr-only">Previous</span>
-                    </button>
-                    <button type="button" class="carousel-next absolute right-2 top-1/2 transform -translate-y-1/2">
-                        <span class="sr-only">Next</span>
-                        <span class="size-9.5 bg-base-100 flex items-center justify-center rounded-full shadow">
-                            <span class="icon-[tabler--chevron-right] size-5 cursor-pointer rtl:rotate-180"></span>
-                        </span>
-                    </button>
-                </div>
+                <!-- TARJETA 2 -->
+                <button type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="transparent-modal2"
+                    data-overlay="#transparent-modal2">
+                    <div class="card bg-accent/50 border-primary border text-primary-content min-h-48 card-herone">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary-content text-center mb-2.5 truncate">Declaraciones Fiscales
+                            </h5>
+                            <ol class="list-decimal pl-4 mt-2 text-left">
+                                <li><span class="block truncate">Declaraciones anuales y provisionales.</span></li>
+                                <li><span class="block truncate">Cálculo de impuestos ISR, IVA, IEPS, entre otros.</span>
+                                </li>
+                                <li><span class="block truncate">Regularización fiscal en caso de atrasos.</span></li>
+                                <li><span class="block truncate">Estrategias para optimizar la carga tributaria dentro del
+                                        marco legal.</span></li>
+                            </ol>
+                        </div>
+                    </div>
+                </button>
+
+                <!-- TARJETA 3 -->
+                <button type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="transparent-modal3"
+                    data-overlay="#transparent-modal3">
+                    <div class="card bg-primary/50 border-primary border text-primary-content min-h-48 card-herone">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary-content text-center mb-2.5 truncate">Nómina y Administración
+                                de Recursos Humanos</h5>
+                            <ol class="list-decimal pl-4 mt-2 text-left">
+                                <li><span class="block truncate">Elaboración de nómina y pago de sueldos.</span></li>
+                                <li><span class="block truncate">Cálculo de aguinaldos, vacaciones y finiquitos.</span>
+                                </li>
+                                <li><span class="block truncate">Cálculo y declaración de cuotas ante IMSS, INFONAVIT y
+                                        SAT.</span></li>
+                                <li><span class="block truncate">Reportes de nómina para tus registros internos.</span>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </button>
+
+                <!-- TARJETA 4 -->
+                <button type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="transparent-modal4"
+                    data-overlay="#transparent-modal4">
+                    <div class="card bg-accent/50 border-primary border text-primary-content min-h-48 card-herone">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary-content text-center mb-2.5 truncate">Auditorías Contables y
+                                Fiscales</h5>
+                            <ol class="list-decimal pl-4 mt-2 text-left">
+                                <li><span class="block truncate">Auditorías internas y externas.</span></li>
+                                <li><span class="block truncate">Identificación de irregularidades y áreas de
+                                        mejora.</span></li>
+                                <li><span class="block truncate">Recomendaciones para optimizar tus procesos
+                                        financieros.</span></li>
+                                <li><span class="block truncate">Preparación para auditorías realizadas por autoridades
+                                        fiscales.</span></li>
+                            </ol>
+                        </div>
+                    </div>
+                </button>
+
+
+                <!-- TARJETA 5 -->
+                <button type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="transparent-modal5"
+                    data-overlay="#transparent-modal5">
+                    <div class="card bg-primary/50 border-primary border text-primary-content min-h-48 card-herone">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary-content text-center mb-2.5 truncate">Asesoría Financiera y
+                                Fiscal</h5>
+                            <ol class="list-decimal pl-4 mt-2 text-left">
+                                <li><span class="block truncate">Planeación fiscal estratégica.</span></li>
+                                <li><span class="block truncate">Evaluación de riesgos financieros.</span></li>
+                                <li><span class="block truncate">Proyección y análisis de flujos de efectivo.</span></li>
+                                <li><span class="block truncate">Soluciones personalizadas para reducir costos
+                                        operativos.</span></li>
+                            </ol>
+                        </div>
+                    </div>
+                </button>
+
+                <!-- TARJETA 6 -->
+                <button type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="transparent-modal6"
+                    data-overlay="#transparent-modal6">
+                    <div class="card bg-accent/50 border-primary border text-primary-content min-h-48 card-herone">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary-content text-center mb-2.5 truncate">Trámites
+                                Gubernamentales y Fiscalización</h5>
+                            <ol class="list-decimal pl-4 mt-2 text-left">
+                                <li><span class="block truncate">Inscripción y actualización en el Registro Federal de
+                                        Contribuyentes (RFC)</span></li>
+                                <li><span class="block truncate">Altas, bajas y modificaciones ante el SAT.</span></li>
+                                <li><span class="block truncate">Trámites ante el IMSS e INFONAVIT.</span></li>
+                                <li><span class="block truncate">Solicitudes de devoluciones y compensaciones
+                                        fiscales.</span></li>
+                            </ol>
+                        </div>
+                    </div>
+                </button>
+
+                <!-- TARJETA 7 -->
+                <button type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="transparent-modal7"
+                    data-overlay="#transparent-modal7">
+                    <div class="card bg-primary/50 border-primary border text-primary-content min-h-48 card-herone">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary-content text-center mb-2.5 truncate">Contabilidad para
+                                Personas Físicas y RIF</h5>
+                            <ol class="list-decimal pl-4 mt-2 text-left">
+                                <li><span class="block truncate">Registro de ingresos y egresos.</span></li>
+                                <li><span class="block truncate">Presentación de declaraciones mensuales y anuales.</span>
+                                </li>
+                                <li><span class="block truncate">Optimización de deducciones personales.</span></li>
+                                <li><span class="block truncate">Asesoría sobre beneficios fiscales del RIF.</span></li>
+                            </ol>
+                        </div>
+                    </div>
+                </button>
+
+                <!-- TARJETA 8 -->
+                <button type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="transparent-modal8"
+                    data-overlay="#transparent-modal8">
+                    <div class="card bg-accent/50 border-primary border text-primary-content min-h-48 card-herone">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary-content text-center mb-2.5 truncate">Gestión de Facturación
+                                Electrónica</h5>
+                            <ol class="list-decimal pl-4 mt-2 text-left">
+                                <li><span class="block truncate">Emisión de facturas electrónicas bajo los estándares
+                                        vigentes.</span></li>
+                                <li><span class="block truncate">Validación de facturas recibidas.</span></li>
+                                <li><span class="block truncate">Control de CFDI’s (Comprobantes Fiscales Digitales por
+                                        Internet).</span></li>
+                                <li><span class="block truncate">Asesoría en el uso de plataformas de facturación.</span>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </button>
+
+                <!-- TARJETA 9 -->
+                <button type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="transparent-modal9"
+                    data-overlay="#transparent-modal9">
+                    <div class="card bg-primary/50 border-primary border text-primary-content min-h-48 card-herone">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary-content text-center mb-2.5 truncate">Regularización Contable
+                                y Fiscal</h5>
+                            <ol class="list-decimal pl-4 mt-2 text-left">
+                                <li><span class="block truncate">Reconstrucción de contabilidad atrasada.</span></li>
+                                <li><span class="block truncate">Solución de problemas con el SAT o IMSS.</span></li>
+                                <li><span class="block truncate">Presentación de declaraciones omitidas..</span></li>
+                                <li><span class="block truncate">Negociación de acuerdos de pago con autoridades
+                                        fiscales.</span></li>
+                            </ol>
+                        </div>
+                    </div>
+                </button>
+
             </div>
+
+
+
+
+        </div>
     </section>
 
+    <!-- MODAL1 -->
+    <div id="transparent-modal1" class="overlay modal overlay-open:opacity-100 hidden place-items-center" role="dialog"
+        tabindex="-1">
+        <div class="modal-dialog overlay-open:opacity-100">
+            <div class="modal-content text-neutral-content bg-base-shadow/80 shadow-none">
+                <div class="modal-header">
+                    <h3 class="flex modal-title text-neutral-content justify-center">Contabilidad General</h3>
+                    <button type="button" class="btn btn-soft btn-circle absolute top-3 end-3" aria-label="Close"
+                        data-overlay="#transparent-modal1">
+                        <span class="icon-[tabler--x] size-4"></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <p> Realizamos la gestión integral de la contabilidad de tu empresa o negocio. Nos encargamos de los
+                        registros contables, conciliaciones bancarias, y generación de estados financieros, asegurando que
+                        toda la información esté organizada y cumpla con las normativas legales vigentes.
+                        Incluye: </p>
+                    <ol style="list-style-type: decimal; padding-left: 1rem; margin-top: 0.5rem;">
+                        <li>Registro de ingresos, egresos y activos.</li>
+                        <li>Elaboración de balanzas de comprobación.</li>
+                        <li>Conciliaciones bancarias.</li>
+                        <li>Preparación de reportes financieros mensuales y anuales.</li>
+                    </ol>
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-neutral" data-overlay="#transparent-modal1">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL2 -->
+    <div id="transparent-modal2" class="overlay modal overlay-open:opacity-100 hidden place-items-center" role="dialog"
+        tabindex="-1">
+        <div class="modal-dialog overlay-open:opacity-100">
+            <div class="modal-content text-neutral-content bg-base-shadow/80 shadow-none">
+                <div class="modal-header">
+                    <h3 class="modal-title text-neutral-content">Declaraciones Fiscales</h3>
+                    <button type="button" class="btn btn-soft btn-circle absolute top-3 end-3" aria-label="Close"
+                        data-overlay="#transparent-modal2">
+                        <span class="icon-[tabler--x] size-4"></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Nos aseguramos de que cumplas con tus obligaciones fiscales presentando tus declaraciones de
+                        impuestos locales y federales en tiempo y forma, reduciendo riesgos de sanciones.
+                        Incluye:
+                    </p>
+                    <ol style="list-style-type: decimal; padding-left: 1rem; margin-top: 0.5rem;">
+                        <li>Declaraciones anuales y provisionales.</li>
+                        <li>Cálculo de impuestos ISR, IVA, IEPS, entre otros.</li>
+                        <li>Regularización fiscal en caso de atrasos.</li>
+                        <li>Estrategias para optimizar la carga tributaria dentro del marco legal.</li>
+                    </ol>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-neutral" data-overlay="#transparent-modal2">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL3 -->
+    <div id="transparent-modal3" class="overlay modal overlay-open:opacity-100 hidden place-items-center" role="dialog"
+        tabindex="-1">
+        <div class="modal-dialog overlay-open:opacity-100">
+            <div class="modal-content text-neutral-content bg-base-shadow/80 shadow-none">
+                <div class="modal-header">
+                    <h3 class="modal-title text-neutral-content">Nómina y Administración de Recursos Humanos</h3>
+                    <button type="button" class="btn btn-soft btn-circle absolute top-3 end-3" aria-label="Close"
+                        data-overlay="#transparent-modal3">
+                        <span class="icon-[tabler--x] size-4"></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Gestionamos la nómina de tu empresa, asegurándonos de cumplir con todas las obligaciones laborales y
+                        fiscales, para que te concentres en hacer crecer tu negocio.
+                        Incluye:
+                    </p>
+                    <ol style="list-style-type: decimal; padding-left: 1rem; margin-top: 0.5rem;">
+                        <li>Elaboración de nómina y pago de sueldos.</li>
+                        <li>Cálculo de aguinaldos, vacaciones y finiquitos.</li>
+                        <li>Cálculo y declaración de cuotas ante IMSS, INFONAVIT y SAT.</li>
+                        <li>Reportes de nómina para tus registros internos.</li>
+                    </ol>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-neutral" data-overlay="#transparent-modal3">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL4 -->
+    <div id="transparent-modal4" class="overlay modal overlay-open:opacity-100 hidden place-items-center" role="dialog"
+        tabindex="-1">
+        <div class="modal-dialog overlay-open:opacity-100">
+            <div class="modal-content text-neutral-content bg-base-shadow/80 shadow-none">
+                <div class="modal-header">
+                    <h3 class="modal-title text-neutral-content">Auditorías Contables y Fiscales</h3>
+                    <button type="button" class="btn btn-soft btn-circle absolute top-3 end-3" aria-label="Close"
+                        data-overlay="#transparent-modal4">
+                        <span class="icon-[tabler--x] size-4"></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Revisamos a detalle la situación financiera y fiscal de tu empresa para garantizar la transparencia
+                        de tus operaciones y el cumplimiento normativo.
+                        Incluye:
+                    </p>
+                    <ol style="list-style-type: decimal; padding-left: 1rem; margin-top: 0.5rem;">
+                        <li>Auditorías internas y externas.</li>
+                        <li>Identificación de irregularidades y áreas de mejora.</li>
+                        <li>Recomendaciones para optimizar tus procesos financieros.</li>
+                        <li>Preparación para auditorías realizadas por autoridades fiscales.</li>
+                    </ol>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-neutral" data-overlay="#transparent-modal4">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL5 -->
+    <div id="transparent-modal5" class="overlay modal overlay-open:opacity-100 hidden place-items-center" role="dialog"
+        tabindex="-1">
+        <div class="modal-dialog overlay-open:opacity-100">
+            <div class="modal-content text-neutral-content bg-base-shadow/80 shadow-none">
+                <div class="modal-header">
+                    <h3 class="modal-title text-neutral-content">Asesoría Financiera y Fiscal</h3>
+                    <button type="button" class="btn btn-soft btn-circle absolute top-3 end-3" aria-label="Close"
+                        data-overlay="#transparent-modal5">
+                        <span class="icon-[tabler--x] size-4"></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Te ayudamos a optimizar tus recursos financieros y diseñamos estrategias fiscales personalizadas
+                        para mejorar la rentabilidad de tu negocio.
+                        Incluye:
+                    </p>
+                    <ol style="list-style-type: decimal; padding-left: 1rem; margin-top: 0.5rem;">
+                        <li>Planeación fiscal estratégica.</li>
+                        <li>Evaluación de riesgos financieros.</li>
+                        <li>Proyección y análisis de flujos de efectivo.</li>
+                        <li>Soluciones personalizadas para reducir costos operativos.</li>
+                    </ol>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-neutral" data-overlay="#transparent-modal5">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL6 -->
+    <div id="transparent-modal6" class="overlay modal overlay-open:opacity-100 hidden place-items-center" role="dialog"
+        tabindex="-1">
+        <div class="modal-dialog overlay-open:opacity-100">
+            <div class="modal-content text-neutral-content bg-base-shadow/80 shadow-none">
+                <div class="modal-header">
+                    <h3 class="modal-title text-neutral-content">Trámites Gubernamentales y Fiscalización</h3>
+                    <button type="button" class="btn btn-soft btn-circle absolute top-3 end-3" aria-label="Close"
+                        data-overlay="#transparent-modal6">
+                        <span class="icon-[tabler--x] size-4"></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Nos encargamos de gestionar todos los trámites necesarios ante entidades gubernamentales, para que
+                        cumplas con la normativa sin complicaciones.
+                        Incluye:
+                    </p>
+                    <ol style="list-style-type: decimal; padding-left: 1rem; margin-top: 0.5rem;">
+                        <li>Inscripción y actualización en el Registro Federal de Contribuyentes (RFC).</li>
+                        <li>Altas, bajas y modificaciones ante el SAT.</li>
+                        <li>Trámites ante el IMSS e INFONAVIT.</li>
+                        <li>Solicitudes de devoluciones y compensaciones fiscales.
+                        </li>
+                    </ol>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-neutral" data-overlay="#transparent-modal6">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL7 -->
+    <div id="transparent-modal7" class="overlay modal overlay-open:opacity-100 hidden place-items-center" role="dialog"
+        tabindex="-1">
+        <div class="modal-dialog overlay-open:opacity-100">
+            <div class="modal-content text-neutral-content bg-base-shadow/80 shadow-none">
+                <div class="modal-header">
+                    <h3 class="modal-title text-neutral-content">Contabilidad para Personas Físicas y Morales</h3>
+                    <button type="button" class="btn btn-soft btn-circle absolute top-3 end-3" aria-label="Close"
+                        data-overlay="#transparent-modal7">
+                        <span class="icon-[tabler--x] size-4"></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Apoyamos a personas físicas con actividad empresarial y Régimen de Incorporación Fiscal (RIF) a
+                        mantener su contabilidad en orden y cumplir con sus obligaciones fiscales.
+                        Incluye:
+                    </p>
+                    <ol style="list-style-type: decimal; padding-left: 1rem; margin-top: 0.5rem;">
+                        <li>Registro de ingresos y egresos.</li>
+                        <li>Presentación de declaraciones mensuales y anuales.</li>
+                        <li>Optimización de deducciones personales.</li>
+                        <li>Asesoría sobre beneficios fiscales del RIF.
+                        </li>
+                    </ol>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-neutral" data-overlay="#transparent-modal7">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL8 -->
+    <div id="transparent-modal8" class="overlay modal overlay-open:opacity-100 hidden place-items-center" role="dialog"
+        tabindex="-1">
+        <div class="modal-dialog overlay-open:opacity-100">
+            <div class="modal-content text-neutral-content bg-base-shadow/80 shadow-none">
+                <div class="modal-header">
+                    <h3 class="modal-title text-neutral-content">Gestión de Facturación Electrónica</h3>
+                    <button type="button" class="btn btn-soft btn-circle absolute top-3 end-3" aria-label="Close"
+                        data-overlay="#transparent-modal8">
+                        <span class="icon-[tabler--x] size-4"></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Facilitamos la emisión y recepción de facturas electrónicas para garantizar que cumplas con los
+                        requisitos del SAT y mantener un control efectivo de tus operaciones.
+                        Incluye:
+                    </p>
+                    <ol style="list-style-type: decimal; padding-left: 1rem; margin-top: 0.5rem;">
+                        <li>Emisión de facturas electrónicas bajo los estándares vigentes.</li>
+                        <li>Validación de facturas recibidas.</li>
+                        <li>Control de CFDI’s (Comprobantes Fiscales Digitales por Internet).</li>
+                        <li>Asesoría en el uso de plataformas de facturación.
+                        </li>
+                    </ol>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-neutral" data-overlay="#transparent-modal8">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL9 -->
+    <div id="transparent-modal9" class="overlay modal overlay-open:opacity-100 hidden place-items-center" role="dialog"
+        tabindex="-1">
+        <div class="modal-dialog overlay-open:opacity-100">
+            <div class="modal-content text-neutral-content bg-base-shadow/80 shadow-none">
+                <div class="modal-header">
+                    <h3 class="modal-title text-neutral-content">Regularización Contable y Fiscal</h3>
+                    <button type="button" class="btn btn-soft btn-circle absolute top-3 end-3" aria-label="Close"
+                        data-overlay="#transparent-modal9">
+                        <span class="icon-[tabler--x] size-4"></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Si tienes retrasos o irregularidades en tus obligaciones contables o fiscales, te ayudamos a ponerte
+                        al día para evitar multas y problemas legales.
+                        Incluye:
+                    </p>
+                    <ol style="list-style-type: decimal; padding-left: 1rem; margin-top: 0.5rem;">
+                        <li>Reconstrucción de contabilidad atrasada.</li>
+                        <li>Solución de problemas con el SAT o IMSS.</li>
+                        <li>Presentación de declaraciones omitidas.</li>
+                        <li>Negociación de acuerdos de pago con autoridades fiscales.
+
+                        </li>
+                    </ol>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-neutral" data-overlay="#transparent-modal9">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Contacto Section -->
     <section id="contacto" class="py-16 bg-blue-500 text-white">
@@ -298,36 +675,37 @@
 
     <!-- Footer -->
     <div class="w-full">
-        <footer class="footer bg-base-200/60 p-10">
-            <div class="gap-6">
-                <div class="flex items-center gap-6 font-bold lg:hidden">
-                    <img src="{{ asset('img/DESPACHO.png') }}" alt="Logo" style="width: 16rem; height: 15rem;">
+    <footer class="footer bg-base-200/60 p-10 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        
+        <!-- Logo -->
+        <div class="col-span-1 md:col-span-2 lg:col-span-1 flex items-center justify-center">
+            <img src="{{ asset('img/DESPACHO.png') }}" alt="Logo" class="w-72 h-60">
+        </div>
 
-                </div>
-            </div>
-            <nav class="text-base-content/90">
-                <h6 class="footer-title">Services</h6>
-                <a href="#" class="link link-hover">Branding</a>
-                <span><a href="#" class="link link-hover">Design</a><span
-                        class="badge ms-2 badge-sm badge-primary">New</span></span>
-                <a href="#" class="link link-hover">Marketing</a>
-                <a href="#" class="link link-hover">Advertisement</a>
-            </nav>
-            <nav class="text-base-content/90">
-                <h6 class="footer-title">Company</h6>
-                <a href="#" class="link link-hover">About us</a>
-                <a href="#" class="link link-hover">Contact</a>
-                <a href="#" class="link link-hover">Jobs</a>
-                <a href="#" class="link link-hover">Press kit</a>
-            </nav>
-            <nav class="text-base-content/90">
-                <h6 class="footer-title">Legal</h6>
-                <a href="#" class="link link-hover">Terms of use</a>
-                <a href="#" class="link link-hover">Privacy policy</a>
-                <a href="#" class="link link-hover">Cookie policy</a>
-            </nav>
-        </footer>
-    @endsection
+        <!-- Sección Inicio -->
+        <nav class="col-span-1 md:col-span-1 lg:col-start-3 lg:mt-16">
+            <h6 class="footer-title">Inicio</h6>
+            <a href="#" class="link link-hover">Acerca de</a>
+            <span>
+                <a href="#" class="link link-hover">Ubicación</a>
+                <span class="badge ms-2 badge-sm badge-primary">Contacto</span>
+            </span>
+            <a href="#" class="link link-hover">Servicios</a>
+        </nav>
+
+        <!-- Sección Company -->
+        <nav class="col-span-1 md:col-span-1 lg:col-start-4 lg:mt-8">
+            <h6 class="footer-title">Company</h6>
+            <a href="#" class="link link-hover">About us</a>
+            <a href="#" class="link link-hover">Contact</a>
+            <a href="#" class="link link-hover">Jobs</a>
+            <a href="#" class="link link-hover">Press kit</a>
+        </nav>
+
+    </footer>
+</div>
+@endsection
+
     @push('modals')
         <script>
             const navbar = document.getElementById('navbar');
