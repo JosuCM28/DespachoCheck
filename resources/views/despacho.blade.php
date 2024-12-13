@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="h-30 min-sm:h-[20rem]">
-        <header style="background-color: #123966;" class="scrolling">
+        <header style="z-index: 3; background: linear-gradient(to right, rgba(17, 25, 55, 0.93), rgba(10, 25, 40, 0.86));"
+            class="scrolling">
             <div class="flex justify-end flex-col lg:flex-row">
                 @if (Route::has('login'))
                     <nav class="flex flex-col lg:flex-row justify-end">
@@ -37,8 +38,9 @@
                 @endif
             </div>
         </header>
-        <nav class="navbar shadow  top-0 left-0 py-4 shadow-md navar-trans scrolling" id="navbar"
-            style="z-index: 3; background-color: #123966; opacity: 0.9;" position="fixed">
+        <nav class="navbar shadow  top-0 left-0 py-4 shadow-md navar-trans scrolling h-24" id="navbar"
+            style="z-index: 3; background: linear-gradient(to right, rgba(17, 25, 55, 0.93), rgba(10, 25, 40, 0.86));"
+            position="fixed">
 
             <div class="navbar-start lg:mt-0 mt-0 py-0 ">
                 <a class="link text-withe-content/90  pt-2 text-xl no-underline montecarlo-regular  lg:text-3xl text-white"
@@ -47,20 +49,20 @@
                 </a>
             </div>
             <div class="navbar-center max-sm:hidden " style="z-index: 3;">
-                <ul class="menu menu-horizontal gap-2 p-0 text-base rtl:ml-20">
-                    <li><a href="#" class="btn btn-text link-animated">Inicio</a></li>
-                    <li><a href="#" class="btn btn-text link-animated">Acerca de</a></li>
-                    <li><a href="#" class="btn btn-text link-animated">Ubicación</a></li>
-                    <li><a href="#" class="btn btn-text link-animated">Contacto</a></li>
+                <ul class="menu menu-horizontal gap-2 p-0 text-base rtl:ml-20 " style="background: transparent;">
+                    <li><a href="#" class="btn btn-text link-animated text-white">Inicio</a></li>
+                    <li><a href="#" class="btn btn-text link-animated text-white">Acerca de</a></li>
+                    <li><a href="#" class="btn btn-text link-animated text-white">Ubicación</a></li>
+                    <li><a href="#" class="btn btn-text link-animated text-white">Contacto</a></li>
                     <li
                         class="dropdown relative inline-flex [--auto-close:inside] [--offset:9] [--placement:bottom-end] max-sm:[--placement:bottom]">
                         <button id="dropdown-end" type="button"
-                            class="dropdown-toggle dropdown-open:bg-base-content/10 dropdown-open:text-base-content max-sm:px-2 btn btn-text link-animated"
+                            class="dropdown-toggle dropdown-open:bg-base-content/10  max-sm:px-2 btn btn-text text-white link-animated"
                             aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
                             Servicios
                             <span class="icon-[tabler--chevron-down] dropdown-open:rotate-180 size-4"></span>
                         </button>
-                        <ul class="dropdown-menu dropdown-open:opacity-100 hidden w-48" role="menu"
+                        <ul class="dropdown-menu dropdown-open:opacity-100 hidden w-48 text" role="menu"
                             aria-orientation="vertical" aria-labelledby="nested-dropdown">
                             <li><a class="dropdown-item text-sm  truncate overflow-hidden w-48 "
                                     title="Contabilidad general" href="#"><span
@@ -101,65 +103,58 @@
     <header id="inicio" class="text-white herone "
         style="background-size: cover; background-position: center; background-image: url({{ asset('img/fondofirst.jpg') }});">
 
-        <div class="container mx-auto grid md:grid-cols-2 items-center py-16 px-4 sm:px-6 lg:px-8">
-            <div>
-                <p class="merriweather-light text-white card-herone" style="font-size: 2.9rem;"> Más de 30 años
+        <div class="container mx-auto grid md:grid-cols-2 items-center py-11 px-4 sm:px-6 lg:px-8">
+            <div class="lg:mt-15">
+                <p class="merriweather-light text-white card-herone font text-4xl lg:text-6xl"> Más de 30 años
                     asegurando tu tranquilidad financiera </p>
-                <p class="arbutus-regular text-white card-herone" style="font-size: 1.9rem;"> Brindamos soluciones contables
+                <p class="arbutus-regular text-white card-herone text-2xl lg:text-4xl"> Brindamos soluciones contables
                     y fiscaless <br />en Altotonga Veracruz.</p>
             </div>
-            <div class="mt-10">
-                <div class="card group hover:shadow sm:max-w-sm  sm:hidden card-herone">
-                    <figure>
-                        <a href="#" title='Servicios'><img src="{{ asset('img/DESPACHO.png') }}" alt="Shoes"
-                                class="transition-transform duration-500 group-hover:scale-110" /></a>
-                    </figure>
-                </div>
-            </div>
-
         </div>
     </header>
 
     <!-- Nosotros Section -->
-    <section id="nosotros" class="py-16 bg-gray-50"
-        style="background-image: url({{ asset('img/fondonosotros.jpg') }}); background-size: cover; background-position: center;">
+    <section id="nosotros" class="py-16 "
+        style="background-image: url({{ asset('img/azul-claro.webp') }}); background-size: cover; background-position: center;">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-rows-1 items-center gap-8">
-            <div class="card-group max-w-sm sm:max-w-full">
-                <div class="card">
-                    <figure><img src="{{ asset('img/equipo.jpg') }}" alt="paris" />
+            <div class="card-group max-w-sm sm:max-w-full gap-4 justify-center">
+                <div class="card group hover:shadow sm:max-w-sm">
+                    <figure><img src="{{ asset('img/contador-actualizado.webp') }}" alt="Shoes"
+                            class="transition-transform duration-500 group-hover:scale-110" />
                     </figure>
                     <div class="card-body">
-                        <h5 class="card-title mb-2.5">Nosotros</h5>
-                        <p>Somos un equipo de profesionales altamente capacitados y experimentados en el campo de la
-                            contabilidad y la consultoría financiera. Nuestro objetivo es brindar servicios de alta calidad
-                            y personalizados a nuestros clientes, ayudándolos a alcanzar sus objetivos financieros y a tomar
-                            decisiones informadas.</p>
+                        <h5 class="card-title mb-2.5">Contadores Actualizados</h5>
+                        <p>Aplicamos un modelo de negocio contable vigente, mediante operaciones innovadoras que nos ayudan
+                            a mantener actualizada tu empresa para ir un paso adelante de las eventualidades financieras.
+                        </p>
                     </div>
                     <div class="card-footer">
-                        <p class="text-base-content/50 text-sm">Fiabilidad</p>
+                        <p class="text-base-content/50 text-sm">Vigencia</p>
                     </div>
                 </div>
-                <div class="card">
-                    <figure><img src="https://cdn.flyonui.com/fy-assets/components/card/image-3.png" alt="rome" />
+                <div class="card group hover:shadow sm:max-w-sm">
+                    <figure><img src="{{ asset('img/comprometido.webp') }}" alt="Shoes"
+                            class="transition-transform duration-500 group-hover:scale-110" />
                     </figure>
                     <div class="card-body">
-                        <h5 class="card-title mb-2.5">Visión</h5>
-                        <p>Ser reconocidos como uno de los despachos contables más confiables y respetados en el Altotonga,
-                            conocidos por nuestra excelencia en el servicio, nuestra integridad y nuestra capacidad para
-                            ayudar a nuestros clientes a alcanzar el éxito financiero.</p>
+                        <h5 class="card-title mb-2.5">Comprometidos con tu empresa</h5>
+                        <p>Tenemos más de 30 años de experiencia en materia fiscal y contable por ello nos hemos convertido
+                            en los aliados en contabilidad de múltiples empresas, gracias al compromiso que ponemos en cada
+                            proyecto.</p>
                     </div>
                     <div class="card-footer">
-                        <p class="text-base-content/50 text-sm">Seguridad</p>
+                        <p class="text-base-content/50 text-sm">Compromiso</p>
                     </div>
                 </div>
-                <div class="card">
-                    <figure><img src="https://cdn.flyonui.com/fy-assets/components/card/image-2.png" alt="sydney" />
+                <div class="card group hover:shadow sm:max-w-sm">
+                    <figure><img src="{{ asset('img/Transparencia.webp') }}" alt="Shoes"
+                            class="transition-transform duration-500 group-hover:scale-110" />
                     </figure>
                     <div class="card-body">
-                        <h5 class="card-title mb-2.5">Misión</h5>
-                        <p>Nuestra misión es brindar servicios contables y de consultoría financiera de alta calidad,
-                            personalizada y confiable. Nos comprometemos a mantener la integridad, la confidencialidad y la
-                            excelencia en nuestro trabajo, y a estar siempre disponibles para nuestros clientes.</p>
+                        <h5 class="card-title mb-2.5">Transparencia</h5>
+                        <p>Creemos en una relación de confianza y claridad. En cada paso de nuestros procesos,
+                            proporcionamos información detallada y accesible para que siempre estés al tanto de tus
+                            finanzas. Sin sorpresas, sin complicaciones, solo una gestión transparente.</p>
                     </div>
                     <div class="card-footer">
                         <p class="text-base-content/50 text-sm">Resultado</p>
@@ -175,6 +170,65 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 ">
             <h1 class="text-center text-white text-3xl font-bold card-herone">Nuestros Servicios</h1>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start mt-10">
+
+                <div id="multi-slide" data-carousel='{ "loadingClasses": "opacity-0", "slidesQty": { "xs": 1, "lg": 3 } }'
+                    class="relative w-full">
+                    <div class="carousel h-80">
+                        <div class="carousel-body  h-full opacity-0">
+                            <!-- Slide 1 -->
+                            <div class="carousel-slide">
+                                <div class="bg-base-200/50 flex h-full justify-center p-6">
+                                    <span class="self-center text-lg">First slide</span>
+                                </div>
+                            </div>
+                            <!-- Slide 2 -->
+                            <div class="carousel-slide">
+                                <div class="bg-base-200 flex h-full justify-center p-6">
+                                    <span class="self-center text-lg">Second slide</span>
+                                </div>
+                            </div>
+                            <!-- Slide 3 -->
+                            <div class="carousel-slide">
+                                <div class="bg-base-300 flex h-full justify-center p-6">
+                                    <span class="self-center text-lg">Third slide</span>
+                                </div>
+                            </div>
+                            <!-- Slide 4 -->
+                            <div class="carousel-slide">
+                                <div class="bg-base-200/50 flex h-full justify-center p-6">
+                                    <span class="self-center text-lg">Fourth slide</span>
+                                </div>
+                            </div>
+                            <!-- Slide 5 -->
+                            <div class="carousel-slide">
+                                <div class="bg-base-200 flex h-full justify-center p-6">
+                                    <span class="self-center text-lg">Fifth slide</span>
+                                </div>
+                            </div>
+                            <!-- Slide 6 -->
+                            <div class="carousel-slide">
+                                <div class="bg-base-300 flex h-full justify-center p-6">
+                                    <span class="self-center text-lg">Sixth slide</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Previous Slide -->
+                    <button type="button" class="carousel-prev">
+                        <span class="size-9.5 bg-base-100 flex items-center justify-center rounded-full shadow">
+                            <span class="icon-[tabler--chevron-left] size-5 cursor-pointer rtl:rotate-180"></span>
+                        </span>
+                        <span class="sr-only">Previous</span>
+                    </button>
+                    <!-- Next Slide -->
+                    <button type="button" class="carousel-next">
+                        <span class="sr-only">Next</span>
+                        <span class="size-9.5 bg-base-100 flex items-center justify-center rounded-full shadow">
+                            <span class="icon-[tabler--chevron-right] size-5 cursor-pointer rtl:rotate-180"></span>
+                        </span>
+                    </button>
+                </div>
 
                 <!-- TARJETA 1 -->
                 <button type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="transparent-modal1"
@@ -660,61 +714,89 @@
     </div>
 
     <!-- Contacto Section -->
-    <section id="contacto" class="py-16 bg-blue-500 text-white">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section id="contacto" class="py-16 text-white"
+        style="background-image: url({{ asset('img/servid.jpg') }}); background-size: cover; background-position: center;">
+        <div
+            class="container mx-auto px-4 sm:px-6 lg:px-8 text-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 grid-rows-1 lg:grid-rows-2 items-center">
+
+
+            <div class="col-start-1 grid gap-4 row-span-2">
+                <p></p>
+                <h1 class="text-5xl">¡Encuentra nuestro Despacho Contable México en el mapa!</h1>
+                <p class="text-4xl">Av. Mariano Abasolo No. 37, Colonia Centro, Altotonga Veracruz, México, 93700</p>
+                <p class="text-3xl">correo: info@despacho.mx</p>
+                <p class="text-3xl">Teléfono: +52 (55) 226 1234</p>
+                <p class="text-3xl">teléfono: +52 (55) 226 1234</p>
+            </div>
+
+
+            <div class="col-start-2 grid gap-4">
+                <p></p>
+                <h1 class="text-5xl">¡Encuentra nuestro Despacho Contable México en el mapa!</h1>
+                <p class="text-4xl">Av. Mariano Abasolo No. 37, Colonia Centro, Altotonga Veracruz, México, 93700</p>
+                <p class="text-3xl">correo: info@despacho.mx</p>
+                <p class="text-3xl">Teléfono: +52 (55) 226 1234</p>
+                <p class="text-3xl">teléfono: +52 (55) 226 1234</p>
+            </div>
+
             <!-- Mapa Responsive -->
-            <div class="w-full h-64 sm:h-96 lg:h-[450px] overflow-hidden">
+            <div class="w-full h-64 sm:h-96 lg:h-[450px] overflow-hidden col-start-2 row-start-2">
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d234.6763431503151!2d-97.24427016139883!3d19.76273746513662!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85dadd220dad0f15%3A0xa557afc86a4751a0!2sAv.%20Gral.%20Mariano%20Abasolo%20Sur%2037a%2C%20La%20Loma%2C%2093700%20Altotonga%2C%20Ver.!5e0!3m2!1ses!2smx!4v1733877724906!5m2!1ses!2smx"
                     class="w-full h-full border-0" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
             </div>
+
+
+
+
+
         </div>
     </section>
 
     <!-- Footer -->
     <div class="w-full">
-    <footer class="footer bg-base-200/60 p-10 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        
-        <!-- Logo -->
-        <div class="col-span-1 md:col-span-2 lg:col-span-1 flex items-center justify-center">
-            <img src="{{ asset('img/DESPACHO.png') }}" alt="Logo" class="w-72 h-60">
-        </div>
+        <footer class="footer bg-base-200/60 p-10 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
 
-        <!-- Sección Inicio -->
-        <nav class="col-span-1 md:col-span-1 lg:col-start-3 lg:mt-16">
-            <h6 class="footer-title">Inicio</h6>
-            <a href="#" class="link link-hover">Acerca de</a>
-            <span>
-                <a href="#" class="link link-hover">Ubicación</a>
-                <span class="badge ms-2 badge-sm badge-primary">Contacto</span>
-            </span>
-            <a href="#" class="link link-hover">Servicios</a>
-        </nav>
+            <!-- Logo -->
+            <div class="col-span-1 md:col-span-2 lg:col-span-1 flex items-center justify-center">
+                <img src="{{ asset('img/DESPACHO.png') }}" alt="Logo" class="w-72 h-60">
+            </div>
 
-        <!-- Sección Company -->
-        <nav class="col-span-1 md:col-span-1 lg:col-start-4 lg:mt-8">
-            <h6 class="footer-title">Company</h6>
-            <a href="#" class="link link-hover">About us</a>
-            <a href="#" class="link link-hover">Contact</a>
-            <a href="#" class="link link-hover">Jobs</a>
-            <a href="#" class="link link-hover">Press kit</a>
-        </nav>
+            <!-- Sección Inicio -->
+            <nav class="col-span-1 md:col-span-1 lg:col-start-3 lg:mt-16">
+                <h6 class="footer-title">Inicio</h6>
+                <a href="#" class="link link-hover">Acerca de</a>
+                <span>
+                    <a href="#" class="link link-hover">Ubicación</a>
+                    <span class="badge ms-2 badge-sm badge-primary">Contacto</span>
+                </span>
+                <a href="#" class="link link-hover">Servicios</a>
+            </nav>
 
-    </footer>
-</div>
+            <!-- Sección Company -->
+            <nav class="col-span-1 md:col-span-1 lg:col-start-4 lg:mt-8">
+                <h6 class="footer-title">Company</h6>
+                <a href="#" class="link link-hover">About us</a>
+                <a href="#" class="link link-hover">Contact</a>
+                <a href="#" class="link link-hover">Jobs</a>
+                <a href="#" class="link link-hover">Press kit</a>
+            </nav>
+
+        </footer>
+    </div>
 @endsection
 
-    @push('modals')
-        <script>
-            const navbar = document.getElementById('navbar');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY === 0) {
-                    navbar.classList.remove('fixed');
-                } else {
-                    navbar.classList.add('fixed');
-                }
-            });
-        </script>
-    @endpush
+@push('modals')
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY === 0) {
+                navbar.classList.remove('fixed');
+            } else {
+                navbar.classList.add('fixed');
+            }
+        });
+    </script>
+@endpush

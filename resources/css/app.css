@@ -105,7 +105,7 @@
 .herotwo {
   background-size: cover;
   position: relative;
- 
+
 }
 
 .herotwo::before {
@@ -115,7 +115,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, rgba(26, 96, 188, 0.603), rgba(19, 79, 159, 0.596));
+  background: linear-gradient(to right, rgba(8, 81, 175, 0.507), rgba(19, 80, 159, 0.194));
   z-index: 1;
 }
 
@@ -132,4 +132,20 @@
     font-size: 1.2rem;
   }
   
+}
+#navbar-first {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: transform 0.5s ease, opacity 0.5s ease; /* Transición suave */
+}
+
+/* Cuando se oculta, movemos el navbar hacia arriba y lo hacemos transparente */
+#navbar-first.hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+.card-group {
+ background-color: transparent;
 }
