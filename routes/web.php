@@ -46,7 +46,7 @@ Route::middleware([
         });
     #Route::resource('counter', CounterController::class)->names('counter.home');
     Route::post('/register-token', [CustomRegisterController::class, 'store'])->name('register.token');
-
+    Route::get('/user', [ClientController::class, 'final'])->name('client.final');
  
     
 

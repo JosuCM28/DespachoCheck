@@ -156,4 +156,13 @@ class ClientController extends Controller
         $client->delete();
         return redirect()->route('client.index')->with('success', 'Contador Borrado Exitosamente');
     }
+
+    public function final(Client $client){
+
+        return view('userclient.index');
+
+
+    }
+
+
 }

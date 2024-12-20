@@ -3,7 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 [x-cloak] {
     display: none;
 }
@@ -19,133 +18,262 @@
 
 .status {
     padding: 2px;
-    border-radius: 5px; 
-    transition: box-shadow 0.3s ease; 
-  }
-  
-  .status.active {
-    box-shadow: 0 0 20px 0.1rem rgb(178, 226, 178); 
-  }
-  
-  .status.inactive {
-    box-shadow: 0 0 20px 0.1rem rgb(224, 159, 159); 
-  }
+    border-radius: 5px;
+    transition: box-shadow 0.3s ease;
+}
 
-  .text-difuminado {
+.status.active {
+    box-shadow: 0 0 20px 0.1rem rgb(178, 226, 178);
+}
+
+.status.inactive {
+    box-shadow: 0 0 20px 0.1rem rgb(224, 159, 159);
+}
+
+.text-difuminado {
     background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .montecarlo-regular {
-  font-family: "MonteCarlo", cursive;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 2rem;
-  @media screen {
-  display: inline;
-    font-size: 2.1rem ;
-  }
-
+    font-family: "MonteCarlo", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2rem;
+    @media screen {
+        display: inline;
+        font-size: 2.1rem;
+    }
 }
 
 .parisienne-regular {
-  font-family: "Parisienne", cursive;
-  font-weight: 400;
-  font-style: italic;
-  font-size: 2rem;
+    font-family: "Parisienne", cursive;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 2rem;
 }
 
 .rosarivo-regular {
-  font-family: "Rosarivo", cursive;
-  font-weight: 400;
-  font-style: normal;
+    font-family: "Rosarivo", cursive;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .rosarivo-regular-italic {
-  font-family: "Rosarivo", cursive;
-  font-weight: 400;
-  font-style: italic;
+    font-family: "Rosarivo", cursive;
+    font-weight: 400;
+    font-style: italic;
 }
 
 .arbutus-regular {
-  font-family: "Arbutus", serif;
-  font-weight: 400;
-  font-style: normal;
+    font-family: "Arbutus", serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .merriweather-light {
-  font-family: "Merriweather", serif;
-  font-weight: 300;
-  font-style: normal;
+    font-family: "Merriweather", serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.sour-gummy-round {
+    font-family: "Sour Gummy", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
 }
 
 .herone {
-  background-size: cover;
-  position: relative;
-  height: 550px;
+    background-size: cover;
+    position: relative;
+    height: 550px;
 }
 
 .herone::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, rgba(26, 96, 188, 0.603), rgba(26, 96, 188, 0.06));
-  z-index: 1;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(26, 96, 188, 0.603),
+        rgba(26, 96, 188, 0.06)
+    );
+    z-index: 1;
 }
 .card-herone {
-  position: relative;
-  z-index: 2;
-  color: #fff;
+    position: relative;
+    z-index: 2;
+    color: #fff;
+}
+
+.card-sup {
+    position: relative;
+    z-index: 2;
 }
 
 .herotwo {
-  background-size: cover;
-  position: relative;
-
+    background-size: cover;
+    position: relative;
 }
 
 .herotwo::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, rgba(8, 81, 175, 0.507), rgba(19, 80, 159, 0.194));
-  z-index: 1;
-}
-
-.card1 {
-  position: relative;
-  z-index: 2;
-  color: #fff;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(28, 37, 52, 0.507),
+        rgba(19, 80, 159, 0.194)
+    );
+    z-index: 1;
 }
 
 .font-title {
-  font-size: 1.5rem;
+    font-size: 1.5rem;
 
-  @media screen and (min-width: 320px) {
-    font-size: 1.2rem;
-  }
-  
+    @media screen and (min-width: 320px) {
+        font-size: 1.2rem;
+    }
 }
 #navbar-first {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  transition: transform 0.5s ease, opacity 0.5s ease; /* Transición suave */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: transform 0.5s ease, opacity 0.5s ease; /* Transición suave */
 }
 
 /* Cuando se oculta, movemos el navbar hacia arriba y lo hacemos transparente */
 #navbar-first.hidden {
-  transform: translateY(-100%);
-  opacity: 0;
+    transform: translateY(-100%);
+    opacity: 0;
 }
 .card-group {
- background-color: transparent;
+    background-color: transparent;
+}
+.galery {
+    display: flex;
+    width: 100%; /* Ocupa el 100% del ancho del contenedor */
+    max-width: 600px; /* Ancho máximo para pantallas grandes */
+    height: 430px; /* Altura fija */
+    margin: 0 auto; /* Centra la galería horizontalmente */
+}
+
+.galery img {
+    width: 0; /* Ancho inicial de las imágenes */
+    flex-grow: 1;
+    object-fit: cover;
+    opacity: 0.8;
+    transition: width 0.5s ease, opacity 0.5s ease, filter 0.5s ease;
+}
+
+.galery img:hover {
+    cursor: crosshair;
+    width: 300px; /* Expansión al hacer hover */
+    opacity: 1;
+    filter: contrast(120%);
+}
+
+.heroservices {
+    background-size: cover;
+    position: relative;
+    height: auto;
+}
+
+.heroservices::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(11, 50, 102, 0.861),
+        rgba(11, 50, 102, 0.861)
+    );
+    z-index: 1;
+}
+
+@media (max-width: 640px) {
+    .galery {
+        display: unset;
+    }
+    .letrauno {
+        font-size: 3.5rem;
+        line-height: 3.5rem;
+    }
+    .letrados {
+        font-size: 1.3rem;
+        line-height: 1.5rem;
+    }
+
+    .quienesimg {
+        display: none!important;
+    }
+    .comoimg {
+        display: none!important;
+    }
+    
+    
+
+    .cardfirst .cardtrans:nth-child(4) {
+        height: 31rem;
+       padding-bottom: 0rem;
+    }
+    .cardfirst .cardtrans:nth-child(1) {
+        margin-top: 3rem;
+        height: 36rem!important;
+        margin-bottom: 0rem;
+    }
+    .navgrande {
+        display: none!important;
+    }
+    #query {
+        padding-bottom: 0;
+    }
+    .footer {
+        padding-top: 0;
+    }
+}
+
+.img-dif {
+    mask-image: linear-gradient(black 80%, transparent);
+}
+
+@media (min-width: 640px) {
+    .nonesm {
+        display: block !important;
+    }
+    #nosotros {
+        position: absolute;
+        background-image: unset !important;
+    }
+
+    .cardfirst .cardtrans:nth-child(1) {
+        transform: translateX(30px);
+        
+    }
+
+    .cardfirst .cardtrans:nth-child(4) {
+        transform: translateX(-40px);
+    }
+    .cardfirst .cardtrans:nth-child(5) {
+        display: none!important;
+    }
+    .navpeque {
+        display: none!important;
+    }
+    .textorecto {
+        white-space: nowrap;
+}
 }

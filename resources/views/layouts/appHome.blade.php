@@ -15,12 +15,16 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/laravel-echo/1.17.1/echo.js" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.15/paper-full.min.js"></script>
     <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
+    <script>
+        document.documentElement.classList.add('js')
+    </script>
 
 
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js',])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <!-- Styles -->
     @livewireStyles
@@ -41,11 +45,12 @@
         @endif
 
         <!-- Page Content -->
-        <main>
+        <main class="overflow-hidden">
             @yield('content')
         </main>
     </div>
 
+    <script src="https://unpkg.com/taos@1.0.5/dist/taos.js"></script>
     <script src="../node_modules/flyonui/flyonui.js"></script>
     @stack('modals')
     @livewireScripts
