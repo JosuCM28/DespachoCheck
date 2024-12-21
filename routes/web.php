@@ -22,7 +22,7 @@ Route::middleware([
         Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
         
     });
-    Route::middleware(['auth'])->group(function () {
+    Route::middleware(['auth','\App\Http\Middleware\CheckRole::class'])->group(function () {
         Route::get('/counter/index', [CounterController::class, 'index'])->name('counter.index');
         Route::get('/counter/create', [CounterController::class, 'create'])->name('counter.create');
         Route::post('/counter/store', [CounterController::class, 'store'])->name('counter.store');
@@ -43,11 +43,12 @@ Route::middleware([
         Route::delete('/file/destroy/{document}', [FileController::class, 'destroy'])->name('file.destroy');
         Route::post('/file/{client}', [FileController::class, 'store'])->name('file.store');
         Route::get('/file/download/{document}', [FileController::class, 'download'])->name('file.download');
+
+
+        Route::get('/user', [ClientController::class, 'final'])->name('client.final');
         });
     #Route::resource('counter', CounterController::class)->names('counter.home');
     Route::post('/register-token', [CustomRegisterController::class, 'store'])->name('register.token');
-    Route::get('/user', [ClientController::class, 'final'])->name('client.final');
- 
     
 
 Route::get('/bot', [HomeController::class, 'index'])->name('sidebar');
