@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\ReceiptController;
 use Filament\Pages\Dashboard;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -19,10 +20,13 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
     ])->group(function () {
-        Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+
         
     });
     Route::middleware(['auth','\App\Http\Middleware\CheckRole::class'])->group(function () {
+        Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+
+
         Route::get('/counter/index', [CounterController::class, 'index'])->name('counter.index');
         Route::get('/counter/create', [CounterController::class, 'create'])->name('counter.create');
         Route::post('/counter/store', [CounterController::class, 'store'])->name('counter.store');
@@ -43,12 +47,17 @@ Route::middleware([
         Route::delete('/file/destroy/{document}', [FileController::class, 'destroy'])->name('file.destroy');
         Route::post('/file/{client}', [FileController::class, 'store'])->name('file.store');
         Route::get('/file/download/{document}', [FileController::class, 'download'])->name('file.download');
-
+        
 
         Route::get('/user', [ClientController::class, 'final'])->name('client.final');
+
+        Route::get('/receipt/create',[ReceiptController::class,'create'])->name('receipt.create');
+
+        #DOMPDF
+        Route::get('/dompdf/receipt',[ReceiptController::class,'dompdf'])->name('receipt.dompdf');
         });
     #Route::resource('counter', CounterController::class)->names('counter.home');
     Route::post('/register-token', [CustomRegisterController::class, 'store'])->name('register.token');
     
 
-Route::get('/bot', [HomeController::class, 'index'])->name('sidebar');
+Route::get('/bot', [HomeController::class, 'index'])->name('sidebar'); 
