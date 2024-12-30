@@ -14,6 +14,11 @@ class Credential extends Model
         'client_id',
         'counter_id',
         'title',
+        'sipare',
+        'idse',
+        'siec',
+        'useridse',
+        'usersipare',
         'content',
     ];
 

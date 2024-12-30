@@ -52,9 +52,11 @@ Route::middleware([
         Route::get('/user', [ClientController::class, 'final'])->name('client.final');
 
         Route::get('/receipt/create',[ReceiptController::class,'create'])->name('receipt.create');
+        Route::post('/receipt/store',[ReceiptController::class,'store'])->name('receipt.store');
 
         #DOMPDF
         Route::get('/dompdf/receipt',[ReceiptController::class,'dompdf'])->name('receipt.dompdf');
+        Route::post('/pdf',[ReceiptController::class,'generarpdf'])->name('generar.pdf');
         });
     #Route::resource('counter', CounterController::class)->names('counter.home');
     Route::post('/register-token', [CustomRegisterController::class, 'store'])->name('register.token');

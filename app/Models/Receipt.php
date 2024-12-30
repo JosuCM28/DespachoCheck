@@ -25,6 +25,7 @@ class Receipt extends Model
         'identificator',
         'pay_method',
         'mount',
+        'qr_path',
         'concept',
     ];
 

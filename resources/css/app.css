@@ -276,4 +276,10 @@
     .textorecto {
         white-space: nowrap;
 }
+    .pdfirst {
+        width: 210mm !important;
+        height: 297mm !important; 
+        margin: 0; 
+        box-sizing: border-box;
+    }
 }

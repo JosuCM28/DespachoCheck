@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('client_id')->constrained('clients')->onDelete('cascade');  // Cliente asociado al recibo
             $table->foreignId('category_id')->constrained('categories');  // Categoría del recibo
             $table->string('identificator', 10)->unique();
+            $table->string('qr_path')->unique();
             $table->enum('pay_method',['cash', 'transfer'])->default('cash');
             $table->decimal('mount', 10, 2);  // Monto del recibo
             $table->string('concept');  // Concepto del recibo

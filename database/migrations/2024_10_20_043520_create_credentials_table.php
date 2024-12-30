@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('sipare');
             $table->string('useridse');
             $table->string('usersipare');
+            $table->string('content');
             $table->timestamps();
         });
     }
