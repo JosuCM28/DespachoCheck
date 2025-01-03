@@ -85,8 +85,13 @@ class CounterController extends Controller
 
     public function edit(Counter $counter)
     {
+
+
         return view('counters.edit', [
-            'counter' => $counter
+            'counter' => $counter->load('regime', 'user'),
+            'user' => $counter->user,
+            'regime' => Regime::all(),
+
         ]);
     }
 

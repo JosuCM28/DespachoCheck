@@ -13,13 +13,15 @@ return new class extends Migration
     {
         Schema::create('credentials', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('client_id')->constrained('clients')->onDelete('cascade');  
-            $table->string('idse');
-            $table->string('siec');
-            $table->string('sipare');
-            $table->string('useridse');
-            $table->string('usersipare');
-            $table->string('content');
+            $table->foreignId('client_id')->nullable()->constrained('clients')->onDelete('set null');
+            $table->string('idse')->nullable();
+            $table->string('siec')->nullable();
+            $table->string('sipare')->nullable();
+            $table->string('useridse')->nullable();
+            $table->string('usersipare')->nullable();
+            $table->string('auxone')->nullable();
+            $table->string('auxtwo')->nullable();
+            $table->string('auxthree')->nullable();
             $table->timestamps();
         });
     }

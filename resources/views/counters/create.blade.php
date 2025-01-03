@@ -17,7 +17,7 @@
                                     <label for="name"
                                         class="block text-sm font-medium leading-6 text-gray-900">Nombre<span class="text-red-500">*</span></label>
                                     <div class="mt-2">
-                                        <input type="text" name="name" id="name" autocomplete="given-name"
+                                        <input type="text" oninput="this.value = this.value.toUpperCase();" name="name" id="name" autocomplete="given-name"
                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                         <span class="label-text-alt">Porfavor escribe los nombres</span>
                                         @error('name')
@@ -30,7 +30,7 @@
                                     <label for="last_name"
                                         class="block text-sm font-medium leading-6 text-gray-900">Apellido<span class="text-red-500">*</span></label>
                                     <div class="mt-2">
-                                        <input type="text" name="last_name" id="last_name" autocomplete="family-name"
+                                        <input type="text" oninput="this.value = this.value.toUpperCase();" name="last_name" id="last_name" autocomplete="family-name"
                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                             <span class="label-text-alt">Porfavor escribe los apellidos</span>
                                         @error('last_name')
@@ -71,7 +71,7 @@
                                     <label for="rfc"
                                         class="block text-sm font-medium leading-6 text-gray-900">RFC</label>
                                     <div class="mt-2">
-                                        <input type="text" name="rfc" id="rfc" autocomplete="address-level2"
+                                        <input type="text" oninput="this.value = this.value.toUpperCase();" name="rfc" id="rfc" autocomplete="address-level2"
                                             maxlength="13"
                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                             <span class="label-text-alt">Porfavor escribe el RFC</span>
@@ -85,7 +85,7 @@
                                     <label for="curp"
                                         class="block text-sm font-medium leading-6 text-gray-900">CURP</label>
                                     <div class="mt-2">
-                                        <input type="text" name="curp" id="curp" autocomplete="curp" maxlength="18"
+                                        <input type="text" oninput="this.value = this.value.toUpperCase();" name="curp" id="curp" autocomplete="curp" maxlength="18"
                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                             <span class="label-text-alt">Porfavor escribe el CURP</span>
                                         @error('curp')
@@ -98,7 +98,7 @@
                                     <label for="phone"
                                         class="block text-sm font-medium leading-6 text-gray-900">Telefono</label>
                                     <div class="mt-2">
-                                        <input id="phone" name="phone" type="text"
+                                        <input id="phone" name="phone" type="number" oninput="this.value = this.value.slice(0, 10);"
                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                                     <span class="label-text-alt">Porfavor escribe el numero de telefono</span>
                                         @error('phone')
@@ -110,7 +110,7 @@
                                     <label for="address"
                                         class="block text-sm font-medium leading-6 text-gray-900">Direccion</label>
                                     <div class="mt-2">
-                                        <input type="text" name="address" id="address" autocomplete="address-level2"
+                                        <input type="text" oninput="this.value = this.value.toUpperCase();" name="address" id="address" autocomplete="address-level2"
                                             maxlength="13"
                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                             <span class="label-text-alt">Porfavor escribe la direccion</span>
@@ -124,7 +124,7 @@
                                     <label for="city"
                                         class="block text-sm font-medium leading-6 text-gray-900">Ciudad</label>
                                     <div class="mt-2">
-                                        <input type="text" name="city" id="city" autocomplete="city" maxlength="18"
+                                        <input type="text" oninput="this.value = this.value.toUpperCase();" name="city" id="city" autocomplete="city" maxlength="18"
                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                             <span class="label-text-alt">Porfavor escribe la ciudad</span>
                                         @error('city')
@@ -136,7 +136,7 @@
                                 <div class="sm:col-span-2">
                                     <label for="cp" class="block text-sm font-medium leading-6 text-gray-900">CP</label>
                                     <div class="mt-2">
-                                        <input id="cp" name="cp" type="text"
+                                        <input id="cp" name="cp" oninput="this.value = this.value.slice(0, 5);" type="text"
                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                                     <span class="label-text-alt">Porfavor escribe el CP</span>      
                                         @error('cp')
@@ -148,7 +148,7 @@
                                     <label for="state"
                                         class="block text-sm font-medium leading-6 text-gray-900">Estado</label>
                                     <div class="mt-2">
-                                        <input id="state" name="state" type="text"
+                                        <input id="state" oninput="this.value = this.value.toUpperCase();" name="state" type="text"
                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                                     <span class="label-text-alt">Porfavor escribe el estado</span>
                                         @error('state')
@@ -161,7 +161,7 @@
                                     <label for="regime_id"
                                         class="block text-sm font-medium leading-6 text-gray-900">Regimen</label>
                                     <div class="mt-2">
-                                       <select name="regime_id" id="regime_id" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                       <select name="regime_id" oninput="this.value = this.value.toUpperCase();" id="regime_id" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                             <option value="">Seleccione un régimen</option>
                                             @foreach ($regimes as $regime)
                                             <option value="{{ $regime->id }}">{{ $regime->title }}</option>

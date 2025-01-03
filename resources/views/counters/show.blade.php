@@ -98,9 +98,9 @@
                                 <div class="sm:col-span-3 form-control w-full sm:w-96">
                                     <label for="curp"
                                         class="block text-sm font-medium leading-6 text-gray-900">Regimen</label>
-                                    <div class="mt-2 input input-filled peer">
-                                        <p class="{{ $counter->regimen ? '' : 'text-gray-400 italic' }}">
-                                            {{ $counter->regimen ?? 'Sin datos existentes' }} </p>
+                                    <div class="mt-2 input input-filled peer" style="max-height: 4rem; overflow-y: auto;">
+                                        <p class="{{ $counter->regime ? '' : 'text-gray-400 italic' }}">
+                                            {{ $counter->regime->title ?? 'Sin datos existentes' }} </p>
                                     </div>
                                 </div>
 

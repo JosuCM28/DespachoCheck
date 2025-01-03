@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\PDFMaker;
+use App\Http\Controllers\VerifyReceipt;
 use App\Http\Controllers\ReceiptController;
 use Filament\Pages\Dashboard;
 use Illuminate\Support\Facades\Route;
@@ -51,12 +53,17 @@ Route::middleware([
 
         Route::get('/user', [ClientController::class, 'final'])->name('client.final');
 
+
+        Route::get('/receipt',[ReceiptController::class,'index'])->name('receipt.index');
         Route::get('/receipt/create',[ReceiptController::class,'create'])->name('receipt.create');
         Route::post('/receipt/store',[ReceiptController::class,'store'])->name('receipt.store');
+        Route::get('/receipt/show/{identificator}',[ReceiptController::class,'show'])->name('receipt.show');
 
         #DOMPDF
-        Route::get('/dompdf/receipt',[ReceiptController::class,'dompdf'])->name('receipt.dompdf');
-        Route::post('/pdf',[ReceiptController::class,'generarpdf'])->name('generar.pdf');
+        Route::get('/downloadPDF/{id}',[PDFMaker::class,'downloadPDF'])->name('downloadPDF');
+        Route::post('/sendPDF/{id}',[PDFMaker::class,'sendPDF'])->name('sendPDF');
+
+        Route::get('/receipt/verify/{identificator}',[VerifyReceipt::class,'__invoke'])->name('receipt.verify');
         });
     #Route::resource('counter', CounterController::class)->names('counter.home');
     Route::post('/register-token', [CustomRegisterController::class, 'store'])->name('register.token');

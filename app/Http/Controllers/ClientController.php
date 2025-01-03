@@ -6,6 +6,7 @@ use App\Models\Document;
 use App\Models\Regime;
 use Illuminate\Http\Request;
 use App\Models\Client;
+use App\Models\Credential;
 use Illuminate\Support\Str;
 
 class ClientController extends Controller
@@ -17,7 +18,7 @@ class ClientController extends Controller
     {
         $clients = Client::all();
         $counters = Counter::all();
-        return view('clients.index', compact('clients','counters'));
+        return view('clients.index', compact('clients', 'counters'));
     }
 
     /**
@@ -27,10 +28,11 @@ class ClientController extends Controller
     {
         $counters = Counter::all();
         $regimes = Regime::all();
+        $credentials = Credential::all();
         $token = Str::random(8);
 
-        
-        
+
+
 
 
         return view('clients.create', compact('counters', 'token', 'regimes'));
@@ -47,6 +49,7 @@ class ClientController extends Controller
             'user_id' => 'nullable',
             'counter_id' => 'nullable',
             'regime_id' => 'nullable',
+            'credential_id' => 'nullable',
             'status' => 'required',
             'phone' => 'nullable|string|unique:clients|max:10',
             'name' => 'required|string|max:255',
@@ -62,40 +65,66 @@ class ClientController extends Controller
             'note' => 'nullable|string|max:500',
             'token' => 'required|string|size:8|unique:clients',
             'birthdate' => 'nullable|date|before:today',
-        ]);
-        $fullname = $request->name . ' ' . $request->last_name;
-        Client::create([
-            'user_id' => $request->user_id,
-            'counter_id'=> $request->counter_id,
-            'status'=> $request->status,
-            'phone'=> $request->phone,
-            'name'=> $request->name,
-            'email'=> $request->email,
-            'last_name'=> $request->last_name,
-            'address'=> $request->address,
-            'rfc'=> $request->rfc,
-            'curp'=> $request->curp,
-            'city'=> $request->city,
-            'state'=> $request->state,
-            'cp'=> $request->cp,
-            'nss'=> $request->nss,
-            'regime_id'=> $request->regime_id,
-            'note'=> $request->note,
-            'token'=> $request->token,
-            'birthdate'=> $request->birthdate,
-            'full_name' => $fullname,
+
+            // Validación de credenciales
+            'client_id' => 'nullable',
+            'idse' => 'nullable|string|max:255',
+            'sipare' => 'nullable|string|max:255',
+            'siec' => 'nullable|string|max:255',
+            'useridse' => 'nullable|string|max:255',
+            'usersipare' => 'nullable|string|max:255',
+            'auxone' => 'nullable|string|max:255',
+            'auxtwo' => 'nullable|string|max:255',
+            'auxthree' => 'nullable|string|max:255',
         ]);
 
-        return redirect()->route('client.index')->with('success', 'Contador creado exitosamente.');
+        
+        $fullname = $request->name . ' ' . $request->last_name;
+        $client = Client::create([
+            'user_id' => $request->user_id,
+            'counter_id' => $request->counter_id,
+            'status' => $request->status,
+            'phone' => $request->phone,
+            'name' => $request->name,
+            'email' => $request->email,
+            'last_name' => $request->last_name,
+            'address' => $request->address,
+            'rfc' => $request->rfc,
+            'curp' => $request->curp,
+            'city' => $request->city,
+            'state' => $request->state,
+            'cp' => $request->cp,
+            'nss' => $request->nss,
+            'regime_id' => $request->regime_id,
+            'note' => $request->note,
+            'token' => $request->token,
+            'birthdate' => $request->birthdate,
+            'full_name' => $fullname,
+        ]);
+        Credential::create([
+            'sipare' => $request->sipare,
+            'idse' => $request->idse,
+            'siec' => $request->siec,
+            'useridse' => $request->useridse,
+            'usersipare' => $request->usersipare,
+            'auxone' => $request->auxone,
+            'auxtwo' => $request->auxtwo,
+            'auxthree' => $request->auxthree,
+            'client_id' => $client->id,
+            
+        ]);
+
+        return redirect()->route('client.index')->with('success', 'Cliente creado exitosamente.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Client $client,)
+    public function show(Client $client)
     {
         return view('clients.show', [
             'client' => $client,
+            'credential' => Credential::where('client_id', $client->id)->first(),
         ]);
     }
 
@@ -106,7 +135,7 @@ class ClientController extends Controller
     {
         $regimes = Regime::all();
 
-        return view('clients.edit',[
+        return view('clients.edit', [
             'client' => $client,
             'regimes' => $regimes
         ]);
@@ -139,11 +168,12 @@ class ClientController extends Controller
             'note' => 'nullable|string|max:500',
             'token' => 'required|string|size:8|unique:clients',
             'birthdate' => 'nullable|date|before:today',
+            'credentials_id' => 'nullable|date|before:today',
         ]);
 
         $request->merge(['full_name' => $fullname]);
         $client->update($request->all());
-        return redirect()->route('client.index')->with('success', 'Contador actualizado exitosamente.');
+        return redirect()->route('client.index')->with('success', 'Cliente actualizado exitosamente.');
     }
 
 
@@ -157,7 +187,8 @@ class ClientController extends Controller
         return redirect()->route('client.index')->with('success', 'Contador Borrado Exitosamente');
     }
 
-    public function final(Client $client){
+    public function final(Client $client)
+    {
 
         return view('userclient.index');
 

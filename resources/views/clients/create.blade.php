@@ -18,7 +18,7 @@
                                     <div class="sm:col-span-2">
                                         <label for="name" class="block text-sm font-medium text-gray-900">Nombre<span class="text-red-500">*</span></label>
                                         <div class="mt-2">
-                                            <input type="text" name="name" id="name" autocomplete="given-name"
+                                            <input type="text"  name="name" oninput="this.value = this.value.toUpperCase();" id="name" autocomplete="given-name"
                                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                             <span class="label-text-alt">Escribe los nombres</span>
                                             @error('name')
@@ -32,7 +32,7 @@
                                         <label for="last_name"
                                             class="block text-sm font-medium text-gray-900">Apellido<span class="text-red-500">*</span></label>
                                         <div class="mt-2">
-                                            <input type="text" name="last_name" id="last_name" autocomplete="family-name"
+                                            <input type="text" oninput="this.value = this.value.toUpperCase();" name="last_name" id="last_name" autocomplete="family-name"
                                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                             <span class="label-text-alt">Escribe los apellidos</span>
                                             @error('last_name')
@@ -57,7 +57,7 @@
                                         <label for="phone" class="block text-sm font-medium text-gray-900">Numero de
                                             Telefono</label>
                                         <div class="mt-2">
-                                            <input type="text" name="phone" id="phone" autocomplete="phone-level1"
+                                            <input type="number" oninput="this.value = this.value.slice(0, 10);" name="phone" id="phone" autocomplete="phone-level1"
                                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                             <span class="label-text-alt">Escribe el telefono</span>
                                             @error('phone')
@@ -70,7 +70,7 @@
                                     <div class="sm:col-span-2">
                                         <label for="rfc" class="block text-sm font-medium text-gray-900">RFC</label>
                                         <div class="mt-2">
-                                            <input id="rfc" name="rfc" type="text" maxlength="13"
+                                            <input id="rfc" oninput="this.value = this.value.toUpperCase();" name="rfc" type="text" maxlength="13"
                                                 autocomplete="rfc"
                                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                             <span class="label-text-alt">Escribe el RFC</span>
@@ -84,7 +84,7 @@
                                     <div class="sm:col-span-2">
                                         <label for="curp" class="block text-sm font-medium text-gray-900">CURP</label>
                                         <div class="mt-2">
-                                            <input id="curp" name="curp" type="text" maxlength="18"
+                                            <input id="curp" oninput="this.value = this.value.toUpperCase();" name="curp" type="text" maxlength="18"
                                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                             <span class="label-text-alt">Escribe el CURP</span>
                                             @error('curp')
@@ -100,7 +100,7 @@
                                         <label for="address"
                                             class="block text-sm font-medium text-gray-900">Dirección</label>
                                         <div class="mt-2">
-                                            <input type="text" name="address" id="address"
+                                            <input type="text" oninput="this.value = this.value.toUpperCase();" name="address" id="address"
                                                 autocomplete="address-level1"
                                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                             <span class="label-text-alt">Escribe la dirección</span>
@@ -114,7 +114,7 @@
                                     <div class="sm:col-span-2">
                                         <label for="city" class="block text-sm font-medium text-gray-900">Ciudad</label>
                                         <div class="mt-2">
-                                            <input type="text" name="city" id="city"
+                                            <input type="text" oninput="this.value = this.value.toUpperCase();" name="city" id="city"
                                                 autocomplete="address-level2"
                                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                             <span class="label-text-alt">Escribe la ciudad</span>
@@ -128,7 +128,7 @@
                                     <div class="sm:col-span-2">
                                         <label for="cp" class="block text-sm font-medium text-gray-900">CP</label>
                                         <div class="mt-2">
-                                            <input type="text" name="cp" id="cp"
+                                            <input type="number" oninput="this.value = this.value.slice(0, 5);" name="cp" id="cp"
                                                 autocomplete="address-level1"
                                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                             <span class="label-text-alt">Escribe el CP</span>
@@ -143,7 +143,7 @@
                                         <label for="state"
                                             class="block text-sm font-medium text-gray-900">Estado</label>
                                         <div class="mt-2">
-                                            <input type="text" name="state" id="state"
+                                            <input type="text" oninput="this.value = this.value.toUpperCase();" name="state" id="state"
                                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                             <span class="label-text-alt">Escribe el estado</span>
                                             @error('state')
@@ -159,7 +159,7 @@
                                     <div class="sm:col-span-2">
                                         <label for="nss" class="block text-sm font-medium text-gray-900">NSS</label>
                                         <div class="mt-2">
-                                            <input type="text" name="nss" id="nss"
+                                            <input type="number" name="nss" oninput="this.value = this.value.slice(0, 11);" id="nss"
                                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                             <span class="label-text-alt">Porfavor escribe el NSS</span>
                                             @error('nss')
@@ -172,7 +172,7 @@
                                         <label for="siec" class="block text-sm font-medium text-gray-900">Contraseña
                                             SIEC</label>
                                         <div class="mt-2">
-                                            <input type="text" name="#" id="siec"
+                                            <input type="text" name="{{'siec'}}" id="siec"
                                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                             <span class="label-text-alt">Porfavor escribe la contraseña SIEC</span>
                                             @error('siec')
@@ -185,7 +185,7 @@
                                         <label for="useridse" class="block text-sm font-medium text-gray-900">Usuario
                                             IDSE</label>
                                         <div class="mt-2">
-                                            <input type="text" name="#" id="useridse"
+                                            <input type="text" name="{{'useridse'}}" id="useridse"
                                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                             <span class="label-text-alt"> Porfavor escribe el usuairo IDSE</span>
                                             @error('useridse')
@@ -198,7 +198,7 @@
                                         <label for="idse" class="block text-sm font-medium text-gray-900">Contraseña
                                             IDSE</label>
                                         <div class="mt-2">
-                                            <input type="text" name="#" id="idse"
+                                            <input type="text" name="{{'idse'}}" id="idse"
                                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                                 <span class="label-text-alt">Porfavor escribe la contraseña IDSE</span>
                                             @error('idse')
@@ -211,7 +211,7 @@
                                         <label for="usersipare" class="block text-sm font-medium text-gray-900">Usuario
                                             Sipare</label>
                                         <div class="mt-2">
-                                            <input type="text" name="#" id="usersipare"
+                                            <input type="text" name="{{'usersipare'}}" id="usersipare"
                                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                                 <span class="label-text-alt">Porfavor escribe el usuario Sipare</span>
                                             @error('usersipare')
@@ -225,7 +225,7 @@
                                         <label for="sipare" class="block text-sm font-medium text-gray-900">Contraseña
                                             Sipare</label>
                                         <div class="mt-2">
-                                            <input type="text" name="#" id="sipare"
+                                            <input type="text" name="{{'sipare'}}" id="sipare"
                                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                                 <span class="label-text-alt">Porfavor escribe la contraseña Sipare</span>
                                             @error('sipare')
@@ -254,11 +254,11 @@
                                         <label for="regimen"
                                             class="block text-sm font-medium text-gray-900">Régimen</label>
                                         <div class="mt-2">
-                                            <select name="counter_id" id="counter_id"
+                                            <select name="regime_id" oninput="this.value = this.value.toUpperCase();" id="regime_id"
                                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                                 <option value="">Seleccione un régimen</option>
                                                 @foreach ($regimes as $regime)
-                                                    <option value="{{ $regime->title }}">{{ $regime->title }}</option>
+                                                    <option value="{{ $regime->id }}">{{ $regime->title }}</option>
                                                 @endforeach
                                             </select>
                                                 <span class="label-text-alt">Porfavor seleccione un régimen</span>

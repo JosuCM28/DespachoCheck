@@ -192,7 +192,7 @@
                                 </div>
 
                                 <div class="sm:col-span-3 form-control w-full sm:w-96">
-                                    <label for="rfc" class="block text-sm font-medium leading-6 text-gray-900">Fecha
+                                    <label for="birthdate" class="block text-sm font-medium leading-6 text-gray-900">Fecha
                                         de
                                         nacimiento</label>
                                     <div class="mt-2 input input-filled peer">
@@ -203,11 +203,11 @@
 
 
                                 <div class="sm:col-span-3 form-control w-full sm:w-96">
-                                    <label for="city"
+                                    <label for="rfc"
                                         class="block text-sm font-medium leading-6 text-gray-900">RFC</label>
                                     <div class="mt-2 input input-filled peer">
-                                        <p class="{{ $client->birthdate ? '' : 'text-gray-400 italic' }}">
-                                            {{ $client->birthdate ?? 'Sin datos existentes' }}
+                                        <p class="{{ $client->rfc ? '' : 'text-gray-400 italic' }}">
+                                            {{ $client->rfc ?? 'Sin datos existentes' }}
                                         </p>
                                     </div>
                                 </div>
@@ -222,7 +222,7 @@
                                 </div>
 
                                 <div class="sm:col-span-3 form-control w-full sm:w-96">
-                                    <label for="curp"
+                                    <label for="phone"
                                         class="block text-sm font-medium leading-6 text-gray-900">Telefono</label>
                                     <div class="mt-2 input input-filled peer">
                                         <p class="{{ $client->phone ? '' : 'text-gray-400 italic' }}">
@@ -231,7 +231,7 @@
                                 </div>
 
                                 <div class="sm:col-span-3 form-control w-full sm:w-96">
-                                    <label for="curp"
+                                    <label for="address"
                                         class="block text-sm font-medium leading-6 text-gray-900">Dirección</label>
                                     <div class="mt-2 input input-filled peer" style="max-height: 4rem; overflow-y: auto;">
                                         <p class="{{ $client->address ? '' : 'text-gray-400 italic' }}"
@@ -242,7 +242,7 @@
                                 </div>
 
                                 <div class="sm:col-span-3 form-control w-full sm:w-96">
-                                    <label for="curp"
+                                    <label for="city"
                                         class="block text-sm font-medium leading-6 text-gray-900">Ciudad</label>
                                     <div class="mt-2 input input-filled peer ">
                                         <p class="{{ $client->city ? '' : 'text-gray-400 italic' }}">
@@ -251,7 +251,7 @@
                                 </div>
 
                                 <div class="sm:col-span-3 form-control w-full sm:w-96">
-                                    <label for="curp"
+                                    <label for="cp"
                                         class="block text-sm font-medium leading-6 text-gray-900">CP</label>
                                     <div class="mt-2 input input-filled peer">
                                         <p class="{{ $client->cp ? '' : 'text-gray-400 italic' }}">
@@ -260,7 +260,7 @@
                                 </div>
 
                                 <div class="sm:col-span-3 form-control w-full sm:w-96">
-                                    <label for="curp"
+                                    <label for="state"
                                         class="block text-sm font-medium leading-6 text-gray-900">Estado</label>
                                     <div class="mt-2 input input-filled peer">
                                         <p class="{{ $client->state ? '' : 'text-gray-400 italic' }}">
@@ -269,18 +269,18 @@
                                 </div>
 
                                 <div class="sm:col-span-3 form-control w-full sm:w-96">
-                                    <label for="curp "
+                                    <label for="regimen "
                                         class="block text-sm font-medium leading-6 text-gray-900">Regimen</label>
                                     <div class="mt-2 input input-filled peer">
-                                        <p class="{{ $client->regimen ? '' : 'text-gray-400 italic ' }}">
-                                            {{ $client->regimen ?? 'Sin datos existentes' }} </p>
+                                        <p class="{{ $client->regime ? '' : 'text-gray-400 italic ' }}">
+                                            {{ $client->regime ?? 'Sin datos existentes' }} </p>
                                     </div>
                                 </div>
 
 
 
                                 <div class="sm:col-span-3 form-control w-full sm:w-96">
-                                    <label for="curp"
+                                    <label for="nss"
                                         class="block text-sm font-medium leading-6 text-gray-900">NSS</label>
                                     <div class="mt-2 input input-filled peer ">
                                         <p class="{{ $client->nss ? '' : 'text-gray-400 italic ' }}">
@@ -289,11 +289,11 @@
                                 </div>
 
                                 <div class="sm:col-span-3 form-control w-full sm:w-96">
-                                    <label for="curp"
+                                    <label for="siec"
                                         class="block text-sm font-medium leading-6 text-gray-900">Contraseña SIEC</label>
                                     <div class="mt-2 input input-filled peer">
-                                        <p class="{{ $client->rfc_user ? '' : 'text-gray-400 italic' }}">
-                                            {{ $client->rfc_user ?? 'Sin datos existentes' }} </p>
+                                        <p class="{{ $credential->siec ? '' : 'text-gray-400 italic' }}">
+                                            {{ $credential->siec ?? 'Sin datos existentes' }} </p>
                                     </div>
                                 </div>
 
@@ -302,8 +302,8 @@
                                         class="block text-sm font-medium leading-6 text-gray-900">Usuario
                                         IDSE</label>
                                     <div class="mt-2 input input-filled peer">
-                                        <p class="{{ $client->rfc_user ? '' : 'text-gray-400 italic' }}">
-                                            {{ $client->rfc_user ?? 'Sin datos existentes' }} </p>
+                                        <p class="{{ $credential->useridse ? '' : 'text-gray-400 italic' }}">
+                                            {{ $credential->useridse ?? 'Sin datos existentes' }} </p>
                                     </div>
                                 </div>
 
@@ -311,8 +311,8 @@
                                     <label for="curp"
                                         class="block text-sm font-medium leading-6 text-gray-900">Contraseña IDSE</label>
                                     <div class="mt-2 input input-filled peer">
-                                        <p class="{{ $client->rfc_user ? '' : 'text-gray-400 italic' }}">
-                                            {{ $client->rfc_user ?? 'Sin datos existentes' }} </p>
+                                        <p class="{{ $credential->idse ? '' : 'text-gray-400 italic' }}">
+                                            {{ $credential->idse ?? 'Sin datos existentes' }} </p>
                                     </div>
                                 </div>
 
@@ -321,8 +321,8 @@
                                         class="block text-sm font-medium leading-6 text-gray-900">Usuario
                                         SIPARE</label>
                                     <div class="mt-2 input input-filled peer">
-                                        <p class="{{ $client->rfc_user ? '' : 'text-gray-400 italic' }}">
-                                            {{ $client->rfc_user ?? 'Sin datos existentes' }} </p>
+                                        <p class="{{ $credential->usersipare ? '' : 'text-gray-400 italic' }}">
+                                            {{ $credential->usersipare ?? 'Sin datos existentes' }} </p>
                                     </div>
                                 </div>
 
@@ -330,8 +330,8 @@
                                     <label for="curp"
                                         class="block text-sm font-medium leading-6 text-gray-900">Contraseña SIPARE</label>
                                     <div class="mt-2 input input-filled peer">
-                                        <p class="{{ $client->rfc_user ? '' : 'text-gray-400 italic' }}">
-                                            {{ $client->rfc_user ?? 'Sin datos existentes' }} </p>
+                                        <p class="{{ $credential->sipare ? '' : 'text-gray-400 italic' }}">
+                                            {{ $credential->sipare ?? 'Sin datos existentes' }} </p>
                                     </div>
                                 </div>
 
@@ -347,11 +347,11 @@
                                 </div>
 
                                 <div class="sm:col-span-3 form-control w-full sm:w-96">
-                                    <label for="curp"
+                                    <label for="token"
                                         class="block text-sm font-medium leading-6 text-gray-900">Token</label>
                                     <div class="mt-2 input input-filled peer">
-                                        <p class="{{ $client->rfc_user ? '' : 'text-gray-400 italic' }}">
-                                            {{ $client->rfc_user ?? 'Sin datos existentes' }} </p>
+                                        <p class="{{ $client->token ? '' : 'text-gray-400 italic' }}">
+                                            {{ $client->token ?? 'Sin datos existentes' }} </p>
                                     </div>
                                 </div>
 

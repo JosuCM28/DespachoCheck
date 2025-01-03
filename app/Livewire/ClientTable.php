@@ -12,10 +12,12 @@ use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridFields;
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
 use PowerComponents\LivewirePowerGrid\Components\SetUp\Exportable;
+use PowerComponents\LivewirePowerGrid\Traits\WithExport; 
 
 final class ClientTable extends PowerGridComponent
 {
     public string $tableName = 'client-table-h66d7c-table';
+    use WithExport; 
     public int $counter = 0;
     public function __mount(int $counter): void
     {

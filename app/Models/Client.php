@@ -38,10 +38,6 @@ class Client extends Model
         'note',
         'token',
         'birthdate',
-        'idse',
-        'sipare',
-        'usuariouno',
-        'usuariodos',
     ];
 
     /**
@@ -65,7 +61,8 @@ class Client extends Model
     }
     public function credentials()
     {
-        return $this->hasMany(Credential::class);
+        return $this->hasOne(Credential::class);
+
     }
 
     public function regime()

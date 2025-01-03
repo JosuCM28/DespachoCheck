@@ -13,14 +13,15 @@ return new class extends Migration
     {
         Schema::create('receipts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('counter_id')->constrained('counters')->onDelete('cascade');  // Contador que crea el recibo
-            $table->foreignId('client_id')->constrained('clients')->onDelete('cascade');  // Cliente asociado al recibo
-            $table->foreignId('category_id')->constrained('categories');  // Categoría del recibo
-            $table->string('identificator', 10)->unique();
-            $table->string('qr_path')->unique();
-            $table->enum('pay_method',['cash', 'transfer'])->default('cash');
-            $table->decimal('mount', 10, 2);  // Monto del recibo
-            $table->string('concept');  // Concepto del recibo
+            $table->foreignId('counter_id')->constrained('counters')->onDelete('cascade');  
+            $table->foreignId('client_id')->constrained('clients')->onDelete('cascade');  
+            $table->foreignId('category_id')->constrained('categories');  
+            $table->string('identificator')->unique();
+            $table->datetime('payment_date');
+            $table->string('pay_method');
+            $table->decimal('mount', 10, 2); 
+            $table->text('concept');  
+            $table->string('status');  
             $table->timestamps();
         });
     }

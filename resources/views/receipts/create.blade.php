@@ -6,7 +6,12 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <form action="{{ route('receipt.store') }}" method="post">
                 @csrf
-                <div class="grid grid-cols-4 grid-rows-7 gap-4 ">
+                 @if (@session('success'))
+                                    <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 m-4" role="alert">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
+                <div class="grid grid-cols-4 grid-rows-8 gap-4 ">
                     <div class="col-span-2">
                         <label for="categories" class="block text-sm font-medium text-gray-900">Tipo de Recibo</label>
                         <div class="mt-2">
@@ -53,6 +58,9 @@
                                 @endforeach
                             </select>
                             <span class="label-text-alt">Selecciona el contribuyente beneficiario</span>
+                            @error('client_id')
+                                <span class="text-red-500 text-sm">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="col-start-3 row-start-2">
@@ -60,10 +68,14 @@
                         <select name="pay_method" id="pay_method"
                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             <option value="cash">Efectivo</option>
+                            <option value="cheque">Cheque</option>
                             <option value="transfer">Transferencia Bancaria</option>
 
                         </select>
                         <span class="label-text-alt">Porfavor seleccione el metodo de pago</span>
+                        @error('pay_method')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="col-start-4 row-start-2">
                         <label for="" class="block text-sm font-medium text-gray-900">Monto $MXN</label>
@@ -71,6 +83,9 @@
                             class="input block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6 mt-1"
                             id="mount" name="mount" placeholder="Escribe el monto">
                         <span class="label-text-alt">Escribe el monto en numero</span>
+                        @error('mount')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="col-span-2 row-start-3">
                         <label for="">Fecha del recibo a pagar <span>
@@ -109,21 +124,69 @@
                         <input name="concept" type="text"
                             class="input block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6 mt-1">
                         <span class="label-text-alt">Escribe la fecha del pago (mes/año)</span>
+                        @error('concept')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="col-span-2 col-start-3 row-start-3">
+                        <label for="identificator" class="block text-sm font-medium text-gray-900">Fecha de pago</label>
+                        <input name="payment_date" type="date"
+                            class="input block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6 mt-1">
+                        <span class="label-text-alt ml-1">El identificador sirve para llevar el control de los
+                            recibos</span>
+                        @error('date')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col-span-2 col-start-1 row-start-4 ">
+                        <label for="identificator" class="block text-sm font-medium text-gray-900">Estado</label>
+                        <select name="status" id="status"
+                            class="input block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6 mt-1">
+                            <option value="paid">Pagado</option>
+                            <option value="pending">Pendiente</option>
+                            <option value="canceled">Cancelado</option>
+                        </select>
+                        <span class="label-text-alt ml-1">El identificador sirve para llevar el control de los
+                            recibos</span>
+                        @error('status')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col-span-2 col-start-3 row-start-4 ">
                         <label for="identificator" class="block text-sm font-medium text-gray-900">Identificador</label>
                         <input name="identificator" type="text" value="{{ $identificator }}" readonly
                             class="input block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6 mt-1">
                         <span class="label-text-alt ml-1">El identificador sirve para llevar el control de los
                             recibos</span>
+                        @error('identificator')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
                     </div>
-                    <input type="text" value="STRINGPODEROSISIMOdadfa" name="qr_path" onlyread hidden>
-                    <div class="grid col-start-end"> <button type="submit" class="btn btn-primary">Guardar</button></div>
+                    <div class="grid col-start-4 col-span-1"> <button type="button" class="btn btn-primary"
+                            aria-haspopup="dialog" aria-expanded="false" aria-controls="basic-modal"
+                            data-overlay="#basic-modal"> Guardar </button>
+                    </div>
+                    <div id="basic-modal" class="overlay modal overlay-open:opacity-100 hidden" role="dialog"
+                        tabindex="-1">
+                        <div class="modal-dialog overlay-open:opacity-100">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3 class="modal-title">¿Quieres enviar el recibo por correo?</h3>
+                                    <button type="button" class="btn btn-text btn-circle btn-sm absolute end-3 top-3"
+                                        aria-label="Close" data-overlay="#basic-modal">
+                                        <span class="icon-[tabler--x] size-4"></span>
+                                    </button>
+                                </div>
+                                <div class="modal-footer flex text-center items-center gap-4">
+                                    <button type="submit" class="btn btn-soft btn-secondary"
+                                        data-overlay="#basic-modal">Solo guardar</button>
+                                    <button type="submit" action="action" value="send" class="btn btn-primary">Enviar por correo</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </form>
-            <form action="/pdf" method="post">
-                @csrf
-                <button type="submit" class="btn btn-primary">Upload</button>
+
             </form>
         </div>
     </div>

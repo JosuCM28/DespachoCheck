@@ -9,17 +9,16 @@ class Credential extends Model
 {
     use HasFactory;
 
-    // Define los campos que se pueden asignar en masa
     protected $fillable = [
         'client_id',
-        'counter_id',
-        'title',
-        'sipare',
         'idse',
+        'sipare',
         'siec',
         'useridse',
         'usersipare',
-        'content',
+        'auxone',
+        'auxtwo',
+        'auxthree',
     ];
 
 
@@ -27,11 +26,7 @@ class Credential extends Model
 
     public function client()
     {
-        return $this->belongsTo(Client::class);
+        return $this->belongsTo(Client::class, 'client_id');
     }
 
-    public function counter()
-    {
-        return $this->belongsTo(Counter::class);
-    }
 }
