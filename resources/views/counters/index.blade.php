@@ -22,12 +22,11 @@
                                 <div class="flex justify-between items-center">
                                     <p class="text-gray-500">Lista de todos los contadores existentes</p>
                                     <a href="{{ route('counter.create') }}"
-                                        class="">
-                                      <span class="icon-[icon-park--add-one]" style="width: 48px; height: 48px;"></span>
-                                    </a>
+                                        class="rounded-md bg-indigo-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Agregar</a>
+
                                 </div>
                             </div>
-                            
+
 
                             <livewire:counter-table />
 

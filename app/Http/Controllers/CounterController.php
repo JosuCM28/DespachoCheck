@@ -79,7 +79,6 @@ class CounterController extends Controller
             'user' => $counter->user,
             'regime' => $regime,
             'document' => $document,
-           
         ]);
     }
 
@@ -95,22 +94,35 @@ class CounterController extends Controller
         ]);
     }
 
-    public function update(Request $request, Counter $counter)
+    public function update(Request $request, Counter $counter, User $user)
     {
-        // Validar y actualizar el post
+        
         $fullname = $request->name . ' ' . $request->last_name;
         $request->validate([
-            'name' => 'nullable|string|max:255', // Obligatorio, debe ser una cadena, máximo 255 caracteres
-            'last_name' => 'nullable|string|max:255', // Obligatorio, debe ser una cadena, máximo 255 caracteres
-            'email' => 'nullable|email|max:255', // Obligatorio, formato de correo electrónico, único en la tabla 'users'
-            'rfc' => 'nullable|string|size:13', // Obligatorio, debe tener exactamente 13 caracteres (para México), único
-            'curp' => 'nullable|string|size:18', // Obligatorio, debe tener exactamente 18 caracteres, único
-            'birthdate' => 'nullable|date', // Obligatorio, debe ser una fecha válida, antes de la fecha actual
-            'city' => 'nullable|string|max:255', // Obligatorio, debe ser una cadena, máximo 255 caracteres
-        ]);
+            'name' => 'nullable|string|max:255,', 
+            'last_name' => 'nullable|string|max:255',
+            'email' => 'nullable|email|max:255', 
+            'rfc' => 'nullable|string|size:13', 
+            'curp' => 'nullable|string|size:18', 
+            'phone' => 'nullable|string|size:10',
+            'birthdate' => 'nullable|date',
+            'city' => 'nullable|string|max:255',
+            'address' => 'nullable|string|max:255',
+            'cp' => 'nullable|string|max:255',
+            'state' => 'nullable|string|max:255',
+            'regimen' => 'nullable',
+            
 
+            
+
+        ]);
+        
         $request->merge(['full_name' => $fullname]);
+        
         $counter->update($request->all());
+        $user = User::findOrFail($counter->user_id);
+        $user->update($request->only(['name', 'email']));
+
 
         return redirect()->route('counter.index')->with('success', 'Contador actualizado exitosamente.');
     }

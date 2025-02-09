@@ -67,9 +67,9 @@
                         <label for="pay_method" class="block text-sm font-medium text-gray-900">Metodo de pago </label>
                         <select name="pay_method" id="pay_method"
                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                            <option value="cash">Efectivo</option>
-                            <option value="cheque">Cheque</option>
-                            <option value="transfer">Transferencia Bancaria</option>
+                            <option value="EFECTIVO">Efectivo</option>
+                            <option value="CHEQUE">Cheque</option>
+                            <option value="TRANSFERENCIA">Transferencia Bancaria</option>
 
                         </select>
                         <span class="label-text-alt">Porfavor seleccione el metodo de pago</span>
@@ -81,7 +81,7 @@
                         <label for="" class="block text-sm font-medium text-gray-900">Monto $MXN</label>
                         <input type="number" name="mount"
                             class="input block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6 mt-1"
-                            id="mount" name="mount" placeholder="Escribe el monto">
+                            id="mount" name="mount" placeholder="Escribe el monto" step="0.01">
                         <span class="label-text-alt">Escribe el monto en numero</span>
                         @error('mount')
                             <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -121,7 +121,7 @@
                                     </div>
                                 </div>
                             </span></label>
-                        <input name="concept" type="text"
+                        <input name="concept" type="text" oninput="this.value = this.value.toUpperCase();"
                             class="input block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6 mt-1">
                         <span class="label-text-alt">Escribe la fecha del pago (mes/año)</span>
                         @error('concept')
@@ -132,8 +132,7 @@
                         <label for="identificator" class="block text-sm font-medium text-gray-900">Fecha de pago</label>
                         <input name="payment_date" type="date"
                             class="input block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6 mt-1">
-                        <span class="label-text-alt ml-1">El identificador sirve para llevar el control de los
-                            recibos</span>
+                        <span class="label-text-alt ml-1">Porfavor introduce la fecha de pago</span>
                         @error('date')
                             <span class="text-red-500 text-sm">{{ $message }}</span>
                         @enderror
@@ -142,12 +141,11 @@
                         <label for="identificator" class="block text-sm font-medium text-gray-900">Estado</label>
                         <select name="status" id="status"
                             class="input block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6 mt-1">
-                            <option value="paid">Pagado</option>
-                            <option value="pending">Pendiente</option>
-                            <option value="canceled">Cancelado</option>
+                            <option value="PAGADO">Pagado</option>
+                            <option value="PENDIENTE">Pendiente</option>
+                            <option value="CANCELADO">Cancelado</option>
                         </select>
-                        <span class="label-text-alt ml-1">El identificador sirve para llevar el control de los
-                            recibos</span>
+                        <span class="label-text-alt ml-1">Porfavor introduce el estado del recibo</span>
                         @error('status')
                             <span class="text-red-500 text-sm">{{ $message }}</span>
                         @enderror
@@ -180,7 +178,7 @@
                                 <div class="modal-footer flex text-center items-center gap-4">
                                     <button type="submit" class="btn btn-soft btn-secondary"
                                         data-overlay="#basic-modal">Solo guardar</button>
-                                    <button type="submit" action="action" value="send" class="btn btn-primary">Enviar por correo</button>
+                                    <button type="submit" name="action" value="send" class="btn btn-primary">Enviar por correo</button>
                                 </div>
                             </div>
                         </div>

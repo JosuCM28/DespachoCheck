@@ -42,7 +42,7 @@
                                     </div>
 
                                     <div class="sm:col-span-2">
-                                        <label for="email" class="block text-sm font-medium text-gray-900">Correo</label>
+                                        <label for="email" class="block text-sm font-medium text-gray-900">Correo<span class="text-red-500">*</span></label>
                                         <div class="mt-2">
                                             <input type="text" name="email" id="email" autocomplete="family-name"
                                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
@@ -68,7 +68,7 @@
 
                                     <!-- Correo -->
                                     <div class="sm:col-span-2">
-                                        <label for="rfc" class="block text-sm font-medium text-gray-900">RFC</label>
+                                        <label for="rfc" class="block text-sm font-medium text-gray-900">RFC<span class="text-blue-500">*</span></label>
                                         <div class="mt-2">
                                             <input id="rfc" oninput="this.value = this.value.toUpperCase();" name="rfc" type="text" maxlength="13"
                                                 autocomplete="rfc"
@@ -98,7 +98,7 @@
 
                                     <div class="sm:col-span-2">
                                         <label for="address"
-                                            class="block text-sm font-medium text-gray-900">Dirección</label>
+                                            class="block text-sm font-medium text-gray-900">Dirección<span class="text-blue-500">*</span></label>
                                         <div class="mt-2">
                                             <input type="text" oninput="this.value = this.value.toUpperCase();" name="address" id="address"
                                                 autocomplete="address-level1"
@@ -126,7 +126,7 @@
 
                                     <!-- Estado -->
                                     <div class="sm:col-span-2">
-                                        <label for="cp" class="block text-sm font-medium text-gray-900">CP</label>
+                                        <label for="cp" class="block text-sm font-medium text-gray-900">CP<span class="text-blue-500">*</span></label>
                                         <div class="mt-2">
                                             <input type="number" oninput="this.value = this.value.slice(0, 5);" name="cp" id="cp"
                                                 autocomplete="address-level1"
@@ -176,6 +176,56 @@
                                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                             <span class="label-text-alt">Porfavor escribe la contraseña SIEC</span>
                                             @error('siec')
+                                                <span class="text-red-500 text-sm">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                     <div class="sm:col-span-2">
+                                        <label for="birthdate"
+                                            class="block text-sm font-medium text-gray-900">Cumpleaños</label>
+                                        <div class="mt-2">
+                                            <input type="date" name="birthdate" id="birthdate"
+                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                                <span class="label-text-alt">Porfavor digite la fecha de nacimiento</span>
+                                            @error('birthdate')
+                                                <span class="text-red-500 text-sm">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="sm:col-span-2">
+                                        <label for="regimen"
+                                            class="block text-sm font-medium text-gray-900">Régimen<span class="text-red-500">*</span></label>
+                                        <div class="mt-2">
+                                            <select name="regime_id" oninput="this.value = this.value.toUpperCase();" id="regime_id"
+                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                                <option disabled selected>Seleccione un régimen</option>
+                                                @foreach ($regimes as $regime)
+                                                    <option value="{{ $regime->id }}">{{ $regime->title }}</option>
+                                                @endforeach
+                                            </select>
+                                                <span class="label-text-alt">Porfavor seleccione un régimen</span>
+                                            @error('regimen')
+                                                <span class="text-red-500 text-sm">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <!-- Estatus -->
+                                    <div class="sm:col-span-2">
+                                        <label for="status"
+                                            class="block text-sm font-medium text-gray-900">Estatus<span class="text-red-500">*</span></label>
+                                        <div class="mt-2">
+                                            <select name="status"
+                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                                <option value="active">Activo</option>
+                                                <option value="inactive">Inactivo</option>
+                                            </select>
+                                                <span class="label-text-alt">Porfavor seleccione el estatus</span>
+                                            @error('status')
                                                 <span class="text-red-500 text-sm">{{ $message }}</span>
                                             @enderror
                                         </div>
@@ -233,61 +283,6 @@
                                             @enderror
                                         </div>
                                     </div>
-
-
-                                    <div class="sm:col-span-2">
-                                        <label for="birthdate"
-                                            class="block text-sm font-medium text-gray-900">Cumpleaños</label>
-                                        <div class="mt-2">
-                                            <input type="date" name="birthdate" id="birthdate"
-                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                                <span class="label-text-alt">Porfavor digite la fecha de nacimiento</span>
-                                            @error('birthdate')
-                                                <span class="text-red-500 text-sm">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-
-
-                                    <div class="sm:col-span-2">
-                                        <label for="regimen"
-                                            class="block text-sm font-medium text-gray-900">Régimen</label>
-                                        <div class="mt-2">
-                                            <select name="regime_id" oninput="this.value = this.value.toUpperCase();" id="regime_id"
-                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                                <option value="">Seleccione un régimen</option>
-                                                @foreach ($regimes as $regime)
-                                                    <option value="{{ $regime->id }}">{{ $regime->title }}</option>
-                                                @endforeach
-                                            </select>
-                                                <span class="label-text-alt">Porfavor seleccione un régimen</span>
-                                            @error('regimen')
-                                                <span class="text-red-500 text-sm">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <!-- Estatus -->
-                                    <div class="sm:col-span-2">
-                                        <label for="status"
-                                            class="block text-sm font-medium text-gray-900">Estatus<span class="text-red-500">*</span></label>
-                                        <div class="mt-2">
-                                            <select name="status" id="status"
-                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                                <option value="active">Activo</option>
-                                                <option value="inactive">Inactivo</option>
-                                            </select>
-                                                <span class="label-text-alt">Porfavor seleccione el estatus</span>
-                                            @error('status')
-                                                <span class="text-red-500 text-sm">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-
-
-
 
 
                                     <div class="sm:col-span-3">

@@ -99,7 +99,7 @@
 
     <!-- Hero Section -->
     <header class="text-white herone"
-        style="background-size: cover; background-position: center; background-image: url({{ asset('img/fondofirst.jpg') }});">
+        style="background-size: cover; background-position: center; background-image: url({{ asset('img/fondofirst.webp') }});">
         <div class="container mx-auto grid md:grid-cols-2 items-center py-11 px-4 sm:px-6 lg:px-8">
             <div class="lg:mt-15">
                 <p class=" letrauno merriweather-light text-white card-herone text-2xl sm:text-3xl md:text-4xl lg:text-6xl">

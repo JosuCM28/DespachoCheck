@@ -22,6 +22,10 @@ return new class extends Migration
             $table->string('auxone')->nullable();
             $table->string('auxtwo')->nullable();
             $table->string('auxthree')->nullable();
+            $table->date('iniciofiel')->nullable();
+            $table->date('finfiel')->nullable();
+            $table->date('iniciosello')->nullable();
+            $table->date('finsello')->nullable();
             $table->timestamps();
         });
     }

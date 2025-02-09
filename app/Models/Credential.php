@@ -19,6 +19,10 @@ class Credential extends Model
         'auxone',
         'auxtwo',
         'auxthree',
+        'iniciofiel',
+        'finfiel',
+        'iniciosello',
+        'finsello',
     ];
 
 

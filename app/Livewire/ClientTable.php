@@ -220,7 +220,12 @@ final class ClientTable extends PowerGridComponent
                 ->slot('<i class="fa-regular fa-eye" style="color: #306958;"></i>')
                 ->id()
                 ->class('')
-                ->route('client.show', ['client' => $row->id])
+                ->route('client.show', ['client' => $row->id]),
+                Button::add('edit')
+                ->slot('<i class="icon-[typcn--edit]" style="color:rgb(166, 145, 63);"></i>')
+                ->id()
+                ->class('')
+                ->route('client.edit', ['client' => $row->id]),
 
         ];
     }

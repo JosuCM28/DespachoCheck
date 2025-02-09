@@ -44,7 +44,7 @@ class ReceiptMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.template',
+            view: 'emails.templatemail',
         );
     }
 

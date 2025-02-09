@@ -76,9 +76,13 @@ class ClientController extends Controller
             'auxone' => 'nullable|string|max:255',
             'auxtwo' => 'nullable|string|max:255',
             'auxthree' => 'nullable|string|max:255',
+            'iniciofiel' => 'nullable',
+            'finfiel' => 'nullable',
+            'iniciosello' => 'nullable',
+            'finsello' => 'nullable',
         ]);
 
-        
+
         $fullname = $request->name . ' ' . $request->last_name;
         $client = Client::create([
             'user_id' => $request->user_id,
@@ -111,7 +115,11 @@ class ClientController extends Controller
             'auxtwo' => $request->auxtwo,
             'auxthree' => $request->auxthree,
             'client_id' => $client->id,
-            
+            'iniciofiel' => $request->iniciofiel,
+            'finfiel' => $request->finfiel,
+            'iniciosello' => $request->iniciosello,
+            'finsello' => $request->finsello,
+
         ]);
 
         return redirect()->route('client.index')->with('success', 'Cliente creado exitosamente.');
@@ -134,10 +142,11 @@ class ClientController extends Controller
     public function edit(Client $client)
     {
         $regimes = Regime::all();
-
+        $counters = Counter::all();
         return view('clients.edit', [
             'client' => $client,
-            'regimes' => $regimes
+            'regimes' => $regimes,
+            'counters' => $counters
         ]);
     }
 
@@ -147,32 +156,44 @@ class ClientController extends Controller
     public function update(Request $request, Client $client)
     {
         // Validar y actualizar el post
-        $fullname = $request->name . ' ' . $request->last_name;
         $request->validate([
-            'user_id' => 'nullable',
             'counter_id' => 'nullable',
-            'status' => 'required',
-            'phone' => 'nullable|string|unique|max:10',
+            
+            'phone' => 'nullable|string|max:10',
             'name' => 'required|string|max:255',
-            'email' => 'nullable|email|unique:clients|max:255',
+            'email' => 'nullable|email|max:255',
             'last_name' => 'required|string|max:255',
             'address' => 'nullable|string|max:255',
-            'rfc' => 'nullable|string|unique:clients|max:13',
-            'rfc_user' => 'nullable|string|max:13',
-            'curp' => 'nullable|string|unique:clients|max:18',
+            'rfc' => 'nullable|string|max:13',
+            'curp' => 'nullable|string|max:18',
             'city' => 'nullable|string|max:255',
             'state' => 'nullable|string|max:255',
             'cp' => 'nullable|string|max:5',
             'nss' => 'nullable|string|max:11',
             'regime_id' => 'nullable|string|max:255',
             'note' => 'nullable|string|max:500',
-            'token' => 'required|string|size:8|unique:clients',
+            'status' => 'nullable',
+            'password' => 'nullable',
             'birthdate' => 'nullable|date|before:today',
-            'credentials_id' => 'nullable|date|before:today',
-        ]);
 
-        $request->merge(['full_name' => $fullname]);
+            # Validación de credenciales
+            'auxone' => 'nullable|string|max:255',
+            'auxtwo' => 'nullable|string|max:255',
+            'auxthree' => 'nullable|string|max:255',
+            'idse' => 'nullable|string|max:255',
+            'sipare' => 'nullable|string|max:255',
+            'siec' => 'nullable|string|max:255',
+            'useridse' => 'nullable|string|max:255',
+            'usersipare' => 'nullable|string|max:255',
+            'iniciofiel' => 'nullable',
+            'iniciosello' => 'nullable',
+            'finsello' => 'nullable',
+            'finfiel' => 'nullable',
+        ]);
+        $client = Client::findOrFail($client->id);
+        $client->full_name = $request->name . ' ' . $request->last_name;
         $client->update($request->all());
+        $client->credentials->update($request->all());
         return redirect()->route('client.index')->with('success', 'Cliente actualizado exitosamente.');
     }
 

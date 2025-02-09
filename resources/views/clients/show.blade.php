@@ -5,8 +5,15 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg ">
                 <div class="container mx-auto p-12">
+                    <form action="{{ route('client.destroy', $client->id) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit"class="absolute top-4 right-4 text-gray-600 hover:text-red-600"
+                            id="deleteButton">
+                            <i class="fa-solid fa-xmark fa-lg"></i>
+                        </button>
+                    </form>
                     <div class="pb-11">
-
                         <p class="text-center font-bold text-2xl "><i class="fa-solid fa-circle  fa-xs mr-1"
                                 title="{{ $client->status === 'active' ? 'Usuario Activo' : 'Usuario Inactivo' }}"
                                 style="{{ $client->status === 'active' ? 'color: #1bc70f;' : 'color: #ef0b2d;' }} "></i>
@@ -18,6 +25,7 @@
                         </div>
 
                     </div>
+
                     @if (@session('success'))
                         <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 m-4" role="alert">
                             {{ session('success') }}
@@ -35,16 +43,17 @@
                                     <h2 class="text-base font-semibold leading-7 text-gray-900">Informacion personal</h2>
                                 </div>
                                 <div class="dropdown relative inline-flex rtl:[--placement:bottom-end] mt-0.5">
-                                    <button id="dropdown-menu-icon " type="button" 
+                                    <button id="dropdown-menu-icon " type="button"
                                         class="dropdown-toggle btn btn-square btn-text btn-xs" aria-haspopup="menu"
                                         aria-expanded="false" aria-label="Dropdown">
                                         <span class="icon-[solar--alt-arrow-down-linear] size-6"></span>
                                     </button>
                                     <ul class="dropdown-menu dropdown-open:opacity-100 hidden min-w-10" role="menu"
                                         aria-orientation="vertical" aria-labelledby="dropdown-menu-icon">
-                                        <li> <a type="button" class="dropdown-item" href="#" aria-haspopup="dialog" alt="Ver documentos"
-                                        title="Ver documentos" aria-expanded="false" aria-controls="scroll-inside-modal"
-                                        data-overlay="#scroll-inside-modal">Documentos </a></li>
+                                        <li> <a type="button" class="dropdown-item" href="#" aria-haspopup="dialog"
+                                                alt="Ver documentos" title="Ver documentos" aria-expanded="false"
+                                                aria-controls="scroll-inside-modal"
+                                                data-overlay="#scroll-inside-modal">Documentos </a></li>
                                         <li><a class="dropdown-item" href="#">Settings</a></li>
                                         <li><a class="dropdown-item" href="#">Billing</a></li>
                                         <li><a class="dropdown-item" href="#">FAQs</a></li>
@@ -272,8 +281,8 @@
                                     <label for="regimen "
                                         class="block text-sm font-medium leading-6 text-gray-900">Regimen</label>
                                     <div class="mt-2 input input-filled peer">
-                                        <p class="{{ $client->regime ? '' : 'text-gray-400 italic ' }}">
-                                            {{ $client->regime ?? 'Sin datos existentes' }} </p>
+                                        <p class="{{ $client->regime_id ? '' : 'text-gray-400 italic ' }}">
+                                            {{ $client->regime->title ?? 'Sin datos existentes' }} </p>
                                     </div>
                                 </div>
 

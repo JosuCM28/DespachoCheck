@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Recibo - DOMPDF</title>
+    <title>Recibo</title>
 
     <style>
         body {
@@ -16,7 +16,7 @@
 
         .invoice-box {
             width: 220mm;
-            height:180mm;
+            height: 180mm;
             padding: 5px;
             border: 1px solid #eee;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
@@ -129,10 +129,10 @@
                                 <div class="text-right">
                                     <p>COMPROBANTE DE PAGO REALIZADO POR INTERNET</p>
                                     <p>CPRI</p>
-                                    <p><strong>FECHA DE EMISIÓN:</strong> 2024-10-01</p>
-                                    <p><strong>Identificador:</strong><br> ID2024-10-012024-10-012024-10-012024-10-012024</p>
-                                    <p><strong>TIPO DE COMPROBANTE:</strong> 2024-10-01</p>
-                                    <p><strong>EXPEDIDO EN:</strong> 93700</p>
+                                    <p><strong>FECHA DE EMISIÓN:</strong> {{ $receipt->payment_date }}</p>
+                                    <p><strong>Identificador:</strong><br> {{ $receipt->identificator }}</p>
+                                    <p><strong>TIPO DE COMPROBANTE:</strong> {{ $receipt->category->name }}</p>
+                                    <p><strong>EXPEDIDO EN:</strong>{{ $receipt->counter->cp }}</p>
                                 </div>
                             </td>
                         </tr>
@@ -147,16 +147,18 @@
                             <td>
                                 <h3 style="color:blue;">EMISOR DEL COMPROBANTE FISCAL</h3>
                                 <p><strong>R.F.C. - NOMBRE O RAZÓN SOCIAL:</strong></p>
-                                <p style="color:blue;">BAMT660908883 - TERESA DE JESÚS BALTAZAR MONTES</p>
-                                <p><strong>Régimen Fiscal:</strong> 626 - Régimen Simplificado de Confianza</p>
-                                <p><strong>Domicilio Fiscal:</strong> ABASOLO 37 SN COL. CENTRO, C.P. 93700, Altotonga, Veracruz, México</p>
+                                <p style="color:blue;">{{ $receipt->counter->rfc }} - {{ $receipt->counter->full_name }}
+                                </p>
+                                <p><strong>Régimen Fiscal:</strong> {{ $receipt->counter->regime->title }}</p>
+                                <p><strong>Domicilio Fiscal:</strong> {{ $receipt->counter->address }}</p>
                             </td>
                             <td>
                                 <h3 style="color:red;">RECEPTOR DEL COMPROBANTE FISCAL</h3>
                                 <p><strong>R.F.C. - NOMBRE O RAZÓN SOCIAL:</strong></p>
-                                <p style="color:red;">BAMT660908883 - TERESA DE JESÚS BALTAZAR MONTES</p>
-                                <p><strong>C.P:</strong> 93700</p>
-                                <p><strong>Régimen Fiscal:</strong> 626 - Régimen Simplificado de Confianza</p>
+                                <p style="color:red;">{{ $receipt->client->rfc }} - {{ $receipt->client->full_name }}
+                                </p>
+                                <p><strong>C.P:</strong> {{ $receipt->client->cp }}</p>
+                                <p><strong>Régimen Fiscal:</strong> {{ $receipt->client->regime->title }}</p>
                             </td>
                         </tr>
                     </table>
@@ -180,13 +182,13 @@
                         </thead>
                         <tbody>
                             <tr class="item">
-                                <td>001</td>
-                                <td>84111500</td>
-                                <td>PAGO DE CAJA DE AHORRO DEL MES DE OCTUBRE Y NOVIEMBRE 2024</td>
+                                <td>{{ $receipt->id }}</td>
+                                <td>{{ $receipt->identificator }}</td>
+                                <td>{{ $receipt->category->description   . ' ' . $receipt->concept }}</td>
                                 <td>E48</td>
                                 <td>1</td>
-                                <td>$2,068.97</td>
-                                <td>$2,068.97</td>
+                                <td> ${{ $receipt->mount }}</td>
+                                <td>${{ $receipt->mount }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -196,28 +198,29 @@
             <tr>
                 <td>
                     <h3>DETALLES DE PAGO</h3>
-                    <p><strong>Forma de Pago:</strong> Transferencia electrónica de fondos</p>
-                    <p><strong>Condiciones de Pago:</strong> Contado</p>
+                    <p><strong>Forma de Pago:</strong> {{ $receipt->pay_method }}</p>
+                    <p><strong>Condiciones de Pago:</strong> {{ $receipt->status }}</p>
                     <p><strong>Moneda:</strong> MXN</p>
                     <p><strong>Cantidad:</strong> 1.00</p>
                 </td>
                 <td>
                     <div class="text-right">
                         <h3>TOTALES</h3>
-                        <p><strong>Subtotal:</strong> $2,068.97</p>
+                        <p><strong>Subtotal:</strong> ${{ $receipt->mount }}</p>
                         <p><strong>IVA 16%:</strong> $0</p>
-                        <p><strong>Total:</strong> <span>$2,400.00</span></p>
+                        <p><strong>Total:</strong> <span>${{ $receipt->mount }}</span></p>
                     </div>
                 </td>
             </tr>
         </table>
 
         <div class="qr-code">
-            <img src="data:image/png;base64, {{ base64_encode(QrCode::format('png')->size(200)->generate('cool')) }}" alt="QR Code">
+            <img src="data:image/png;base64, {{ base64_encode(QrCode::format('png')->size(200)->generate($url)) }}"
+                alt="QR Code">
         </div>
 
         <div class="footer">
-            <p>ESTE DOCUMENTO ES UNA REPRESENTACIÓN IMPRESA DE UN CFDI</p>
+            <p>ESTE DOCUMENTO ES UNA REPRESENTACIÓN IMPRESA DE UN CPRI</p>
         </div>
     </div>
 </body>

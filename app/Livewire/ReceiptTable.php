@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\Button;
 use PowerComponents\LivewirePowerGrid\Column;
 use PowerComponents\LivewirePowerGrid\Components\SetUp\Exportable;
-use PowerComponents\LivewirePowerGrid\Traits\WithExport; 
+use PowerComponents\LivewirePowerGrid\Traits\WithExport;
 use PowerComponents\LivewirePowerGrid\Facades\Filter;
 use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridFields;
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
+use PowerComponents\LivewirePowerGrid\Facades\Rule; 
 use App\Models\Counter;
 use App\Models\Client;
 use App\Models\Category;
@@ -20,7 +21,7 @@ use Illuminate\Support\Facades\DB;
 final class ReceiptTable extends PowerGridComponent
 {
     public string $tableName = 'receipt-table-2gepz9-table';
-    use WithExport; 
+    use WithExport;
     public function setUp(): array
     {
         $this->showCheckBox();
@@ -31,7 +32,7 @@ final class ReceiptTable extends PowerGridComponent
                 ->columnWidth([
                     2 => 30,
                 ])
-                ->type( Exportable::TYPE_XLS, Exportable::TYPE_CSV),
+                ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
             PowerGrid::header()
                 ->showToggleColumns()
                 ->showSearchInput(),
@@ -40,6 +41,8 @@ final class ReceiptTable extends PowerGridComponent
                 ->showRecordCount(),
         ];
     }
+
+
 
     public function datasource(): Builder
     {
@@ -64,7 +67,13 @@ final class ReceiptTable extends PowerGridComponent
 
     public function relationSearch(): array
     {
-        return [];
+        return [
+            'counter' => ['full_name'],
+            'client' => ['full_name'],
+            'category' => ['name'],
+
+
+        ];
     }
 
     public function fields(): PowerGridFields
@@ -109,7 +118,7 @@ final class ReceiptTable extends PowerGridComponent
 
             Column::make('Metodo de Pago', 'pay_method')
                 ->sortable()
-                ->hidden(isHidden:true, isForceHidden:false)
+                ->hidden(isHidden: true, isForceHidden: false)
                 ->searchable(),
 
             Column::make('Monto', 'mount')
@@ -129,14 +138,14 @@ final class ReceiptTable extends PowerGridComponent
             Column::make('Fecha de Pago', 'payment_date_formatted', 'payment_date')
                 ->sortable()
                 ->searchable()
-                ->hidden(isHidden:true, isForceHidden:false),
+                ->hidden(isHidden: true, isForceHidden: false),
 
             Column::make('Fecha de creación', 'created_at')
                 ->sortable()
-                ->hidden(isHidden:true, isForceHidden:false)
+                ->hidden(isHidden: true, isForceHidden: false)
                 ->searchable(),
 
-            Column::action('Action')
+            Column::action('Acción')
         ];
     }
 
@@ -148,31 +157,31 @@ final class ReceiptTable extends PowerGridComponent
                 ->dataSource(Category::all())
                 ->optionLabel('name')
                 ->optionValue('id'),
-                Filter::select('receipt_status', 'status')
+            Filter::select('receipt_status', 'status')
                 ->dataSource(Receipt::all())
                 ->optionLabel('Estado')
                 ->optionValue('id'),
-                Filter::select('status', 'status')
+            Filter::select('status', 'status')
                 ->dataSource(collect([
-                    ['value' => 'paid', 'label' => 'Pagado'],
-                    ['value' => 'pending', 'label' => 'Pendiente'],
-                    ['value' => 'canceled', 'label' => 'Cancelado']
+                    ['value' => 'PAGADO', 'label' => 'Pagado'],
+                    ['value' => 'PENDIENTE', 'label' => 'Pendiente'],
+                    ['value' => 'CANCELADO', 'label' => 'Cancelado']
                 ]))
                 ->optionLabel('label')
                 ->optionValue('value'),
-                Filter::select('receipt_pay_method', 'pay_method')
+            Filter::select('receipt_pay_method', 'pay_method')
                 ->dataSource(Receipt::all())
                 ->optionLabel('Metodo de pago')
                 ->optionValue('id'),
-                Filter::select('pay_method', 'pay_method')
+            Filter::select('pay_method', 'pay_method')
                 ->dataSource(collect([
-                    ['value' => 'cash', 'label' => 'Efectivo'],
-                    ['value' => 'cheque', 'label' => 'Cheque'],
-                    ['value' => 'transfer', 'label' => 'Transferencia Bancaria']
+                    ['value' => 'EFECTIVO', 'label' => 'Efectivo'],
+                    ['value' => 'CHEQUE', 'label' => 'Cheque'],
+                    ['value' => 'TRANSFERENCIA', 'label' => 'Transferencia Bancaria']
                 ]))
                 ->optionLabel('label')
                 ->optionValue('value'),
-                
+
 
         ];
     }
@@ -186,23 +195,39 @@ final class ReceiptTable extends PowerGridComponent
     public function actions(Receipt $row): array
     {
         return [
-            Button::add('edit')
-                ->slot('Edit: ' . $row->id)
+            Button::add('show')
+                ->slot('<i class="fa-regular fa-eye" style="color: #007bff;"></i>')
                 ->id()
-                ->class('pg-btn-white dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
-                ->dispatch('edit', ['rowId' => $row->id])
+                ->class('')
+                ->route('receipt.show', ['identificator' => $row->id]),
+            Button::add('edit')
+                ->slot('<i class="icon-[typcn--edit]" style="color:rgb(166, 145, 63);"></i>')
+                ->id()
+                ->class('')
+                ->route('receipt.edit', ['receipt' => $row->id])
+                ,
+            Button::add('show')
+                ->slot('<i class="icon-[material-symbols--download-rounded]" style="color: #2ecc71;"></i>')
+                ->id()
+                ->class('')
+                ->route('downloadPDF', ['id' => $row->id]),
+            Button::add('show')
+                ->slot('<i class="icon-[fa--send-o]" style="color: #e74c3c;"></i>')
+                ->id()
+                ->class('')
+                ->confirmPrompt('¿Estas seguro que deseas enviarlo por correo?', 'Enviar')
+                ->route('sendPDF', ['id' => $row->id]),
+
         ];
     }
 
-    /*
     public function actionRules($row): array
-    {
-       return [
-            // Hide button edit for ID 1
-            Rule::button('edit')
-                ->when(fn($row) => $row->id === 1)
-                ->hide(),
-        ];
-    }
-    */
+{
+    return [
+        // Ocultar el botón 'edit' si el estado del recibo no es 'PENDIENTE'
+        Rule::button('edit')
+            ->when(fn($row) => $row->status !== 'PENDIENTE')
+            ->hide(),
+    ];
+}
 }

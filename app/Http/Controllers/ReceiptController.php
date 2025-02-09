@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Endroid\QrCode\QrCode;
 use Endroid\QrCode\Writer\PngWriter;
@@ -35,10 +36,21 @@ class ReceiptController extends Controller
 
         return view('receipts.create', compact('counters', 'categories', 'clients', 'identificator'));
     }
+
     public function show($identificator)
     {
-        $ident = Receipt::where('identificator', $identificator)->first();
-        return view('receipts.show',compact('ident'));
+        $receipt = Receipt::findOrFail($identificator);
+        return view('receipts.show', compact('receipt'));
+    }
+
+    public function edit($receipt){
+
+        $receipt = Receipt::findOrFail($receipt);
+        $receipt->payment_date = Carbon::parse($receipt->payment_date)->format('Y-m-d');
+        $categories = Category::all();
+        $counters = Counter::all();
+        $clients = Client::all();
+        return view ('receipts.edit', compact('receipt', 'categories','counters','clients'));
 
     }
 
@@ -52,9 +64,9 @@ class ReceiptController extends Controller
             'identificator' => 'required|string|max:255|unique:receipts',
             'payment_date' => 'required|date',
             'pay_method' => 'required|string',
-            'mount' => 'required|numeric',
+            'mount' => 'required',
             'concept' => 'required|string',
-            'status' => 'required|string|in:pending,paid,canceled',
+            'status' => 'required|string',
         ]);
 
 
@@ -74,16 +86,57 @@ class ReceiptController extends Controller
         if ($request->input('action') == 'send') {
 
             $url = route('receipt.verify', $receipt->identificator);
-            $pdf = Pdf::loadView('dompdf.factura', compact('receipt', 'url'));
+            $pdf = Pdf::loadView('dompdf.factura', compact('receipt', 'url'))->setPaper('a4', 'landscape')->output();
 
 
             Mail::to($receipt->client->email)->send(new ReceiptMail($receipt, $pdf));
 
 
 
+
             return redirect()->route('receipt.create')->with('success', 'Recibo creado y enviado exitosamente.');
         }
         return redirect()->route('receipt.create')->with('success', 'Recibo creado exitosamente.');
+
+
     }
+
+    public function update(Request $request, Receipt $receipt){
+        
+        
+        $request->validate([
+            'counter_id' => 'required|exists:counters,id',
+            'client_id' => 'required|exists:clients,id',
+            'category_id' => 'required|exists:categories,id',
+            'payment_date' => 'required|string',
+            'pay_method' => 'required|string',
+            'mount' => 'required',
+            'description' => 'required|string',
+            'status' => 'required|string',
+            
+        ]);
+        $receipt->update($request->all());
+        return redirect()->route('receipt.show', ['identificator' => $receipt->id])->with('success','Recibo Actualizado Correctamente');
+
+
+
+    }
+    public function destroy(Receipt $receipt){
+
+        $receipt = Receipt::findOrFail($receipt->id);
+        $receipt->delete();
+        return redirect()->route('receipt.index')->with('success','Recibo Borrado Exitosamente');
+
+
+    }
+    public function destroydos(Receipt $receipt2){
+
+        $receipt = Receipt::findOrFail($receipt2->id);
+        $receipt->delete();
+        return redirect()->refresh()->with('success','Recibo Borrado Exitosamente');
+
+
+    }
+
 
 }
