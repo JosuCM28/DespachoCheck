@@ -6,6 +6,7 @@ use File;
 use Illuminate\Http\Request;
 use App\Models\Document;
 use App\Models\Client;
+use Illuminate\Support\Facades\Storage;
 use Response;
 
 class FileController extends Controller
@@ -31,6 +32,9 @@ class FileController extends Controller
     public function destroy(Document $document)
     {
         $document = Document::findOrFail($document->id);
+        if (Storage::disk('public')->exists($document->file_path)) {
+            Storage::disk('public')->delete($document->file_path); // Eliminar archivo
+        }
         $document->delete();
         return redirect()->back()->with('success', 'Documento Borrado Exitosamente');
     }

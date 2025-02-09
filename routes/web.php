@@ -47,9 +47,7 @@ Route::middleware([
         Route::delete('/client/destroy/{client}', [ClientController::class, 'destroy'])->name('client.destroy');
 
 
-        Route::delete('/file/destroy/{document}', [FileController::class, 'destroy'])->name('file.destroy');
-        Route::post('/file/{client}', [FileController::class, 'store'])->name('file.store');
-        Route::get('/file/download/{document}', [FileController::class, 'download'])->name('file.download');
+        
         
 
         Route::get('/user', [ClientController::class, 'final'])->name('client.final');
@@ -74,6 +72,11 @@ Route::middleware([
 
         
         });
+
+        Route::delete('/file/destroy/{document}', [FileController::class, 'destroy'])->name('file.destroy');
+        Route::post('/file/{client}', [FileController::class, 'store'])->name('file.store');
+        Route::get('/file/download/{document}', [FileController::class, 'download'])->name('file.download');
+
     #Route::resource('counter', CounterController::class)->names('counter.home');
     Route::post('/register-token', [CustomRegisterController::class, 'store'])->name('register.token');
     

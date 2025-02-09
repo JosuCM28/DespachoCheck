@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -10,7 +12,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     use HasApiTokens, HasFactory, HasProfilePhoto, Notifiable, TwoFactorAuthenticatable;
 
@@ -77,6 +79,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Client::class);
     }
-
-   
+    public function canAccessPanel(Panel $panel): bool
+    {
+        // Permite el acceso solo a usuarios con correos que terminen con @admin.com
+        return str_ends_with($this->rol, 'contador');
+    }
 }

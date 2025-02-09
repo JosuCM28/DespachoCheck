@@ -5,6 +5,15 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="container mx-auto p-12">
+                    <form action="{{ route('counter.destroy', $counter->id) }}" method="post"
+                        onsubmit="return confirmDelete(event)">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit"class="absolute top-4 right-4 text-gray-600 hover:text-red-600"
+                            id="deleteButton">
+                            <i class="fa-solid fa-xmark fa-lg"></i>
+                        </button>
+                    </form>
                     <div class="pb-10">
                         <p class="text-center font-bold text-2xl">{{ $counter->name . ' ' . $counter->last_name }} </p>
                     </div>
@@ -148,5 +157,12 @@
                 verClientes.value = "Ver clientes";
             }
         });
+
+        function confirmDelete(event) {
+            event.preventDefault(); // Evita que el formulario se envíe automáticamente
+
+            if (confirm("¿Estás seguro de que deseas eliminar este contador?")) {
+                event.target.submit(); 
+        }}
     </script>
 @endpush

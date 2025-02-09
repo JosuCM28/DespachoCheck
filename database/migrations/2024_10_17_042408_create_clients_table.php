@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('set null');  // Relación con `users`
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade');  // Relación con `users`
             $table->foreignId('counter_id')->nullable()->constrained('counters')->onDelete('set null'); 
             $table->foreignId('regime_id')->nullable()->constrained('regimes')->onDelete('set null');
             $table->enum('status',['active','inactive'])->default('active');

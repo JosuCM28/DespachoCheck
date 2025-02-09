@@ -5,7 +5,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg ">
                 <div class="container mx-auto p-12">
-                    <form action="{{ route('client.destroy', $client->id) }}" method="post">
+                    <form action="{{ route('client.destroy', $client->id) }}" method="post" onsubmit="return confirmDelete(event)">
                         @csrf
                         @method('DELETE')
                         <button type="submit"class="absolute top-4 right-4 text-gray-600 hover:text-red-600"
@@ -20,8 +20,13 @@
                             {{ $client->full_name }} </p>
 
 
-                        <div class="flex justify-center"><span class="label-text-alt ">Cliente de
-                                {{ $client->counter->full_name }}</span>
+                        <div class="flex justify-center"><span class="label-text-alt ">
+                            @if ($client->counter)
+                            Cliente de {{ $client->counter->full_name }}
+                            @else
+                            No tiene contador asociado
+                            @endif
+                                </span>
                         </div>
 
                     </div>
@@ -54,9 +59,6 @@
                                                 alt="Ver documentos" title="Ver documentos" aria-expanded="false"
                                                 aria-controls="scroll-inside-modal"
                                                 data-overlay="#scroll-inside-modal">Documentos </a></li>
-                                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                                        <li><a class="dropdown-item" href="#">Billing</a></li>
-                                        <li><a class="dropdown-item" href="#">FAQs</a></li>
                                     </ul>
                                 </div>
                                 <div>
@@ -123,7 +125,7 @@
                                                             aria-haspopup="dialog" aria-expanded="false"
                                                             aria-controls="toggle-bn-second-modal"
                                                             data-overlay="#toggle-bn-second-modal">
-                                                            Open second modal
+                                                            Subir otro archivo
                                                         </button>
                                                     </div>
                                                 </div>
@@ -378,3 +380,15 @@
         </div>
     </div>
 @endsection
+@push('modals')
+<script>
+
+function confirmDelete(event) {
+            event.preventDefault(); // Evita que el formulario se envíe automáticamente
+
+            if (confirm("¿Estás seguro de que deseas eliminar este Cliente?")) {
+                event.target.submit(); 
+        }}
+</script>
+
+@endpush

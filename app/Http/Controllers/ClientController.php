@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Counter;
 use App\Models\Document;
 use App\Models\Regime;
+use Auth;
 use Illuminate\Http\Request;
 use App\Models\Client;
 use App\Models\Credential;
@@ -158,7 +159,7 @@ class ClientController extends Controller
         // Validar y actualizar el post
         $request->validate([
             'counter_id' => 'nullable',
-            
+
             'phone' => 'nullable|string|max:10',
             'name' => 'required|string|max:255',
             'email' => 'nullable|email|max:255',
@@ -198,9 +199,6 @@ class ClientController extends Controller
     }
 
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Client $client)
     {
         $client = Client::findOrFail($client->id);
@@ -211,7 +209,11 @@ class ClientController extends Controller
     public function final(Client $client)
     {
 
-        return view('userclient.index');
+        $client = Auth::user()->client;
+
+        return view('userclient.index', [
+            'client' => $client,
+        ]);
 
 
     }
