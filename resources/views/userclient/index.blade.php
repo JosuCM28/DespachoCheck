@@ -21,27 +21,37 @@
                 </div>
             </div>
             <div id="logo-navbar-collapse"
-                class="md:navbar-end collapse hidden grow basis-full overflow-hidden transition-[height] duration-300 max-md:w-full">
-                <ul class="menu md:menu-horizontal gap-2 p-0 text-base max-md:mt-2">
-                    <li class="text-center"><a href="#">Home</a></li>
-                    <li> <button type="button" class="4xl" aria-haspopup="dialog" aria-expanded="false"
-                            aria-controls="toggle-bn-first-modal" data-overlay="#toggle-bn-first-modal">Ver
-                            Documentos</button>
-                    <li>
-                        <form method="POST" action="{{ route('logout') }}" x-data class="text-3xl">
-                            @csrf
-                            <x-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
-                                {{ __('Cerrar sesion') }}
-                            </x-dropdown-link>
-                        </form>
-                    </li>
-                </ul>
-            </div>
+    class="md:navbar-end collapse hidden grow basis-full overflow-hidden transition-[height] duration-300 max-md:w-full flex items-center justify-center">
+        <ul class="menu md:menu-horizontal gap-6 p-0 text-lg max-md:mt-2 flex items-center">
+
+        <!-- Ver Documentos -->
+        <li class="text-center">
+            <button type="button" class="text-xl font-semibold px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-100 transition"
+                aria-haspopup="dialog" aria-expanded="false"
+                aria-controls="toggle-bn-first-modal"
+                data-overlay="#toggle-bn-first-modal">
+                Ver Documentos
+            </button>
+        </li>
+
+        <!-- Cerrar Sesión -->
+        <li class="text-center">
+            <form method="POST" action="{{ route('logout') }}" x-data>
+                @csrf
+                <x-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();"
+                    class="text-xl font-semibold px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-100 transition">
+                    {{ __('Cerrar sesión') }}
+                </x-dropdown-link>
+            </form>
+        </li>
+    </ul>
+</div>
+
         </div>
     </nav>
 
     <section class="container mx-auto p-12">
-        <h1 class="text-center my-12 mx-12">HOLA, {{$client->full_name}} <br> Recibos Pagados</h1>
+        <h1 class="text-center my-12 mx-12">HOLA, {{ $client->full_name }} <br> Historial de Recibos</h1>
 
         <livewire:user-table />
 
@@ -98,8 +108,6 @@
                         @endforeach
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-soft btn-secondary"
-                            data-overlay="#scroll-inside-modal">Cerrar</button>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary" aria-haspopup="dialog" aria-expanded="false"
                                 aria-controls="toggle-bn-second-modal" data-overlay="#toggle-bn-second-modal">
@@ -154,7 +162,7 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-primary" aria-haspopup="dialog"
                                     aria-expanded="false" aria-controls="scroll-inside-modal"
-                                    data-overlay="#scroll-inside-modal">Regresar</button>
+                                    data-overlay="#toggle-bn-first-modal">Regresar</button>
                             </div>
                             <button type="submit" class="btn btn-primary">Subir</button>
                         </div>

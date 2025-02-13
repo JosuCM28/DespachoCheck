@@ -6,10 +6,12 @@
             <div class="flex justify-end flex-col lg:flex-row">
                 @if (Route::has('login'))
                     <nav class="flex flex-col lg:flex-row justify-end">
-                        <a href="tel:=522263161354"><p
-                            class="rounded-md px-2 lg:px-4 pt-2 lg:py-4 text-sm text-white ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] lg:text-base">
-                            Llámanos sin costo: 226-316-1354
-                        </p></a>
+                        <a href="tel:=522263161354">
+                            <p
+                                class="rounded-md px-2 lg:px-4 pt-2 lg:py-4 text-sm text-white ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] lg:text-base">
+                                Llámanos sin costo: 226-316-1354
+                            </p>
+                        </a>
                         <p
                             class="rounded-md px-2 lg:px-4 pt-2 lg:py-4 text-sm text-white ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] lg:text-base">
                             correo: baltazarmontes77@prodigy.net.mx
@@ -48,29 +50,11 @@
             </div>
             <div class="navbar-center max-sm:hidden " style="z-index: 3;">
                 <ul class="menu menu-horizontal gap-2 p-0 text-base rtl:ml-20 " style="background: transparent;">
-                    <li><a href="#inicio"  class="btn btn-text link-animated text-white">Inicio</a></li>
+                    <li><a href="#inicio" class="btn btn-text link-animated text-white">Inicio</a></li>
                     <li><a href="#nosotros" class="btn btn-text link-animated text-white">Acerca de</a></li>
                     <li><a href="#contacto" class="btn btn-text link-animated text-white">Ubicación</a></li>
                     <li><a href="#contacto" class="btn btn-text link-animated text-white">Contacto</a></li>
-                    <li
-                        class="dropdown relative inline-flex [--auto-close:inside] [--offset:9] [--placement:bottom-end] max-sm:[--placement:bottom]">
-                        <button id="dropdown-end" type="button"
-                            class="dropdown-toggle dropdown-open:bg-base-content/10  max-sm:px-2 btn btn-text text-white link-animated"
-                            aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
-                            Servicios
-                            <span class="icon-[tabler--chevron-down] dropdown-open:rotate-180 size-4"></span>
-                        </button>
-                        <ul class="dropdown-menu dropdown-open:opacity-100 hidden w-48 text" role="menu"
-                            aria-orientation="vertical" aria-labelledby="nested-dropdown">
-                            <li><a class="dropdown-item text-sm  truncate overflow-hidden w-48 "
-                                    title="Contabilidad general" href="#"><span
-                                        class="text-difuminado hover:text-blue-600"> Contabilidad general</span></a></li>
-                            <li><a class="dropdown-item" href="#">Declaraciones fiscales </a></li>
-                            <li><a class="dropdown-item" href="#">Nómina y recursos humanos</a></li>
-                            <li><a class="dropdown-item text-xs hover:text-blue-600" href="#servicios">Más servicios...</a>
-                            </li>
-                        </ul>
-                    </li>
+                   <li><a href="#servicios" class="btn btn-text link-animated text-white">Servicios</a></li>
                 </ul>
             </div>
             <div class="navbar-end items-center gap-4">
@@ -485,9 +469,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button"
-                        class="btn btn-neutral"
-                        data-overlay="#transparent-modal1">Close</button>
+                    <button type="button" class="btn btn-neutral" data-overlay="#transparent-modal1">Close</button>
                 </div>
             </div>
         </div>
@@ -901,51 +883,53 @@
 
     <!-- Footer -->
     <div class="w-full">
-    <footer class="footer bg-base-200/60 p-10 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 items-start justify-items-center">
+        <footer
+            class="footer bg-base-200/60 p-10 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 items-start justify-items-center">
 
-        <!-- Logo -->
-        <div class="col-span-1 md:col-span-3 lg:col-span-1 flex items-center justify-center">
-            <img src="{{ asset('img/DESPACHO.png') }}" alt="Logo" class="w-40 h-32 md:w-72 md:h-60">
-        </div>
+            <!-- Logo -->
+            <div class="col-span-1 md:col-span-3 lg:col-span-1 flex items-center justify-center">
+                <img src="{{ asset('img/DESPACHO.png') }}" alt="Logo" class="w-40 h-32 md:w-72 md:h-60">
+            </div>
 
-        <!-- Sección Inicio -->
-        <nav class="col-span-1 md:col-span-1 lg:col-start-2 mt-4 md:mt-8 lg:mt-12">
-            <a onclick="location.reload()" href="#inicio" class="link link-hover">Inicio</a>
-            <a href="#nosotros" class="link link-hover">Acerca de</a>
-            <a href="#servicios" class="link link-hover">Servicios</a>
-            <span class="flex items-center">
-                <a href="#contacto" class="link link-hover">Ubicación y Contacto</a>
-            </span>
-        </nav>
+            <!-- Sección Inicio -->
+            <nav class="col-span-1 md:col-span-1 lg:col-start-2 mt-4 md:mt-8 lg:mt-12">
+                <a onclick="location.reload()" href="#inicio" class="link link-hover">Inicio</a>
+                <a href="#nosotros" class="link link-hover">Acerca de</a>
+                <a href="#servicios" class="link link-hover">Servicios</a>
+                <span class="flex items-center">
+                    <a href="#contacto" class="link link-hover">Ubicación y Contacto</a>
+                </span>
+            </nav>
 
-        <!-- Sección Páginas de interés -->
-        <nav class="col-span-1 md:col-span-1 lg:col-start-3 mt-4 md:mt-8 lg:mt-12">
-            <h6 class="footer-title">Páginas de interés</h6>
-            <a href="https://www.sat.gob.mx/home" target="_blank" class="link link-hover">SAT</a>
-            <span class="flex items-center">
-                <a href="https://www.sat.gob.mx/empresas/sin-fines-de-lucro/iniciar-sesion" target="_blank" class="link link-hover">Buzon Tributario</a>
-            </span>
-            <a href="https://www.imss.gob.mx/" target="_blank" class="link link-hover">IMSS</a>
-        </nav>
+            <!-- Sección Páginas de interés -->
+            <nav class="col-span-1 md:col-span-1 lg:col-start-3 mt-4 md:mt-8 lg:mt-12">
+                <h6 class="footer-title">Páginas de interés</h6>
+                <a href="https://www.sat.gob.mx/home" target="_blank" class="link link-hover">SAT</a>
+                <span class="flex items-center">
+                    <a href="https://www.sat.gob.mx/empresas/sin-fines-de-lucro/iniciar-sesion" target="_blank"
+                        class="link link-hover">Buzon Tributario</a>
+                </span>
+                <a href="https://www.imss.gob.mx/" target="_blank" class="link link-hover">IMSS</a>
+            </nav>
 
-        <!-- Sección Company -->
-        <nav class="col-span-1 md:col-span-1 lg:col-start-4 mt-4 md:mt-8 lg:mt-12 navgrande">
-            <h6 class="footer-title">Contacto</h6>
-            <a >baltazarmontes77@prodigy.net.mx</a>
-            <a href="tel:+522263161354" class="link link-hover">+52 226 316 13 54</a>
-            <a href="tel:+522263160629" class="link link-hover">+52 226 316 06 29</a>
-        
-        </nav>
+            <!-- Sección Company -->
+            <nav class="col-span-1 md:col-span-1 lg:col-start-4 mt-4 md:mt-8 lg:mt-12 navgrande">
+                <h6 class="footer-title">Contacto</h6>
+                <a>baltazarmontes77@prodigy.net.mx</a>
+                <a href="tel:+522263161354" class="link link-hover">+52 226 316 13 54</a>
+                <a href="tel:+522263160629" class="link link-hover">+52 226 316 06 29</a>
 
-         <nav class="col-span-1 md:col-span-1 lg:col-start-4 mt-4 md:mt-8 lg:mt-12 navpeque">
-            <h6 class="footer-title">Contacto</h6>
-            <a >baltazarmontes77@prodigy.net.mx</a>
-            <a href="tel:+522263161354" class="link link-hover">+52 226 316 13 54</a>
-            <a href="tel:+522263160629" class="link link-hover">+52 226 316 06 29</a>
-        
+            </nav>
 
-    </footer>
-</div>
+            <nav class="col-span-1 md:col-span-1 lg:col-start-4 mt-4 md:mt-8 lg:mt-12 navpeque">
+                <h6 class="footer-title">Contacto</h6>
+                <a>baltazarmontes77@prodigy.net.mx</a>
+                <a href="tel:+522263161354" class="link link-hover">+52 226 316 13 54</a>
+                <a href="tel:+522263160629" class="link link-hover">+52 226 316 06 29</a>
+
+
+        </footer>
+    </div>
 
 @endsection
 

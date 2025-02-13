@@ -67,12 +67,17 @@ Route::middleware([
         Route::delete('/receipt/destroy/{receipt}',[ReceiptController::class,'destroydos'])->name('receipt.destroydos');
 
         #DOMPDF
-        Route::get('/downloadPDF/{id}',[PDFMaker::class,'downloadPDF'])->name('downloadPDF');
+        
         Route::get('/sendPDF/{id}',[PDFMaker::class,'sendPDF'])->name('sendPDF');
 
         
         });
 
+        #descargar DOMPDF
+        Route::get('/downloadPDF/{id}',[PDFMaker::class,'downloadPDF'])->name('downloadPDF');
+
+
+        #Administrar PDF que se pueden subir
         Route::delete('/file/destroy/{document}', [FileController::class, 'destroy'])->name('file.destroy');
         Route::post('/file/{client}', [FileController::class, 'store'])->name('file.store');
         Route::get('/file/download/{document}', [FileController::class, 'download'])->name('file.download');

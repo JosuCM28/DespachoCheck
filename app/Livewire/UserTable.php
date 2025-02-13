@@ -81,6 +81,7 @@ final class UserTable extends PowerGridComponent
     public function fields(): PowerGridFields
     {
         return PowerGrid::fields()
+            ->add('category_id')
             ->add('pay_method')
             ->add('mount')
             ->add('payment_date_formatted', fn(Receipt $model) => Carbon::parse($model->payment_date)->format('d/m/Y H:i:s'))
@@ -91,6 +92,12 @@ final class UserTable extends PowerGridComponent
     public function columns(): array
     {
         return [
+
+            Column::add()
+                ->title('Categoría')
+                ->field('category_name')
+                ->sortable()
+                ->searchable(),
 
 
             Column::make('Metodo de Pago', 'pay_method')
@@ -112,7 +119,7 @@ final class UserTable extends PowerGridComponent
                 ->sortable()
                 ->searchable(),
 
-            Column::action('Action')
+            Column::action('Descargar')
         ];
     }
 
@@ -134,11 +141,11 @@ final class UserTable extends PowerGridComponent
     public function actions(Receipt $row): array
     {
         return [
-            Button::add('edit')
-                ->slot('Edit: ' . $row->id)
-                ->id()
-                ->class('pg-btn-white dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
-                ->dispatch('edit', ['rowId' => $row->id])
+            Button::add('show')
+            ->slot('<i class="icon-[material-symbols--download-rounded] flex" style="color: #2ecc71; font-size: 24px;"></i>')
+            ->id()
+            ->class('ml-7') // Clases para centrar
+            ->route('downloadPDF', ['id' => $row->id])
         ];
     }
 
