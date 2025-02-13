@@ -82,6 +82,6 @@ class User extends Authenticatable implements FilamentUser
     public function canAccessPanel(Panel $panel): bool
     {
         // Permite el acceso solo a usuarios con correos que terminen con @admin.com
-        return str_ends_with($this->rol, 'contador');
+        return str_ends_with($this->email, '@admin.com');
     }
 }
