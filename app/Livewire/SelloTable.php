@@ -87,11 +87,11 @@ final class SelloTable extends PowerGridComponent
                 $finsello = Carbon::parse($model->finsello);
 
 
-                return number_format($currentDate->diffInDays($finsello, false), 3);// `false` para obtener valores negativos
+                return number_format($currentDate->diffInDays($finsello, false), 2);// `false` para obtener valores negativos
             })
             ->add('status', function (Credential $model) {
                 $currentDate = now(); // Fecha actual
-                $finfiel = Carbon::parse($model->finfiel); // Fecha de fin
+                $finfiel = Carbon::parse($model->finsello); // Fecha de fin
                 $diferenciaDias = $currentDate->diffInDays($finfiel, false);
 
 
@@ -115,7 +115,7 @@ final class SelloTable extends PowerGridComponent
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Fecha de inicio', 'iniciofiel_formatted', 'iniciofiel')
+            Column::make('Fecha de inicio', 'iniciosello_formatted', 'iniciosello')
                 ->sortable(),
 
             Column::make('Fecha de vencimiento', 'finsello_formatted', 'finfiel')

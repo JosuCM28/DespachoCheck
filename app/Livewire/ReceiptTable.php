@@ -14,6 +14,7 @@ use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridFields;
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
 use PowerComponents\LivewirePowerGrid\Facades\Rule; 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Counter;
 use App\Models\Client;
 use App\Models\Category;
@@ -22,6 +23,11 @@ final class ReceiptTable extends PowerGridComponent
 {
     public string $tableName = 'receipt-table-2gepz9-table';
     use WithExport;
+    public int $client = 0;
+    public function __mount(int $client):void
+    {
+        $this->client = $client;
+    }
     public function setUp(): array
     {
         $this->showCheckBox();
@@ -46,19 +52,39 @@ final class ReceiptTable extends PowerGridComponent
 
     public function datasource(): Builder
     {
+       if($this->client === 0){
         return Receipt::query()
-            ->with('counter', 'client', 'category')
-            ->addSelect([
-                'counter_full_name' => Counter::select('full_name')
-                    ->whereColumn('counters.id', 'receipts.counter_id')
-                    ->limit(1),
-                'client_full_name' => Client::select('full_name')
-                    ->whereColumn('clients.id', 'receipts.client_id')
-                    ->limit(1),
-                'category_name' => Category::select('name')
-                    ->whereColumn('categories.id', 'receipts.category_id')
-                    ->limit(1),
-            ]);
+        ->with('counter', 'client', 'category')
+        ->addSelect([
+            'counter_full_name' => Counter::select('full_name')
+                ->whereColumn('counters.id', 'receipts.counter_id')
+                ->limit(1),
+            'client_full_name' => Client::select('full_name')
+                ->whereColumn('clients.id', 'receipts.client_id')
+                ->limit(1),
+            'category_name' => Category::select('name')
+                ->whereColumn('categories.id', 'receipts.category_id')
+                ->limit(1),
+        ]);}
+        else{
+            return Receipt::query()
+        ->where('client_id', $this->client) // Filtra por el cliente que se está viendo
+        ->with('counter', 'client', 'category')
+        ->addSelect([
+            'counter_full_name' => Counter::select('full_name')
+                ->whereColumn('counters.id', 'receipts.counter_id')
+                ->limit(1),
+            'client_full_name' => Client::select('full_name')
+                ->whereColumn('clients.id', 'receipts.client_id')
+                ->limit(1),
+            'category_name' => Category::select('name')
+                ->whereColumn('categories.id', 'receipts.category_id')
+                ->limit(1),
+        ]);
+
+
+
+        }
 
 
 

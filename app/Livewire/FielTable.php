@@ -86,7 +86,7 @@ final class FielTable extends PowerGridComponent
                 $finfiel = Carbon::parse($model->finfiel); // Fecha de fin
     
                 // Si la fecha actual está después de `finfiel`, retorna negativo
-                return number_format($currentDate->diffInDays($finfiel, false), 3);
+                return number_format($currentDate->diffInDays($finfiel, false), 2);
             })
             ->add('status', function (Credential $model) {
                 $currentDate = now(); // Fecha actual

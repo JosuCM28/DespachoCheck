@@ -5,7 +5,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg ">
                 <div class="container mx-auto p-12">
-                    <form action="{{ route('client.destroy', $client->id) }}" method="post" onsubmit="return confirmDelete(event)">
+                    <form action="{{ route('client.destroy', $client->id) }}" method="post"
+                        onsubmit="return confirmDelete(event)">
                         @csrf
                         @method('DELETE')
                         <button type="submit"class="absolute top-4 right-4 text-gray-600 hover:text-red-600"
@@ -21,12 +22,12 @@
 
 
                         <div class="flex justify-center"><span class="label-text-alt ">
-                            @if ($client->counter)
-                            Cliente de {{ $client->counter->full_name }}
-                            @else
-                            No tiene contador asociado
-                            @endif
-                                </span>
+                                @if ($client->counter)
+                                    Cliente de {{ $client->counter->full_name }}
+                                @else
+                                    No tiene contador asociado
+                                @endif
+                            </span>
                         </div>
 
                     </div>
@@ -119,13 +120,13 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-soft btn-secondary"
-                                                        data-overlay="#scroll-inside-modal">Close</button>
+                                                        data-overlay="#scroll-inside-modal">Cerrar</button>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-primary"
                                                             aria-haspopup="dialog" aria-expanded="false"
                                                             aria-controls="toggle-bn-second-modal"
                                                             data-overlay="#toggle-bn-second-modal">
-                                                            Subir otro archivo
+                                                            Subir PDF
                                                         </button>
                                                     </div>
                                                 </div>
@@ -366,6 +367,77 @@
                                     </div>
                                 </div>
 
+                                <div class="sm:col-span-3 form-control w-full sm:w-96">
+                                    <label for="iniciofiel"
+                                        class="block text-sm font-medium leading-6 text-gray-900">Fecha de inicio
+                                        (FIEL)</label>
+                                    <div class="mt-2 input input-filled peer" style="max-height: 4rem; overflow-y: auto;">
+                                        <p class="{{ $client->credentials->iniciofiel ? '' : 'text-gray-400 italic' }}">
+                                            {{ $client->credentials->iniciofiel ?? 'Sin datos existentes' }} </p>
+                                    </div>
+                                </div>
+
+                                <div class="sm:col-span-3 form-control w-full sm:w-96">
+                                    <label for="finfiel" class="block text-sm font-medium leading-6 text-gray-900">Fecha
+                                        de vencimiento (FIEL)</label>
+                                    <div class="mt-2 input input-filled peer">
+                                        <p class="{{ $client->credentials->finfiel ? '' : 'text-gray-400 italic' }}">
+                                            {{ $client->credentials->finfiel ?? 'Sin datos existentes' }} </p>
+                                    </div>
+                                </div>
+
+                                <div class="sm:col-span-3 form-control w-full sm:w-96">
+                                    <label for="iniciofiel"
+                                        class="block text-sm font-medium leading-6 text-gray-900">Fecha de inicio
+                                        (SELLO)</label>
+                                    <div class="mt-2 input input-filled peer" style="max-height: 4rem; overflow-y: auto;">
+                                        <p class="{{ $client->credentials->iniciosello ? '' : 'text-gray-400 italic' }}">
+                                            {{ $client->credentials->iniciosello ?? 'Sin datos existentes' }} </p>
+                                    </div>
+                                </div>
+
+                                <div class="sm:col-span-3 form-control w-full sm:w-96">
+                                    <label for="finsello" class="block text-sm font-medium leading-6 text-gray-900">Fecha
+                                        de vencimiento (SELLO)</label>
+                                    <div class="mt-2 input input-filled peer">
+                                        <p class="{{ $client->credentials->finsello ? '' : 'text-gray-400 italic' }}">
+                                            {{ $client->credentials->finsello ?? 'Sin datos existentes' }} </p>
+                                    </div>
+                                </div>
+
+                                <div class="sm:col-span-3 form-control w-full sm:w-96">
+                                    <label for="auxone" class="block text-sm font-medium leading-6 text-gray-900">Extra
+                                        1</label>
+                                    <div class="mt-2 input input-filled peer" style="max-height: 4rem; overflow-y: auto;">
+                                        <p class="{{ $client->credentials->auxone ? '' : 'text-gray-400 italic' }}"
+                                            style="word-wrap: break-word;">
+                                            {{ $client->credentials->auxone ?? 'Sin datos existentes' }}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="sm:col-span-3 form-control w-full sm:w-96">
+                                    <label for="auxtwo" class="block text-sm font-medium leading-6 text-gray-900">Extra
+                                        2</label>
+                                    <div class="mt-2 input input-filled peer">
+                                        <p class="{{ $client->credentials->auxtwo ? '' : 'text-gray-400 italic' }}">
+                                            {{ $client->credentials->auxtwo ?? 'Sin datos existentes' }} </p>
+                                    </div>
+                                </div>
+
+
+                                <div class="sm:col-span-3 form-control w-full sm:w-96">
+                                    <label for="auxthree" class="block text-sm font-medium leading-6 text-gray-900">Extra
+                                        3</label>
+                                    <div class="mt-2 input input-filled peer" style="max-height: 4rem; overflow-y: auto;">
+                                        <p class="{{ $client->credentials->auxthree ? '' : 'text-gray-400 italic' }}"
+                                            style="word-wrap: break-word;">
+                                            {{ $client->credentials->auxthree ?? 'Sin datos existentes' }}
+                                        </p>
+                                    </div>
+                                </div>
+
+
 
                             </div>
                         </div>
@@ -374,6 +446,12 @@
                             <a href="{{ url()->previous() }}" class="btn btn-soft btn-secondary">Cancelar</a>
                             <a href="{{ route('client.edit', $client->id) }}" class="btn btn-soft btn-accent">Editar</a>
                         </div>
+
+                        <input type="button" id="showReceipts" value="Ver Recibos" class="btn btn-soft btn-info">
+                        <div class="hidden" id="tableClients">
+                            <livewire:receipt-table :client="$client->id" />
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -381,14 +459,26 @@
     </div>
 @endsection
 @push('modals')
-<script>
+    <script>
+        document.getElementById('showReceipts').addEventListener('click', function() {
+            const clients = document.getElementById('tableClients');
+            const verClientes = document.getElementById('showReceipts');
+            if (clients.classList.contains('hidden')) {
+                clients.classList.remove('hidden');
+                verClientes.value = "Ocultar Recibos";
 
-function confirmDelete(event) {
+            } else {
+                clients.classList.add('hidden');
+                verClientes.value = "Ver Recibos";
+            }
+        });
+
+        function confirmDelete(event) {
             event.preventDefault(); // Evita que el formulario se envíe automáticamente
 
             if (confirm("¿Estás seguro de que deseas eliminar este Cliente?")) {
-                event.target.submit(); 
-        }}
-</script>
-
+                event.target.submit();
+            }
+        }
+    </script>
 @endpush
